@@ -47,3 +47,28 @@ export function replay(history: string[]): Chess {
   for (const san of history) chess.move(san)
   return chess
 }
+
+// From and to squares of a SAN move in the given position, without playing it.
+export function moveSquares(
+  chess: Chess,
+  san: string,
+): { from: Key; to: Key } | null {
+  const move = chess.moves({ verbose: true }).find((m) => m.san === san)
+  return move ? { from: move.from, to: move.to } : null
+}
+
+// A line being explored: the moves, and how many of them are on the board.
+export type Line = { moves: string[]; ply: number }
+
+// Plays `san` at the current ply. Replaying the next move of the line just
+// steps forward; any other move replaces the rest of the line.
+export function advance({ moves, ply }: Line, san: string): Line {
+  return {
+    moves: moves[ply] === san ? moves : [...moves.slice(0, ply), san],
+    ply: ply + 1,
+  }
+}
+
+export function seek({ moves }: Line, ply: number): Line {
+  return { moves, ply: Math.max(0, Math.min(moves.length, ply)) }
+}

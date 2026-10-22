@@ -2,7 +2,7 @@
 
 A web app for practicing chess opening theory interactively, for players of every level.
 
-This is Phase 0 of the roadmap: a React + TypeScript app with a playable board. Coming next are an opening explorer, a practice mode that drills your repertoire, and spaced-repetition progress tracking with optional accounts.
+The app currently has an opening explorer: play moves or pick a book move to see the opening's name, the named variations that continue from the position, and step back and forth through the line. Coming next are a practice mode that drills your repertoire and spaced-repetition progress tracking with optional accounts.
 
 ## Stack
 
@@ -23,6 +23,10 @@ npm run lint         # lint
 npm run format       # format with Prettier
 npm run build        # type-check and build for production
 ```
+
+## Opening data
+
+Opening names come from the [Lichess chess-openings](https://github.com/lichess-org/chess-openings) dataset (CC0). `npm run import-openings` downloads it, builds the opening tree, and writes `src/openings/tree.json`, which is committed so the app and its tests work offline. Rerun it to pick up dataset updates.
 
 ## License
 

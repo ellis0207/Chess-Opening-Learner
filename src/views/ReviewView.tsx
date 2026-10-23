@@ -1,9 +1,11 @@
 import type { DrawShape } from 'chessground/draw'
 import type { Config } from 'chessground/config'
 import type { Key } from 'chessground/types'
-import { useEffect, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import { Board } from '../components/Board'
+import { MoveInput } from '../components/MoveInput'
 import {
+  lastMoveText,
   legalDests,
   moveSquares,
   playMove,
@@ -37,7 +39,9 @@ export function ReviewView({ tree, onExplore }: ReviewViewProps) {
   // make it jump around or vanish mid-session.
   const [queue, setQueue] = useState<Card[] | null>(null)
   const [index, setIndex] = useState(0)
-  const [missed, setMissed] = useState(false)
+  // Wrong moves in the current position. Each one is taken back on the board.
+  const [wrongMoves, setWrongMoves] = useState(0)
+  const missed = wrongMoves > 0
   const [answered, setAnswered] = useState<string | null>(null)
   const [results, setResults] = useState({ passed: 0, failed: 0 })
 
@@ -71,34 +75,42 @@ export function ReviewView({ tree, onExplore }: ReviewViewProps) {
     if (!answered) return
     const timer = setTimeout(() => {
       setIndex((i) => i + 1)
-      setMissed(false)
+      setWrongMoves(0)
       setAnswered(null)
     }, NEXT_DELAY_MS)
     return () => clearTimeout(timer)
   }, [answered])
 
-  const config = useMemo<Config>(() => {
-    if (!card) return { fen: game.fen(), movable: { color: undefined } }
-    const onMove = (from: Key, to: Key) => {
-      const san = playMove(replay(card.line), from, to)
-      if (!san) return
+  const submit = useCallback(
+    (san: string) => {
+      if (!card || answered) return
       if (book.some((e) => e.san === san)) {
         if (!missed) setResults((r) => ({ ...r, passed: r.passed + 1 }))
         recordReview(card.side, card.line, !missed)
         setAnswered(san)
       } else {
         if (!missed) setResults((r) => ({ ...r, failed: r.failed + 1 }))
-        setMissed(true)
+        setWrongMoves((n) => n + 1)
       }
+    },
+    [card, book, missed, answered],
+  )
+
+  const config = useMemo<Config>(() => {
+    if (!card) return { fen: game.fen(), movable: { color: undefined } }
+    const onMove = (from: Key, to: Key) => {
+      const san = playMove(replay(card.line), from, to)
+      if (san) submit(san)
     }
-    const arrows: DrawShape[] = missed
-      ? book.flatMap((edge) => {
-          const squares = moveSquares(game, edge.san)
-          return squares
-            ? [{ orig: squares.from, dest: squares.to, brush: 'green' }]
-            : []
-        })
-      : []
+    const arrows: DrawShape[] =
+      wrongMoves > 0
+        ? book.flatMap((edge) => {
+            const squares = moveSquares(game, edge.san)
+            return squares
+              ? [{ orig: squares.from, dest: squares.to, brush: 'green' }]
+              : []
+          })
+        : []
     const last = game.history({ verbose: true }).at(-1)
     return {
       fen: game.fen(),
@@ -114,8 +126,7 @@ export function ReviewView({ tree, onExplore }: ReviewViewProps) {
       },
       drawable: { autoShapes: arrows },
     }
-    // `missed` is in the deps so a wrong move is taken back.
-  }, [card, game, book, missed, answered])
+  }, [card, game, book, answered, wrongMoves, submit])
 
   if (!queue) return <p className="note">Loading reviews…</p>
 
@@ -168,6 +179,15 @@ export function ReviewView({ tree, onExplore }: ReviewViewProps) {
             </p>
           )}
         </div>
+        <MoveInput
+          key={index}
+          line={card.line}
+          disabled={Boolean(answered)}
+          onMove={submit}
+        />
+        <p className="sr-only" aria-live="polite">
+          {lastMoveText(card.line)}
+        </p>
         <div className="controls">
           {!book.length && (
             // The opening data changed and this position left the book.
@@ -175,7 +195,7 @@ export function ReviewView({ tree, onExplore }: ReviewViewProps) {
               type="button"
               onClick={() => {
                 setIndex((i) => i + 1)
-                setMissed(false)
+                setWrongMoves(0)
               }}
             >
               Skip

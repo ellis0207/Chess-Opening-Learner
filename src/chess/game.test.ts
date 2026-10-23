@@ -3,8 +3,10 @@ import { describe, expect, it } from 'vitest'
 import {
   advance,
   formatLine,
+  lastMoveText,
   legalDests,
   movePairs,
+  parseMove,
   moveSquares,
   playMove,
   replay,
@@ -106,5 +108,52 @@ describe('formatLine', () => {
   it('numbers the moves', () => {
     expect(formatLine(['e4', 'e5', 'Nf3'])).toBe('1.e4 e5 2.Nf3')
     expect(formatLine([])).toBe('')
+  })
+})
+
+describe('parseMove', () => {
+  const start = () => replay([])
+
+  it('reads SAN, ignoring case and check marks', () => {
+    expect(parseMove(start(), 'Nf3')).toBe('Nf3')
+    expect(parseMove(start(), 'nf3')).toBe('Nf3')
+    expect(parseMove(start(), ' e4 ')).toBe('e4')
+    expect(parseMove(replay(['e4', 'f5', 'Qh5']), 'g6')).toBe('g6')
+    expect(parseMove(replay(['f3', 'e5', 'g4']), 'Qh4#')).toBe('Qh4#')
+  })
+
+  it('reads coordinates', () => {
+    expect(parseMove(start(), 'g1f3')).toBe('Nf3')
+    expect(parseMove(start(), 'e2-e4')).toBe('e4')
+    const promo = replay([])
+    promo.load('8/P7/8/8/8/8/8/k6K w - - 0 1')
+    expect(parseMove(promo, 'a7a8')).toBe('a8=Q+')
+    expect(parseMove(promo, 'a7a8n')).toBe('a8=N')
+  })
+
+  it('reads castling with zeros', () => {
+    const chess = replay(['e4', 'e5', 'Nf3', 'Nc6', 'Bc4', 'Bc5'])
+    expect(parseMove(chess, '0-0')).toBe('O-O')
+  })
+
+  it('keeps b for pawns apart from B for bishops', () => {
+    const chess = replay(['e4', 'e5'])
+    expect(parseMove(chess, 'b3')).toBe('b3')
+    expect(parseMove(replay(['e4', 'e5', 'b3', 'd6']), 'Bb2')).toBe('Bb2')
+  })
+
+  it('rejects illegal or unclear input', () => {
+    expect(parseMove(start(), 'e5')).toBeNull()
+    expect(parseMove(start(), 'Nd2')).toBeNull()
+    expect(parseMove(start(), '')).toBeNull()
+    expect(parseMove(start(), 'hello')).toBeNull()
+  })
+})
+
+describe('lastMoveText', () => {
+  it('says who played the last move', () => {
+    expect(lastMoveText([])).toBe('Starting position')
+    expect(lastMoveText(['e4'])).toBe('White played e4')
+    expect(lastMoveText(['e4', 'c5'])).toBe('Black played c5')
   })
 })

@@ -2,6 +2,8 @@
 
 A web app for practicing chess opening theory interactively, for players of every level.
 
+**Try it:** https://ellis0207.github.io/Chess-Opening-Learner/ (deployed from `main` by GitHub Actions). It can be installed as an app and works offline once loaded.
+
 The app has five parts:
 
 - **Explore:** play moves or pick a book move to see the opening's name and the named variations that continue from the position, and step back and forth through the line.
@@ -11,11 +13,15 @@ The app has five parts:
 - **Review:** every position you answer in practice is scheduled with spaced repetition (SM-2). Positions you get right first time come back after growing intervals (1 day, 3 days, then longer); misses come back the next day. The Review tab shows how many are due.
 - **Progress:** positions learned and mastered, due reviews, day streak, accuracy, and your most-missed positions. Progress is stored in the browser (IndexedDB); download a backup to keep it safe or move it to another device.
 
+Moves can be played by dragging or clicking pieces, or by typing them (`Nf3`, `0-0`, `g1f3`), and the last move is announced to screen readers.
+
 ## Stack
 
 - [React](https://react.dev) + TypeScript, built with [Vite](https://vite.dev)
 - [chess.js](https://github.com/jhlywa/chess.js) for move rules
 - [chessground](https://github.com/lichess-org/chessground) for the board
+- [Dexie](https://dexie.org) (IndexedDB) for progress and repertoires
+- [vite-plugin-pwa](https://vite-pwa-org.netlify.app) for the installable, offline app
 - [Vitest](https://vitest.dev) for tests, [oxlint](https://oxc.rs) and [Prettier](https://prettier.io) for linting and formatting
 
 ## Development

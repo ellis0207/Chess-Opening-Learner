@@ -6,14 +6,16 @@ import type { OpeningTree } from './openings/tree'
 import { db } from './progress/db'
 import { useLive } from './progress/useLive'
 import { ExploreView } from './views/ExploreView'
-import { PracticeView } from './views/PracticeView'
+import { PracticeView, type Source } from './views/PracticeView'
+import { RepertoireView } from './views/RepertoireView'
 import { ProgressView } from './views/ProgressView'
 import { ReviewView } from './views/ReviewView'
 import './App.css'
 
 type Mode =
   | { kind: 'explore' }
-  | { kind: 'practice'; start: string[]; side: Color }
+  | { kind: 'practice'; start: string[]; side: Color; source: Source }
+  | { kind: 'repertoire' }
   | { kind: 'review' }
   | { kind: 'progress' }
 
@@ -32,11 +34,12 @@ function App() {
     loadTree().then(setTree)
   }, [])
 
-  const practice = (start: string[], side: Color) =>
-    setMode({ kind: 'practice', start, side })
+  const practice = (start: string[], side: Color, source: Source = 'book') =>
+    setMode({ kind: 'practice', start, side, source })
 
   const tabs = [
     { kind: 'explore', label: 'Explore' },
+    { kind: 'repertoire', label: 'Repertoire' },
     { kind: 'review', label: due ? `Review (${due})` : 'Review' },
     { kind: 'progress', label: 'Progress' },
   ] as const
@@ -73,11 +76,17 @@ function App() {
       ) : mode.kind === 'practice' ? (
         <PracticeView
           // A new drill each time practice starts from somewhere else.
-          key={`${mode.side} ${mode.start.join(' ')}`}
+          key={`${mode.side} ${mode.source} ${mode.start.join(' ')}`}
           tree={tree}
           start={mode.start}
           initialSide={mode.side}
+          initialSource={mode.source}
           onExit={() => setMode({ kind: 'explore' })}
+        />
+      ) : mode.kind === 'repertoire' ? (
+        <RepertoireView
+          onPractice={(side) => practice([], side, 'repertoire')}
+          onExplore={() => setMode({ kind: 'explore' })}
         />
       ) : mode.kind === 'review' ? (
         <ReviewView

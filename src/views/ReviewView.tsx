@@ -18,6 +18,9 @@ import {
   type OpeningTree,
 } from '../openings/tree'
 import { db, recordReview, type Card } from '../progress/db'
+import { useLive } from '../progress/useLive'
+
+const loadRepertoire = () => db.repertoire.toArray()
 
 // How long a correct answer stays on the board before the next position.
 const NEXT_DELAY_MS = 900
@@ -44,10 +47,16 @@ export function ReviewView({ tree, onExplore }: ReviewViewProps) {
 
   const card = queue?.[index]
   const game = useMemo(() => replay(card?.line ?? []), [card])
-  const book = useMemo(
-    () => (card ? continuations(tree, card.epd) : []),
-    [tree, card],
-  )
+  const repertoire = useLive(loadRepertoire)
+  // Where you have a repertoire move, that is the answer; elsewhere any book
+  // move counts.
+  const book = useMemo(() => {
+    if (!card) return []
+    const yours = (repertoire ?? []).filter(
+      (m) => m.side === card.side && m.epd === card.epd,
+    )
+    return yours.length ? yours : continuations(tree, card.epd)
+  }, [tree, card, repertoire])
   const opening = useMemo(() => {
     if (!card) return undefined
     const chess = replay([])
@@ -146,11 +155,11 @@ export function ReviewView({ tree, onExplore }: ReviewViewProps) {
         <div className="feedback" role="status">
           {answered ? (
             <p className="right">
-              <strong>{answered}</strong> is book.
+              <strong>{answered}</strong> is right.
             </p>
           ) : missed ? (
             <p className="wrong">
-              Not book. The arrows show the book moves; play one to continue.
+              Not quite. The arrows show the right moves; play one to continue.
             </p>
           ) : (
             <p>

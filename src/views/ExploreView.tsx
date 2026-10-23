@@ -11,6 +11,10 @@ import {
 } from 'react'
 import { Board } from '../components/Board'
 import { Explorer } from '../components/Explorer'
+import { RepertoirePanel } from '../components/RepertoirePanel'
+import { db } from '../progress/db'
+import { useLive } from '../progress/useLive'
+import { addLine, removeMove, setNote } from '../repertoire/store'
 import { MoveList } from '../components/MoveList'
 import {
   advance,
@@ -31,6 +35,8 @@ import {
 } from '../openings/tree'
 
 const MAX_ARROWS = 3
+
+const loadRepertoire = () => db.repertoire.toArray()
 
 type ExploreViewProps = {
   tree: OpeningTree
@@ -66,6 +72,32 @@ export function ExploreView({
   const opening = openingFor(tree, positions)
   const inBook = tree.has(position)
   const edges = useMemo(() => continuations(tree, position), [tree, position])
+
+  // Your repertoire for the side the board is turned to.
+  const repertoire = useLive(loadRepertoire)
+  const mine = useMemo(
+    () =>
+      (repertoire ?? []).filter(
+        (m) => m.side === orientation && m.epd === position,
+      ),
+    [repertoire, orientation, position],
+  )
+  const current = useMemo(
+    () =>
+      ply > 0
+        ? (repertoire ?? []).find(
+            (m) =>
+              m.side === orientation &&
+              m.epd === positions[ply - 1] &&
+              m.san === line[ply - 1],
+          )
+        : undefined,
+    [repertoire, orientation, positions, line, ply],
+  )
+  const mineSans = new Set(mine.map((m) => m.san))
+  const extra = mine
+    .map((m) => m.san)
+    .filter((san) => !edges.some((e) => e.san === san))
 
   const play = useCallback(
     (san: string) => {
@@ -136,6 +168,8 @@ export function ExploreView({
           opening={opening}
           inBook={inBook}
           edges={edges}
+          mine={mineSans}
+          extra={extra}
           onPlay={play}
           onHover={setHovered}
         />
@@ -186,10 +220,19 @@ export function ExploreView({
           type="button"
           className="primary"
           onClick={() => onPractice(line, orientation)}
-          disabled={!edges.length}
+          disabled={!edges.length && !mine.length}
         >
           Practice from here
         </button>
+        <RepertoirePanel
+          key={current?.id ?? 'none'}
+          side={orientation}
+          canAdd={ply > 0}
+          current={current}
+          onAdd={() => addLine(orientation, line)}
+          onRemove={removeMove}
+          onNote={(move, note) => setNote(move.id, note)}
+        />
       </aside>
     </div>
   )

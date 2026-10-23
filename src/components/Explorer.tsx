@@ -4,6 +4,9 @@ type ExplorerProps = {
   opening?: Opening
   inBook: boolean
   edges: Edge[]
+  // Moves from here in your repertoire, and those of them the book lacks.
+  mine: Set<string>
+  extra: string[]
   onPlay: (san: string) => void
   onHover: (san: string | null) => void
 }
@@ -13,6 +16,8 @@ export function Explorer({
   opening,
   inBook,
   edges,
+  mine,
+  extra,
   onPlay,
   onHover,
 }: ExplorerProps) {
@@ -27,12 +32,12 @@ export function Explorer({
           'Starting position'
         )}
       </h2>
-      {!inBook && (
+      {!inBook && !extra.length && (
         <p className="note">
           Out of book. Step back to return to known theory.
         </p>
       )}
-      {inBook && !edges.length && (
+      {inBook && !edges.length && !extra.length && (
         <p className="note">End of the line: no named continuations here.</p>
       )}
       {edges.length > 0 && (
@@ -46,7 +51,15 @@ export function Explorer({
                 onFocus={() => onHover(edge.san)}
                 onBlur={() => onHover(null)}
               >
-                <span className="san">{edge.san}</span>
+                <span className="san">
+                  {edge.san}
+                  {mine.has(edge.san) && (
+                    <span className="mine" title="In your repertoire">
+                      {' '}
+                      ★
+                    </span>
+                  )}
+                </span>
                 <span className="line" title={edge.line.name}>
                   {variationLabel(edge.line, opening)}
                 </span>
@@ -57,6 +70,21 @@ export function Explorer({
             </li>
           ))}
         </ul>
+      )}
+      {extra.length > 0 && (
+        <p className="note">
+          Also in your repertoire:{' '}
+          {extra.map((san) => (
+            <button
+              key={san}
+              type="button"
+              className="link san"
+              onClick={() => onPlay(san)}
+            >
+              {san} ★
+            </button>
+          ))}
+        </p>
       )}
     </section>
   )

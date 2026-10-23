@@ -126,3 +126,60 @@ h2.opening {
   flex-wrap: wrap;
   gap: 8px;
 }
+
+.move:disabled {
+  opacity: 1;
+  cursor: default;
+}
+
+.move:disabled:hover {
+  background: transparent;
+}
+
+.move.current:disabled:hover {
+  background: var(--accent);
+}
+
+.primary {
+  margin-top: 16px;
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-fg);
+  font-weight: 600;
+}
+
+.controls .primary {
+  margin-top: 0;
+}
+
+.settings {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+
+select {
+  font: inherit;
+  padding: 4px 8px;
+  border: 1px solid var(--button-border);
+  border-radius: 6px;
+  background: var(--button-bg);
+  color: inherit;
+}
+
+.feedback {
+  margin-bottom: 12px;
+}
+
+.feedback p {
+  margin: 0 0 6px;
+}
+
+.right {
+  color: var(--right);
+}
+
+.wrong {
+  color: var(--wrong);
+}

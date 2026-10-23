@@ -7,6 +7,8 @@
   --hover: rgba(0, 0, 0, 0.06);
   --accent: #3b6e3b;
   --accent-fg: #fff;
+  --right: #2f6b2f;
+  --wrong: #b3261e;
   color-scheme: light dark;
   font-family: system-ui, sans-serif;
   line-height: 1.5;
@@ -22,6 +24,8 @@
     --hover: rgba(255, 255, 255, 0.08);
     --accent: #6aa86a;
     --accent-fg: #111;
+    --right: #8fd18f;
+    --wrong: #ff8a80;
   }
 }
 

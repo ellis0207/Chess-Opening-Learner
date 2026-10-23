@@ -2,7 +2,12 @@
 
 A web app for practicing chess opening theory interactively, for players of every level.
 
-The app currently has an opening explorer: play moves or pick a book move to see the opening's name, the named variations that continue from the position, and step back and forth through the line. Coming next are a practice mode that drills your repertoire and spaced-repetition progress tracking with optional accounts.
+The app has two modes:
+
+- **Explore:** play moves or pick a book move to see the opening's name and the named variations that continue from the position, and step back and forth through the line.
+- **Practice:** from any position in the explorer, the app plays the opponent's book moves (main lines more often than sidelines) and you find yours, as White or Black, for a few moves or until theory runs out. Wrong moves are taken back and the book moves are shown as arrows.
+
+Coming next is spaced-repetition progress tracking with optional accounts.
 
 ## Stack
 

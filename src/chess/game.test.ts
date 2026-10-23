@@ -2,6 +2,7 @@ import { Chess } from 'chess.js'
 import { describe, expect, it } from 'vitest'
 import {
   advance,
+  formatLine,
   legalDests,
   movePairs,
   moveSquares,
@@ -98,5 +99,12 @@ describe('seek', () => {
     expect(seek({ moves, ply: 1 }, -1).ply).toBe(0)
     expect(seek({ moves, ply: 1 }, 5).ply).toBe(2)
     expect(seek({ moves, ply: 1 }, 2).ply).toBe(2)
+  })
+})
+
+describe('formatLine', () => {
+  it('numbers the moves', () => {
+    expect(formatLine(['e4', 'e5', 'Nf3'])).toBe('1.e4 e5 2.Nf3')
+    expect(formatLine([])).toBe('')
   })
 })

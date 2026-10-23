@@ -23,6 +23,7 @@ import {
   yourMoves,
   type Drill,
 } from '../practice/drill'
+import { recordReview } from '../progress/db'
 
 // How long the opponent "thinks" before replying, so its move is visible.
 const REPLY_DELAY_MS = 500
@@ -92,7 +93,14 @@ export function PracticeView({
     const last = game.history({ verbose: true }).at(-1)
     const onMove = (from: Key, to: Key) => {
       const san = playMove(replay(drillLine(drill)), from, to)
-      if (san) setDrill((d) => answer(tree, d, san))
+      if (!san) return
+      const next = answer(tree, drill, san)
+      // Each position is scheduled for review once you find its book move:
+      // passed if you found it on the first try.
+      if (next.correct > drill.correct) {
+        recordReview(drill.side, drillLine(drill), !drill.missed)
+      }
+      setDrill(next)
     }
     const arrows: DrawShape[] = hinting
       ? book.flatMap((edge) => {

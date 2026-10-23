@@ -4,6 +4,9 @@
   --muted: #777;
   --button-bg: #fff;
   --button-border: #ccc;
+  --hover: rgba(0, 0, 0, 0.06);
+  --accent: #3b6e3b;
+  --accent-fg: #fff;
   color-scheme: light dark;
   font-family: system-ui, sans-serif;
   line-height: 1.5;
@@ -16,6 +19,9 @@
     --muted: #999;
     --button-bg: #2c2c2e;
     --button-border: #444;
+    --hover: rgba(255, 255, 255, 0.08);
+    --accent: #6aa86a;
+    --accent-fg: #111;
   }
 }
 

@@ -3,7 +3,8 @@ import { movePairs } from '../chess/game'
 type MoveListProps = {
   moves: string[]
   ply: number
-  onSelect: (ply: number) => void
+  // Without it the moves are shown but not clickable.
+  onSelect?: (ply: number) => void
 }
 
 // The moves played so far. Clicking a move jumps to the position after it.
@@ -14,7 +15,8 @@ export function MoveList({ moves, ply, onSelect }: MoveListProps) {
         type="button"
         className={index + 1 === ply ? 'move current' : 'move'}
         aria-current={index + 1 === ply}
-        onClick={() => onSelect(index + 1)}
+        disabled={!onSelect}
+        onClick={() => onSelect?.(index + 1)}
       >
         {san}
       </button>

@@ -17,6 +17,7 @@ export type Drill = {
   depth: number
   correct: number
   mistakes: number
+  missed: boolean // a wrong move was played in the current position
   feedback: Feedback | null
 }
 
@@ -32,6 +33,7 @@ export function startDrill(start: string[], side: Color, depth: number): Drill {
     depth,
     correct: 0,
     mistakes: 0,
+    missed: false,
     feedback: null,
   }
 }
@@ -70,12 +72,14 @@ export function answer(tree: OpeningTree, drill: Drill, san: string): Drill {
       ...drill,
       moves: [...drill.moves, san],
       correct: drill.correct + 1,
+      missed: false,
       feedback: { kind: 'correct', san },
     }
   }
   return {
     ...drill,
     mistakes: drill.mistakes + 1,
+    missed: true,
     feedback: { kind: 'wrong', san, book },
   }
 }

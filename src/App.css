@@ -183,3 +183,90 @@ select {
 .wrong {
   color: var(--wrong);
 }
+
+header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 24px;
+  margin-bottom: 16px;
+}
+
+header h1 {
+  margin: 0;
+}
+
+.tabs {
+  display: flex;
+  gap: 4px;
+}
+
+.tabs button {
+  border-color: transparent;
+  background: transparent;
+}
+
+.tabs button[aria-current='page'] {
+  border-color: var(--button-border);
+  background: var(--button-bg);
+  font-weight: 600;
+}
+
+.empty {
+  max-width: 480px;
+}
+
+.progress {
+  max-width: 720px;
+}
+
+.progress h2 {
+  font-size: 1.1rem;
+  margin: 24px 0 8px;
+}
+
+.tiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.tile {
+  padding: 12px;
+  border: 1px solid var(--button-border);
+  border-radius: 8px;
+  background: var(--button-bg);
+}
+
+.tile .value {
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.tile .label {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.weakest {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.weakest li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--button-border);
+}
+
+.danger {
+  background: var(--wrong);
+  border-color: var(--wrong);
+  color: #fff;
+}

@@ -72,3 +72,10 @@ export function advance({ moves, ply }: Line, san: string): Line {
 export function seek({ moves }: Line, ply: number): Line {
   return { moves, ply: Math.max(0, Math.min(moves.length, ply)) }
 }
+
+// "1.e4 e5 2.Nf3" style text for a move list.
+export function formatLine(moves: string[]): string {
+  return movePairs(moves)
+    .map(([n, white, black]) => `${n}.${white}${black ? ` ${black}` : ''}`)
+    .join(' ')
+}

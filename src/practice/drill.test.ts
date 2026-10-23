@@ -45,6 +45,8 @@ describe('a drill as White', () => {
     expect(next.moves).toEqual([])
     expect(next.mistakes).toBe(1)
     expect(next.feedback).toEqual({ kind: 'wrong', san: 'd4', book: ['e4'] })
+    expect(next.missed).toBe(true)
+    expect(answer(tree, next, 'e4').missed).toBe(false)
   })
 
   it('accepts any book move where the tree branches', () => {

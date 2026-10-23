@@ -14,6 +14,19 @@ export type Card = Schedule & {
   lastReviewed: number
 }
 
+// A move in one of your repertoires. Where it is your move (`side` to move)
+// a position has at most one, your chosen reply; where it is the opponent's
+// move there is one per reply you have prepared for. `line` is the move order
+// it was added with.
+export type RepertoireMove = {
+  id: string
+  side: Color
+  epd: string
+  san: string
+  line: string[]
+  note?: string
+}
+
 // Reviews per day, for streaks and accuracy.
 export type Activity = {
   date: string // YYYY-MM-DD in local time
@@ -24,12 +37,16 @@ export type Activity = {
 class ProgressDB extends Dexie {
   cards!: EntityTable<Card, 'id'>
   activity!: EntityTable<Activity, 'date'>
+  repertoire!: EntityTable<RepertoireMove, 'id'>
 
   constructor() {
     super('chess-opening-learner')
     this.version(1).stores({
       cards: 'id, due, side',
       activity: 'date',
+    })
+    this.version(2).stores({
+      repertoire: 'id, side, [side+epd]',
     })
   }
 }
@@ -78,23 +95,25 @@ export async function recordReview(
 
 export type Backup = {
   app: 'chess-opening-learner'
-  version: 1
+  version: 2
   exportedAt: string
   cards: Card[]
   activity: Activity[]
+  repertoire: RepertoireMove[] // added in version 2
 }
 
 export async function exportProgress(): Promise<Backup> {
   return {
     app: 'chess-opening-learner',
-    version: 1,
+    version: 2,
     exportedAt: new Date().toISOString(),
     cards: await db.cards.toArray(),
     activity: await db.activity.toArray(),
+    repertoire: await db.repertoire.toArray(),
   }
 }
 
-// Replaces all progress with a backup made by exportProgress.
+// Replaces all progress and repertoires with a backup made by exportProgress.
 export async function importProgress(data: unknown): Promise<void> {
   const backup = data as Partial<Backup>
   if (
@@ -104,11 +123,13 @@ export async function importProgress(data: unknown): Promise<void> {
   ) {
     throw new Error('This file is not a Chess Opening Learner backup.')
   }
-  await db.transaction('rw', db.cards, db.activity, async () => {
+  await db.transaction('rw', db.cards, db.activity, db.repertoire, async () => {
     await db.cards.clear()
     await db.activity.clear()
+    await db.repertoire.clear()
     await db.cards.bulkPut(backup.cards!)
     await db.activity.bulkPut(backup.activity!)
+    await db.repertoire.bulkPut(backup.repertoire ?? [])
   })
 }
 

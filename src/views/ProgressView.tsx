@@ -133,8 +133,8 @@ export function ProgressView({
 
       <h2>Your data</h2>
       <p className="note">
-        Progress is saved in this browser. Download a backup to keep it safe or
-        move it to another device.
+        Progress and repertoires are saved in this browser. Download a backup to
+        keep them safe or move them to another device.
       </p>
       <div className="controls">
         <button type="button" onClick={download}>

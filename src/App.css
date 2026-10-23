@@ -270,3 +270,60 @@ header h1 {
   border-color: var(--wrong);
   color: #fff;
 }
+
+.repertoire-tile .controls {
+  margin-top: 12px;
+}
+
+.pgn {
+  display: block;
+  width: 100%;
+  font:
+    0.95rem ui-monospace,
+    monospace;
+  padding: 8px;
+  margin-bottom: 8px;
+  border: 1px solid var(--button-border);
+  border-radius: 6px;
+  background: var(--button-bg);
+  color: inherit;
+}
+
+.link {
+  border: 0;
+  padding: 0;
+  background: none;
+  color: inherit;
+  text-decoration: underline;
+  font: inherit;
+}
+
+.move-note {
+  padding: 6px 10px;
+  border-left: 3px solid var(--accent);
+  background: var(--hover);
+  white-space: pre-wrap;
+}
+
+.tiles.wide {
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+}
+
+.mine {
+  color: #c99a06;
+}
+
+.repertoire-panel {
+  margin-top: 20px;
+  padding-top: 12px;
+  border-top: 1px solid var(--button-border);
+}
+
+.repertoire-panel h3 {
+  font-size: 1rem;
+  margin: 0 0 8px;
+}
+
+.repertoire-panel p {
+  margin: 0 0 8px;
+}

@@ -22,8 +22,12 @@ import {
   startDrill,
   yourMoves,
   type Drill,
+  bookSource,
+  repertoireSource,
 } from '../practice/drill'
-import { recordReview } from '../progress/db'
+import { db, recordReview } from '../progress/db'
+import { useLive } from '../progress/useLive'
+import { indexRepertoire } from '../repertoire/store'
 
 // How long the opponent "thinks" before replying, so its move is visible.
 const REPLY_DELAY_MS = 500
@@ -35,42 +39,59 @@ const DEPTHS = [
   { value: Infinity, label: 'Until theory ends' },
 ]
 
+export type Source = 'book' | 'repertoire'
+
+const loadRepertoire = () => db.repertoire.toArray()
+
 type PracticeViewProps = {
   tree: OpeningTree
   start: string[]
   initialSide: Color
+  initialSource: Source
   onExit: () => void
 }
 
-// Drill the opening tree from a starting line: the app plays the opponent's
-// book moves and you find yours.
+// Drill from a starting line: the app plays the opponent's moves and you find
+// yours, from the opening book or from your own repertoire.
 export function PracticeView({
   tree,
   start,
   initialSide,
+  initialSource,
   onExit,
 }: PracticeViewProps) {
   const [side, setSide] = useState<Color>(initialSide)
   const [depth, setDepth] = useState(5)
+  const [sourceKind, setSourceKind] = useState<Source>(initialSource)
   const [drill, setDrill] = useState<Drill>(() =>
     startDrill(start, initialSide, 5),
   )
   const [showHints, setShowHints] = useState(false)
+  const repertoire = useLive(loadRepertoire)
+
+  const source = useMemo(
+    () =>
+      sourceKind === 'repertoire'
+        ? repertoireSource(tree, indexRepertoire(side, repertoire ?? []))
+        : bookSource(tree),
+    [tree, sourceKind, side, repertoire],
+  )
+  const fromRepertoire = sourceKind === 'repertoire'
 
   const restart = (s = side, d = depth) => setDrill(startDrill(start, s, d))
 
-  const over = isOver(tree, drill)
+  const over = isOver(source, drill)
   const yourTurn = isYourTurn(drill)
 
   // The opponent replies after a short pause.
   useEffect(() => {
     if (over || yourTurn) return
     const timer = setTimeout(
-      () => setDrill((d) => reply(tree, d)),
+      () => setDrill((d) => reply(source, d)),
       REPLY_DELAY_MS,
     )
     return () => clearTimeout(timer)
-  }, [tree, drill, over, yourTurn])
+  }, [source, drill, over, yourTurn])
 
   const line = drillLine(drill)
   const game = useMemo(() => replay(drillLine(drill)), [drill])
@@ -83,7 +104,7 @@ export function PracticeView({
     return openingFor(tree, positions)
   }, [tree, drill])
 
-  const book = useMemo(() => bookMoves(tree, drill), [tree, drill])
+  const book = useMemo(() => bookMoves(source, drill), [source, drill])
   const wrong = drill.feedback?.kind === 'wrong'
   const hinting = yourTurn && !over && (showHints || wrong)
 
@@ -94,7 +115,7 @@ export function PracticeView({
     const onMove = (from: Key, to: Key) => {
       const san = playMove(replay(drillLine(drill)), from, to)
       if (!san) return
-      const next = answer(tree, drill, san)
+      const next = answer(source, drill, san)
       // Each position is scheduled for review once you find its book move:
       // passed if you found it on the first try.
       if (next.correct > drill.correct) {
@@ -124,7 +145,7 @@ export function PracticeView({
       },
       drawable: { autoShapes: arrows },
     }
-  }, [tree, drill, game, book, hinting, yourTurn, over])
+  }, [source, drill, game, book, hinting, yourTurn, over])
 
   const played = yourMoves(drill)
   const goal = Number.isFinite(drill.depth) ? ` of ${drill.depth}` : ''
@@ -178,29 +199,62 @@ export function PracticeView({
               ))}
             </select>
           </label>
+          <label>
+            Moves from{' '}
+            <select
+              value={sourceKind}
+              onChange={(e) => {
+                setSourceKind(e.target.value as Source)
+                restart()
+              }}
+            >
+              <option value="book">Opening book</option>
+              <option value="repertoire">My repertoire</option>
+            </select>
+          </label>
         </div>
 
         <div className="feedback" role="status">
-          {over ? (
-            <p className="result">
-              <strong>Line complete.</strong> {drill.correct} correct,{' '}
-              {mistakes} ({accuracy}% accuracy).
+          {over && fromRepertoire && drill.correct + drill.mistakes === 0 ? (
+            <p className="note">
+              Your {side} repertoire has no moves from this position yet. Add
+              lines in the explorer or import a PGN on the Repertoire tab.
             </p>
+          ) : over ? (
+            <>
+              <p className="result">
+                <strong>Line complete.</strong> {drill.correct} correct,{' '}
+                {mistakes} ({accuracy}% accuracy).
+              </p>
+              {drill.feedback?.kind === 'correct' && drill.feedback.note && (
+                <p className="move-note">
+                  {drill.feedback.san}: {drill.feedback.note}
+                </p>
+              )}
+            </>
           ) : !yourTurn ? (
             <p className="note">Opponent is thinking…</p>
           ) : drill.feedback?.kind === 'wrong' ? (
             <p className="wrong">
-              <strong>{drill.feedback.san}</strong> isn't book here. Try again:
-              the arrows show the book moves.
+              <strong>{drill.feedback.san}</strong>{' '}
+              {fromRepertoire
+                ? "isn't your repertoire move. Try again: the arrow shows it."
+                : "isn't book here. Try again: the arrows show the book moves."}
             </p>
           ) : drill.feedback?.kind === 'correct' ? (
-            <p className="right">
-              <strong>{drill.feedback.san}</strong> is book. Your move.
-            </p>
+            <>
+              <p className="right">
+                <strong>{drill.feedback.san}</strong>{' '}
+                {fromRepertoire ? 'is your move.' : 'is book.'} Your move.
+              </p>
+              {drill.feedback.note && (
+                <p className="move-note">{drill.feedback.note}</p>
+              )}
+            </>
           ) : (
             <p>
-              Find the book move for{' '}
-              {drill.side === 'white' ? 'White' : 'Black'}.
+              Find {fromRepertoire ? 'your repertoire move' : 'the book move'}{' '}
+              for {drill.side === 'white' ? 'White' : 'Black'}.
             </p>
           )}
           <p className="note">

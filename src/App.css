@@ -327,3 +327,33 @@ header h1 {
 .repertoire-panel p {
   margin: 0 0 8px;
 }
+
+.move-input {
+  margin: 12px 0;
+}
+
+.move-input input {
+  font: inherit;
+  width: 8em;
+  padding: 4px 8px;
+  border: 1px solid var(--button-border);
+  border-radius: 6px;
+  background: var(--button-bg);
+  color: inherit;
+}
+
+.move-input p {
+  margin: 6px 0 0;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

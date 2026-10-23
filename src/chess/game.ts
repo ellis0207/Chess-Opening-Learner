@@ -79,3 +79,40 @@ export function formatLine(moves: string[]): string {
     .map(([n, white, black]) => `${n}.${white}${black ? ` ${black}` : ''}`)
     .join(' ')
 }
+
+// Reads a typed move, in SAN ("Nf3", "nf3", "O-O", "0-0") or coordinates
+// ("g1f3", "e7e8q"). Returns the move's SAN if it is legal, else null.
+export function parseMove(chess: Chess, text: string): string | null {
+  const input = text
+    .trim()
+    .replace(/0/g, 'O')
+    .replace(/[+#!?]+$/, '')
+  if (!input) return null
+  const coords = /^([a-h][1-8])-?([a-h][1-8])([qrbn])?$/i.exec(input)
+  const moves = chess.moves({ verbose: true })
+  const candidates = coords
+    ? moves.filter(
+        (m) =>
+          m.from === coords[1].toLowerCase() &&
+          m.to === coords[2].toLowerCase() &&
+          // Promotions default to a queen.
+          (!m.promotion || m.promotion === (coords[3]?.toLowerCase() ?? 'q')),
+      )
+    : moves.filter((m) => {
+        const san = m.san.replace(/[+#]$/, '')
+        // Case doesn't matter, except that b is a pawn and B a bishop.
+        return (
+          san === input ||
+          (input[0] !== 'b' && san.toLowerCase() === input.toLowerCase())
+        )
+      })
+  return candidates.length === 1 ? candidates[0].san : null
+}
+
+// Spoken description of the last move, e.g. "Black played Nc6", for screen
+// readers.
+export function lastMoveText(moves: string[]): string {
+  if (!moves.length) return 'Starting position'
+  const side = moves.length % 2 ? 'White' : 'Black'
+  return `${side} played ${moves[moves.length - 1]}`
+}

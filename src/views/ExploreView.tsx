@@ -15,9 +15,11 @@ import { RepertoirePanel } from '../components/RepertoirePanel'
 import { db } from '../progress/db'
 import { useLive } from '../progress/useLive'
 import { addLine, removeMove, setNote } from '../repertoire/store'
+import { MoveInput } from '../components/MoveInput'
 import { MoveList } from '../components/MoveList'
 import {
   advance,
+  lastMoveText,
   legalDests,
   moveSquares,
   playMove,
@@ -173,6 +175,11 @@ export function ExploreView({
           onPlay={play}
           onHover={setHovered}
         />
+        <MoveInput line={line} onMove={play} />
+        <p className="sr-only" aria-live="polite">
+          {lastMoveText(line)}
+          {opening ? `. ${opening.name}` : ''}
+        </p>
         <MoveList moves={moves} ply={ply} onSelect={goTo} />
         <div className="controls">
           <button

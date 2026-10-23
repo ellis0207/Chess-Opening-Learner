@@ -1,10 +1,12 @@
 import type { DrawShape } from 'chessground/draw'
 import type { Config } from 'chessground/config'
 import type { Color, Key } from 'chessground/types'
-import { useEffect, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import { Board } from '../components/Board'
+import { MoveInput } from '../components/MoveInput'
 import { MoveList } from '../components/MoveList'
 import {
+  lastMoveText,
   legalDests,
   moveSquares,
   playMove,
@@ -108,20 +110,26 @@ export function PracticeView({
   const wrong = drill.feedback?.kind === 'wrong'
   const hinting = yourTurn && !over && (showHints || wrong)
 
+  const submit = useCallback(
+    (san: string) => {
+      const next = answer(source, drill, san)
+      // Each position is scheduled for review once you find its move:
+      // passed if you found it on the first try.
+      if (next.correct > drill.correct) {
+        recordReview(drill.side, drillLine(drill), !drill.missed)
+      }
+      setDrill(next)
+    },
+    [source, drill],
+  )
+
   // A new `drill` object after every answer, wrong ones included, so the
   // board is reset to the drill's position after a rejected move.
   const config = useMemo<Config>(() => {
     const last = game.history({ verbose: true }).at(-1)
     const onMove = (from: Key, to: Key) => {
       const san = playMove(replay(drillLine(drill)), from, to)
-      if (!san) return
-      const next = answer(source, drill, san)
-      // Each position is scheduled for review once you find its book move:
-      // passed if you found it on the first try.
-      if (next.correct > drill.correct) {
-        recordReview(drill.side, drillLine(drill), !drill.missed)
-      }
-      setDrill(next)
+      if (san) submit(san)
     }
     const arrows: DrawShape[] = hinting
       ? book.flatMap((edge) => {
@@ -145,7 +153,7 @@ export function PracticeView({
       },
       drawable: { autoShapes: arrows },
     }
-  }, [source, drill, game, book, hinting, yourTurn, over])
+  }, [submit, drill, game, book, hinting, yourTurn, over])
 
   const played = yourMoves(drill)
   const goal = Number.isFinite(drill.depth) ? ` of ${drill.depth}` : ''
@@ -262,6 +270,11 @@ export function PracticeView({
             {goal} · {drill.correct} correct · {mistakes}
           </p>
         </div>
+
+        <MoveInput line={line} disabled={over || !yourTurn} onMove={submit} />
+        <p className="sr-only" aria-live="polite">
+          {lastMoveText(line)}
+        </p>
 
         <MoveList moves={line} ply={line.length} />
 

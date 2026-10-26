@@ -1,4 +1,3 @@
-import type { DrawShape } from 'chessground/draw'
 import type { Color, Key } from 'chessground/types'
 import type { Config } from 'chessground/config'
 import {
@@ -35,8 +34,6 @@ import {
   openingFor,
   type OpeningTree,
 } from '../openings/tree'
-
-const MAX_ARROWS = 3
 
 const loadRepertoire = () => db.repertoire.toArray()
 
@@ -136,16 +133,16 @@ export function ExploreView({
       const san = playMove(replay(line), from, to)
       if (san) play(san)
     }
-    // Arrows for the main book moves, or just the hovered one.
-    const shown = hovered
-      ? edges.filter((e) => e.san === hovered)
-      : edges.slice(0, MAX_ARROWS)
-    const arrows: DrawShape[] = shown.flatMap((edge) => {
-      const squares = moveSquares(game, edge.san)
-      return squares
-        ? [{ orig: squares.from, dest: squares.to, brush: 'green' }]
-        : []
-    })
+    // The squares of the hovered book move.
+    const hover = hovered ? moveSquares(game, hovered) : null
+    const highlights = new Map<Key, string>(
+      hover
+        ? [
+            [hover.from, 'preview'],
+            [hover.to, 'preview'],
+          ]
+        : [],
+    )
     return {
       fen: game.fen(),
       orientation,
@@ -158,9 +155,9 @@ export function ExploreView({
         dests: legalDests(game),
         events: { after: onMove },
       },
-      drawable: { autoShapes: arrows },
+      highlight: { custom: highlights },
     }
-  }, [game, line, edges, hovered, orientation, play])
+  }, [game, line, hovered, orientation, play])
 
   return (
     <div className="layout">

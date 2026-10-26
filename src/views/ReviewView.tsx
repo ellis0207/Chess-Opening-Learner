@@ -1,4 +1,3 @@
-import type { DrawShape } from 'chessground/draw'
 import type { Config } from 'chessground/config'
 import type { Key } from 'chessground/types'
 import { useCallback, useEffect, useMemo, useState } from 'react'
@@ -7,7 +6,7 @@ import { MoveInput } from '../components/MoveInput'
 import {
   lastMoveText,
   legalDests,
-  moveSquares,
+  hintSquares,
   playMove,
   replay,
   turnColor,
@@ -59,7 +58,10 @@ export function ReviewView({ tree, onExplore }: ReviewViewProps) {
     const yours = (repertoire ?? []).filter(
       (m) => m.side === card.side && m.epd === card.epd,
     )
-    return yours.length ? yours : continuations(tree, card.epd)
+    if (yours.length) return yours
+    // Positions learned in a lesson can be past the end of the book.
+    const book = continuations(tree, card.epd)
+    return book.length ? book : (card.moves ?? []).map((san) => ({ san }))
   }, [tree, card, repertoire])
   const opening = useMemo(() => {
     if (!card) return undefined
@@ -102,15 +104,13 @@ export function ReviewView({ tree, onExplore }: ReviewViewProps) {
       const san = playMove(replay(card.line), from, to)
       if (san) submit(san)
     }
-    const arrows: DrawShape[] =
+    const hints =
       wrongMoves > 0
-        ? book.flatMap((edge) => {
-            const squares = moveSquares(game, edge.san)
-            return squares
-              ? [{ orig: squares.from, dest: squares.to, brush: 'green' }]
-              : []
-          })
-        : []
+        ? hintSquares(
+            game,
+            book.map((e) => e.san),
+          )
+        : new Map()
     const last = game.history({ verbose: true }).at(-1)
     return {
       fen: game.fen(),
@@ -124,7 +124,7 @@ export function ReviewView({ tree, onExplore }: ReviewViewProps) {
         dests: legalDests(game),
         events: { after: onMove },
       },
-      drawable: { autoShapes: arrows },
+      highlight: { custom: hints },
     }
   }, [card, game, book, answered, wrongMoves, submit])
 
@@ -170,7 +170,8 @@ export function ReviewView({ tree, onExplore }: ReviewViewProps) {
             </p>
           ) : missed ? (
             <p className="wrong">
-              Not quite. The arrows show the right moves; play one to continue.
+              Not quite. The highlighted piece makes the right move: find where
+              it goes.
             </p>
           ) : (
             <p>

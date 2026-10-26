@@ -57,6 +57,17 @@ export function moveSquares(
   return move ? { from: move.from, to: move.to } : null
 }
 
+// Highlights the squares of the pieces that play the given moves, as a hint
+// that doesn't give away where they go. The app never draws arrows.
+export function hintSquares(chess: Chess, sans: string[]): Map<Key, string> {
+  const squares = new Map<Key, string>()
+  for (const san of sans) {
+    const m = moveSquares(chess, san)
+    if (m) squares.set(m.from, 'hint')
+  }
+  return squares
+}
+
 // A line being explored: the moves, and how many of them are on the board.
 export type Line = { moves: string[]; ply: number }
 

@@ -32,6 +32,15 @@ export default defineConfig({
       },
       workbox: {
         globPatterns: ['**/*.{js,css,html,svg,png,json}'],
+        // Stockfish's WebAssembly (about 7 MB) is cached the first time a
+        // lesson loads it rather than with the app.
+        runtimeCaching: [
+          {
+            urlPattern: /\.wasm$/,
+            handler: 'CacheFirst',
+            options: { cacheName: 'engine' },
+          },
+        ],
       },
     }),
   ],

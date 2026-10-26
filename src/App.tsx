@@ -5,7 +5,11 @@ import { loadTree } from './openings/load'
 import type { OpeningTree } from './openings/tree'
 import { db } from './progress/db'
 import { useLive } from './progress/useLive'
+import { LESSONS } from './lessons/load'
 import { ExploreView } from './views/ExploreView'
+import { HomeView } from './views/HomeView'
+import { LessonView } from './views/LessonView'
+import { LessonsView } from './views/LessonsView'
 import { PracticeView, type Source } from './views/PracticeView'
 import { RepertoireView } from './views/RepertoireView'
 import { ProgressView } from './views/ProgressView'
@@ -13,6 +17,9 @@ import { ReviewView } from './views/ReviewView'
 import './App.css'
 
 type Mode =
+  | { kind: 'home' }
+  | { kind: 'lessons' }
+  | { kind: 'lesson'; id: string }
   | { kind: 'explore' }
   | { kind: 'practice'; start: string[]; side: Color; source: Source }
   | { kind: 'repertoire' }
@@ -23,7 +30,7 @@ const countDue = () => db.cards.where('due').belowOrEqual(Date.now()).count()
 
 function App() {
   const [tree, setTree] = useState<OpeningTree | null>(null)
-  const [mode, setMode] = useState<Mode>({ kind: 'explore' })
+  const [mode, setMode] = useState<Mode>({ kind: 'home' })
   // Stepping back keeps the later moves of the line, so you can step forward
   // through them again.
   const [line, setLine] = useState<Line>({ moves: [], ply: 0 })
@@ -37,33 +44,45 @@ function App() {
   const practice = (start: string[], side: Color, source: Source = 'book') =>
     setMode({ kind: 'practice', start, side, source })
 
-  const tabs = [
-    { kind: 'explore', label: 'Explore' },
-    { kind: 'repertoire', label: 'Repertoire' },
-    { kind: 'review', label: due ? `Review (${due})` : 'Review' },
-    { kind: 'progress', label: 'Progress' },
-  ] as const
-  const active = mode.kind === 'practice' ? 'explore' : mode.kind
+  const home = () => setMode({ kind: 'home' })
 
   return (
     <main className="app">
       <header>
-        <h1>Chess Opening Learner</h1>
-        <nav className="tabs">
-          {tabs.map((t) => (
-            <button
-              key={t.kind}
-              type="button"
-              aria-current={active === t.kind ? 'page' : undefined}
-              onClick={() => setMode({ kind: t.kind })}
-            >
-              {t.label}
-            </button>
-          ))}
-        </nav>
+        <h1>
+          <button type="button" className="title-link" onClick={home}>
+            Chess Opening Learner
+          </button>
+        </h1>
+        {mode.kind !== 'home' && (
+          <button type="button" onClick={home}>
+            ← Menu
+          </button>
+        )}
       </header>
-      {!tree ? (
+      {mode.kind === 'home' ? (
+        <HomeView
+          due={due}
+          lessons={LESSONS.length}
+          onOpen={(kind) =>
+            kind === 'practice'
+              ? practice([], 'white')
+              : setMode({ kind } as Mode)
+          }
+        />
+      ) : mode.kind === 'lessons' ? (
+        <LessonsView onOpen={(id) => setMode({ kind: 'lesson', id })} />
+      ) : !tree ? (
         <p className="note">Loading openings…</p>
+      ) : mode.kind === 'lesson' ? (
+        <LessonView
+          key={mode.id}
+          id={mode.id}
+          tree={tree}
+          onExit={() => setMode({ kind: 'lessons' })}
+          onMenu={home}
+          onOpenLesson={(id) => setMode({ kind: 'lesson', id })}
+        />
       ) : mode.kind === 'explore' ? (
         <ExploreView
           tree={tree}

@@ -52,3 +52,20 @@ describe('backups', () => {
     await expect(importProgress({ hello: 1 })).rejects.toThrow(/not a/)
   })
 })
+
+describe('completeVariation', () => {
+  it('marks the variation and schedules your moves with their answers', async () => {
+    const { completeVariation } = await import('./db')
+    await completeVariation(
+      'qg|d4 d5 c4',
+      'qg',
+      'white',
+      ['d4', 'd5', 'c4'],
+      now,
+    )
+    expect(await db.lessons.count()).toBe(1)
+    const card = await db.cards.get(cardId('white', epd(replay(['d4', 'd5']))))
+    expect(card?.moves).toEqual(['c4'])
+    expect(await db.cards.count()).toBe(2)
+  })
+})

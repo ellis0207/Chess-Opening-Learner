@@ -64,7 +64,7 @@ const colorName = (c: 'white' | 'black') => (c === 'white' ? 'White' : 'Black')
 type LessonViewProps = {
   id: string
   tree: OpeningTree
-  onExit: () => void // back to the list of lessons
+  onExit: () => void // back to the menu
   onMenu: () => void
   onOpenLesson: (id: string) => void
 }
@@ -84,7 +84,7 @@ export function LessonView(props: LessonViewProps) {
         <h2>Couldn’t load this lesson</h2>
         <p>{error}</p>
         <button type="button" onClick={props.onExit}>
-          Back to lessons
+          Back to menu
         </button>
       </section>
     )
@@ -272,7 +272,7 @@ function LessonPlayer({
       <aside className="panel lesson-panel">
         <p className="note">
           <button type="button" className="link" onClick={onExit}>
-            Lessons
+            Menu
           </button>{' '}
           › {lesson.name}
         </p>

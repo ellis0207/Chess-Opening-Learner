@@ -1,5 +1,5 @@
 .app {
-  max-width: 960px;
+  max-width: 1240px;
   margin: 0 auto;
   padding: 16px;
 }
@@ -368,132 +368,163 @@ header h1 {
   color: inherit;
 }
 
-.home {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 16px;
-}
-
-.home-card {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  grid-template-rows: auto 1fr;
-  gap: 4px 14px;
-  padding: 18px;
-  text-align: left;
-  border-radius: 12px;
-  border: 1px solid var(--button-border);
-  background: var(--button-bg);
-  transition:
-    transform 0.1s,
-    box-shadow 0.1s;
-}
-
-.home-card:hover,
-.home-card:focus-visible {
-  transform: translateY(-1px);
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
-}
-
-.home-card.featured {
-  grid-column: 1 / -1;
-  background: var(--accent);
-  border-color: var(--accent);
-  color: var(--accent-fg);
-}
-
-.home-card.featured .home-text {
-  color: inherit;
-  opacity: 0.9;
-}
-
-.home-icon {
-  grid-row: 1 / 3;
-  font-size: 2.2rem;
-  line-height: 1;
-}
-
-.home-title {
-  font-size: 1.15rem;
-  font-weight: 700;
-}
-
-.home-text {
-  color: var(--muted);
-}
-
-.badge {
-  margin-left: 8px;
-  padding: 1px 8px;
-  border-radius: 999px;
-  background: var(--wrong);
-  color: #fff;
-  font-size: 0.8rem;
-  vertical-align: middle;
-}
-
-/* Lessons list */
-
-.lessons-head {
+.menu-bar {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
   justify-content: space-between;
-  gap: 8px 16px;
+  gap: 10px;
+  margin-bottom: 16px;
 }
 
-.lessons-head h2 {
-  margin: 0;
+.menu-tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
 }
 
-.lessons-head input {
+.pill {
   font: inherit;
-  padding: 6px 10px;
-  border: 1px solid var(--button-border);
-  border-radius: 6px;
-  background: var(--button-bg);
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 7px 14px;
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  background: var(--card);
   color: inherit;
-  min-width: 0;
+}
+
+.pill.search {
+  font-weight: 400;
   width: 16em;
   max-width: 100%;
 }
 
-.lessons h3 {
-  font-size: 1rem;
-  margin: 24px 0 8px;
-  color: var(--muted);
+.pill.counter {
+  cursor: default;
 }
 
-.lesson-cards {
+.filters {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.filters [role='group'] {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.chip {
+  font-size: 0.85rem;
+  padding: 4px 12px;
+  border-radius: 999px;
+  border-color: var(--card-border);
+  background: var(--card);
+}
+
+.chip[aria-pressed='true'] {
+  background: var(--progress);
+  border-color: var(--progress);
+  color: #fff;
+}
+
+.course-grid {
   list-style: none;
   padding: 0;
   margin: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 12px;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 440px), 1fr));
+  gap: 16px;
 }
 
-.lesson-card {
+.course {
+  display: flex;
+  gap: 14px;
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  text-align: left;
+  border-radius: 10px;
+  border: 1px solid var(--card-border);
+  background: var(--card);
+}
+
+.course:hover,
+.course:focus-visible {
+  border-color: var(--progress);
+}
+
+.course-body {
   display: flex;
   flex-direction: column;
   gap: 6px;
-  width: 100%;
-  height: 100%;
-  padding: 14px;
-  text-align: left;
-  border-radius: 10px;
+  flex: 1;
+  min-width: 0;
 }
 
-.lesson-card:hover,
-.lesson-card:focus-visible {
-  background: var(--hover);
-}
-
-.lesson-title {
+.course-title {
+  font-size: 1.15rem;
   font-weight: 700;
+}
+
+.course-desc {
+  color: var(--muted);
+  font-size: 0.9rem;
+  flex: 1;
+}
+
+.course-side {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.course-count {
+  align-self: flex-end;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.course-start {
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.mini-board {
+  flex: none;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  width: 150px;
+  height: 150px;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.mini-board .light {
+  background: #f0d9b5;
+}
+
+.mini-board .dark {
+  background: #b58863;
+}
+
+.cg-wrap.mini-board piece {
+  position: static;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+@media (max-width: 480px) {
+  .mini-board {
+    width: 96px;
+    height: 96px;
+  }
 }
 
 .side-dot {
@@ -539,7 +570,7 @@ header h1 {
 .meter span {
   display: block;
   height: 100%;
-  background: var(--accent);
+  background: var(--progress);
 }
 
 /* Lesson */

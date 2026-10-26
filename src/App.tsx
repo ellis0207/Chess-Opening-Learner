@@ -5,11 +5,9 @@ import { loadTree } from './openings/load'
 import type { OpeningTree } from './openings/tree'
 import { db } from './progress/db'
 import { useLive } from './progress/useLive'
-import { LESSONS } from './lessons/load'
 import { ExploreView } from './views/ExploreView'
 import { HomeView } from './views/HomeView'
 import { LessonView } from './views/LessonView'
-import { LessonsView } from './views/LessonsView'
 import { PracticeView, type Source } from './views/PracticeView'
 import { RepertoireView } from './views/RepertoireView'
 import { ProgressView } from './views/ProgressView'
@@ -18,7 +16,6 @@ import './App.css'
 
 type Mode =
   | { kind: 'home' }
-  | { kind: 'lessons' }
   | { kind: 'lesson'; id: string }
   | { kind: 'explore' }
   | { kind: 'practice'; start: string[]; side: Color; source: Source }
@@ -63,15 +60,13 @@ function App() {
       {mode.kind === 'home' ? (
         <HomeView
           due={due}
-          lessons={LESSONS.length}
+          onLesson={(id) => setMode({ kind: 'lesson', id })}
           onOpen={(kind) =>
             kind === 'practice'
               ? practice([], 'white')
               : setMode({ kind } as Mode)
           }
         />
-      ) : mode.kind === 'lessons' ? (
-        <LessonsView onOpen={(id) => setMode({ kind: 'lesson', id })} />
       ) : !tree ? (
         <p className="note">Loading openings…</p>
       ) : mode.kind === 'lesson' ? (
@@ -79,7 +74,7 @@ function App() {
           key={mode.id}
           id={mode.id}
           tree={tree}
-          onExit={() => setMode({ kind: 'lessons' })}
+          onExit={home}
           onMenu={home}
           onOpenLesson={(id) => setMode({ kind: 'lesson', id })}
         />

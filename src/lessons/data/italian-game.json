@@ -1,0 +1,215 @@
+{
+  "id": "italian-game",
+  "name": "Italian Game",
+  "side": "white",
+  "group": "Open games (1.e4 e5) for White",
+  "description": "One of the oldest openings. White aims the bishop at f7, Black’s weakest square, and builds a strong center with c3 and d4.",
+  "moves": "e4 e5 Nf3 Nc6 Bc4",
+  "variations": [
+    {
+      "name": "Italian Game: Giuoco Piano, Krause Variation",
+      "eco": "C54",
+      "moves": "e4 e5 Nf3 Nc6 Bc4 Bc5 c3 Nf6 d4 exd4 cxd4 Bb4+ Bd2 Nxe4 Bxb4 Nxb4 Bxf7+ Kxf7 Qb3+ d5 Ne5+ Kf6 f3"
+    },
+    {
+      "name": "Italian Game: Classical Variation, Greco Gambit, Traditional Line",
+      "eco": "C54",
+      "moves": "e4 e5 Nf3 Nc6 Bc4 Bc5 c3 Nf6 d4 exd4 cxd4 Bb4+ Bd2 Bxd2+ Nbxd2 d5 exd5 Nxd5 Qb3 Na5 Qa4+"
+    },
+    {
+      "name": "Italian Game: Classical Variation, Greco Gambit, Traditional Line (7...d5)",
+      "eco": "C54",
+      "moves": "e4 e5 Nf3 Nc6 Bc4 Bc5 c3 Nf6 d4 exd4 cxd4 Bb4+ Bd2 d5 exd5 Bxd2+ Qxd2 Ne7 O-O O-O Nc3"
+    },
+    {
+      "name": "Italian Game: Classical Variation, Center Holding Variation",
+      "eco": "C53",
+      "moves": "e4 e5 Nf3 Nc6 Bc4 Bc5 c3 Qe7 d4 Bb6 d5 Nb8 a4 Nf6 Bg5 h6 d6 cxd6 Bxf6 Qxf6 Na3"
+    },
+    {
+      "name": "Italian Game: Classical Variation, Center Holding Variation (6...Nd8)",
+      "eco": "C53",
+      "moves": "e4 e5 Nf3 Nc6 Bc4 Bc5 c3 Qe7 d4 Bb6 d5 Nd8 a4 a5 Na3 d6 Bd3 f5 Nc4 Bc5 exf5"
+    },
+    {
+      "name": "Italian Game: Classical Variation, Center Holding Variation (7...a6)",
+      "eco": "C53",
+      "moves": "e4 e5 Nf3 Nc6 Bc4 Bc5 c3 Qe7 d4 Bb6 d5 Nd8 a4 a6 O-O Ba7 Bd3 f6 b4 Nf7 c4"
+    },
+    {
+      "name": "Italian Game: Classical Variation, Center Holding Variation (8...d6)",
+      "eco": "C53",
+      "moves": "e4 e5 Nf3 Nc6 Bc4 Bc5 c3 Qe7 d4 Bb6 d5 Nd8 a4 a6 O-O d6 Bd3 Ba7 a5 f6 b4"
+    },
+    {
+      "name": "Italian Game: Classical Variation, La Bourdonnais Variation",
+      "eco": "C53",
+      "moves": "e4 e5 Nf3 Nc6 Bc4 Bc5 c3 d6 d4 exd4 cxd4 Bb6 h3 Nf6 O-O Nxe4 Re1 O-O Rxe4 d5 Bxd5"
+    },
+    {
+      "name": "Italian Game: Classical Variation",
+      "eco": "C53",
+      "moves": "e4 e5 Nf3 Nc6 Bc4 Bc5 c3 d6 d4 Bb6 dxe5 Bg4 exd6 Nf6 O-O O-O Bg5 h6 Bxf6 Qxf6 Nbd2"
+    },
+    {
+      "name": "Italian Game: Classical Variation (6...Qe7)",
+      "eco": "C53",
+      "moves": "e4 e5 Nf3 Nc6 Bc4 Bc5 c3 d6 d4 Bb6 dxe5 Qe7 exd6 Qxe4+ Be2 Qg6 O-O Qxd6 Nbd2 Nf6 Nc4"
+    },
+    {
+      "name": "Italian Game: Two Knights Defense, Knorre Variation",
+      "eco": "C59",
+      "moves": "e4 e5 Nf3 Nc6 Bc4 Nf6 Ng5 d5 exd5 Na5 Bb5+ c6 dxc6 bxc6 Be2 h6 Nf3 e4 Ne5 Bd6 d4 Qc7 Bd2"
+    },
+    {
+      "name": "Italian Game: Two Knights Defense, Polerio Defense, Göring Variation",
+      "eco": "C59",
+      "moves": "e4 e5 Nf3 Nc6 Bc4 Nf6 Ng5 d5 exd5 Na5 Bb5+ c6 dxc6 bxc6 Be2 h6 Nf3 e4 Ne5 Qc7 d4"
+    },
+    {
+      "name": "Italian Game: Two Knights Defense, Polerio Defense, Bishop Check Line",
+      "eco": "C58",
+      "moves": "e4 e5 Nf3 Nc6 Bc4 Nf6 Ng5 d5 exd5 Na5 Bb5+ Bd7 Qe2 Bd6 Bxd7+ Qxd7 Nc3 c6 dxc6 Nxc6 d3"
+    },
+    {
+      "name": "Italian Game: Two Knights Defense, Fried Liver Attack",
+      "eco": "C57",
+      "moves": "e4 e5 Nf3 Nc6 Bc4 Nf6 Ng5 d5 exd5 Nxd5 Nxf7 Kxf7 Qf3+ Ke6 Nc3 Nb4 Bb3 c6 a3 Na6 Nxd5"
+    },
+    {
+      "name": "Italian Game: Two Knights Defense, Ulvestad Variation, Kurkin Gambit",
+      "eco": "C57",
+      "moves": "e4 e5 Nf3 Nc6 Bc4 Nf6 Ng5 d5 exd5 b5 Bf1 h6 Nxf7 Kxf7 dxc6 Qd5 Qf3 Qxf3 gxf3 Rb8 Nc3"
+    },
+    {
+      "name": "Italian Game: Two Knights Defense, Ulvestad Variation",
+      "eco": "C57",
+      "moves": "e4 e5 Nf3 Nc6 Bc4 Nf6 Ng5 d5 exd5 b5 Bf1 Nxd5 Bxb5 Bb7 d4 Bd6 Nc3 Nxc3 Qf3 O-O Bxc6"
+    },
+    {
+      "name": "Italian Game: Two Knights Defense, Ulvestad Variation (6...Nd4)",
+      "eco": "C57",
+      "moves": "e4 e5 Nf3 Nc6 Bc4 Nf6 Ng5 d5 exd5 b5 Bf1 Nd4 c3 Nxd5 Nxf7 Kxf7 cxd4 exd4 Bxb5 Qe7+ Kf1"
+    },
+    {
+      "name": "Italian Game: Two Knights Defense, Fritz Variation",
+      "eco": "C57",
+      "moves": "e4 e5 Nf3 Nc6 Bc4 Nf6 Ng5 d5 exd5 Nd4 c3 b5 Bf1 Nxd5 Nxf7 Kxf7 cxd4 exd4 Bxb5 Qe7+ Kf1"
+    },
+    {
+      "name": "Italian Game: Two Knights Defense, Fritz Variation (6...h6)",
+      "eco": "C57",
+      "moves": "e4 e5 Nf3 Nc6 Bc4 Nf6 Ng5 d5 exd5 Nd4 c3 h6 cxd4 hxg5 dxe5 Nxd5 Qb3 Nf4 Bxf7+ Ke7 d3"
+    },
+    {
+      "name": "Italian Game: Two Knights Defense, Fritz Variation (6...Nf5)",
+      "eco": "C57",
+      "moves": "e4 e5 Nf3 Nc6 Bc4 Nf6 Ng5 d5 exd5 Nd4 c3 Nf5 d4 Bd6 dxe5 Bxe5 O-O O-O Re1 Re8 Nf3"
+    },
+    {
+      "name": "Italian Game: Two Knights Defense, Kloss Gambit",
+      "eco": "C57",
+      "moves": "e4 e5 Nf3 Nc6 Bc4 Nf6 Ng5 d5 exd5 Nb4 d4 exd4 O-O Nbxd5 Qxd4 Be7 Nc3 c6 Nxd5 cxd5 Bd3"
+    },
+    {
+      "name": "Italian Game: Two Knights Defense, Kloss Gambit (6...Bd6)",
+      "eco": "C57",
+      "moves": "e4 e5 Nf3 Nc6 Bc4 Nf6 Ng5 d5 exd5 Nb4 d4 Bd6 dxe5 Bxe5 O-O O-O h3 Bf5 Nf3 Bxc2 Qd2"
+    },
+    {
+      "name": "Italian Game: Two Knights Defense, Traxler Counterattack, Knight Sacrifice Line",
+      "eco": "C57",
+      "moves": "e4 e5 Nf3 Nc6 Bc4 Nf6 Ng5 Bc5 Nxf7 Bxf2+ Kf1 Qe7 Nxh8 d5 exd5 Nd4 d6 Qxd6 c3 Bg4 Qa4+"
+    },
+    {
+      "name": "Italian Game: Two Knights Defense, Ponziani-Steinitz Gambit",
+      "eco": "C57",
+      "moves": "e4 e5 Nf3 Nc6 Bc4 Nf6 Ng5 Nxe4 Bxf7+ Ke7 d4 h6 Nxe4 Kxf7 d5 Nd4 c3 Nb5 O-O Nd6 Nbd2"
+    },
+    {
+      "name": "Italian Game: Hungarian Defense, Tartakower Variation",
+      "eco": "C50",
+      "moves": "e4 e5 Nf3 Nc6 Bc4 Be7 d4 exd4 c3 Nf6 e5 Ne4 Bd5 f5 cxd4 d6 O-O dxe5 Bxc6+ bxc6 Nxe5"
+    },
+    {
+      "name": "Italian Game: Hungarian Defense",
+      "eco": "C50",
+      "moves": "e4 e5 Nf3 Nc6 Bc4 Be7 d4 d6 d5 Nb4 h3 f5 Nc3 fxe4 Nxe4 Nf6 Ng3 c6 dxc6 Nxc6 Bg5"
+    },
+    {
+      "name": "Italian Game: Hungarian Defense (6...c6)",
+      "eco": "C50",
+      "moves": "e4 e5 Nf3 Nc6 Bc4 Be7 d4 d6 d5 Nb4 h3 c6 c3 Na6 Bxa6 bxa6 dxc6 f5 exf5 Qc7 c4"
+    },
+    {
+      "name": "Italian Game: Paris Defense",
+      "eco": "C50",
+      "moves": "e4 e5 Nf3 Nc6 Bc4 d6 d4 exd4 Nxd4 Nf6 Nc3 Be7 O-O O-O a4 Re8 a5 h6 a6 Nb4 axb7"
+    },
+    {
+      "name": "Italian Game: Scotch Invitation Declined",
+      "eco": "C56",
+      "moves": "e4 e5 Nf3 Nc6 Bc4 d6 d4 Nf6 d5 Ne7 Nc3 g6 Be3 Bg7 h3 a6 a4 Nh5 Qd2 O-O Ng5"
+    },
+    {
+      "name": "Italian Game: Paris Defense (4...Nxd4)",
+      "eco": "C50",
+      "moves": "e4 e5 Nf3 Nc6 Bc4 d6 d4 Nxd4 Nxd4 exd4 Qxd4 Nf6 Nc3 Be7 Bg5 h6 Bh4 c6 O-O-O Qb6 Qd3"
+    },
+    {
+      "name": "Italian Game: Rousseau Gambit",
+      "eco": "C50",
+      "moves": "e4 e5 Nf3 Nc6 Bc4 f5 d4 exd4 e5 d5 exd6 Qxd6 O-O Nf6 Re1+ Be7 c3 a6 cxd4 Bd7 Nc3"
+    },
+    {
+      "name": "Italian Game: Rousseau Gambit (9...Bd7)",
+      "eco": "C50",
+      "moves": "e4 e5 Nf3 Nc6 Bc4 f5 d4 exd4 e5 d5 exd6 Qxd6 O-O Nf6 Re1+ Be7 c3 Bd7 cxd4 O-O-O Nc3"
+    },
+    {
+      "name": "Italian Game: Rousseau Gambit (6...cxd6)",
+      "eco": "C50",
+      "moves": "e4 e5 Nf3 Nc6 Bc4 f5 d4 exd4 e5 d5 exd6 cxd6 O-O d5 Bb3 Be7 Nxd4 Nf6 Nc3 O-O Nf3"
+    },
+    {
+      "name": "Italian Game: Rousseau Gambit (4...fxe4)",
+      "eco": "C50",
+      "moves": "e4 e5 Nf3 Nc6 Bc4 f5 d4 fxe4 Nxe5 d5 Bb5 Qd6 O-O a6 Bxc6+ bxc6 f3 Be7 Bf4 Qe6 fxe4"
+    },
+    {
+      "name": "Italian Game: Rousseau Gambit (4...d6)",
+      "eco": "C50",
+      "moves": "e4 e5 Nf3 Nc6 Bc4 f5 d4 d6 Ng5 Nh6 d5 Ne7 Ne6 Bxe6 dxe6 Neg8 exf5 Qh4 Bd3 O-O-O Nd2"
+    },
+    {
+      "name": "Italian Game: Anti-Fried Liver Defense",
+      "eco": "C50",
+      "moves": "e4 e5 Nf3 Nc6 Bc4 h6 d4 exd4 Nxd4 Nf6 Nc3 Bb4 Nxc6 dxc6 Qxd8+ Kxd8 Bd2 Ke7 O-O-O a5 f4"
+    },
+    {
+      "name": "Italian Game: Anti-Fried Liver Defense (4...d6)",
+      "eco": "C50",
+      "moves": "e4 e5 Nf3 Nc6 Bc4 h6 d4 d6 Nc3 Be7 d5 Nb8 a4 c6 h3 Nf6 Qe2 cxd5 exd5 Bf5 g4"
+    },
+    {
+      "name": "Italian Game: Anti-Fried Liver Defense (4...Bd6)",
+      "eco": "C50",
+      "moves": "e4 e5 Nf3 Nc6 Bc4 h6 d4 Bd6 Nc3 Nf6 Nb5 Bb4+ c3 a6 Na7 Rxa7 cxb4 d6 dxe5 dxe5 Qxd8+"
+    },
+    {
+      "name": "Italian Game: Blackburne-Kostić Gambit",
+      "eco": "C50",
+      "moves": "e4 e5 Nf3 Nc6 Bc4 Nd4 Nxd4 exd4 O-O Nf6 Re1 d6 c3 Be7 cxd4 d5 exd5 Nxd5 Qh5 c6 Nc3"
+    },
+    {
+      "name": "Italian Game: Blackburne-Kostić Gambit (5...c6)",
+      "eco": "C50",
+      "moves": "e4 e5 Nf3 Nc6 Bc4 Nd4 Nxd4 exd4 O-O c6 Re1 d6 c3 Nf6 cxd4 Be7 d3 d5 Bb3 Bg4 f3"
+    },
+    {
+      "name": "Italian Game: Blackburne-Kostić Gambit (5...d6)",
+      "eco": "C50",
+      "moves": "e4 e5 Nf3 Nc6 Bc4 Nd4 Nxd4 exd4 O-O d6 c3 Nf6 d3 d5 exd5 Be7 Bb5+ Bd7 Bxd7+ Nxd7 Nd2"
+    }
+  ]
+}

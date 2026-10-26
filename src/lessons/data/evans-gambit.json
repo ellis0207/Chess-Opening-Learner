@@ -1,0 +1,155 @@
+{
+  "id": "evans-gambit",
+  "name": "Evans Gambit",
+  "side": "white",
+  "group": "Open games (1.e4 e5) for White",
+  "description": "A sharp Italian gambit: White gives up the b-pawn to gain time against the bishop on c5 and build a big center with c3 and d4.",
+  "moves": "e4 e5 Nf3 Nc6 Bc4 Bc5 b4",
+  "variations": [
+    {
+      "name": "Italian Game: Evans Gambit, Compromised Defense, Main Line",
+      "eco": "C52",
+      "moves": "e4 e5 Nf3 Nc6 Bc4 Bc5 b4 Bxb4 c3 Ba5 d4 exd4 O-O dxc3 Qb3 Qf6 e5 Qg6 Nxc3 Nge7 Ba3"
+    },
+    {
+      "name": "Italian Game: Evans Gambit, Waller Attack",
+      "eco": "C52",
+      "moves": "e4 e5 Nf3 Nc6 Bc4 Bc5 b4 Bxb4 c3 Ba5 d4 exd4 O-O d6 Qb3 Be6 Bxe6 fxe6 Nxd4 Nxd4 cxd4"
+    },
+    {
+      "name": "Italian Game: Evans Gambit, Johner Defense",
+      "eco": "C52",
+      "moves": "e4 e5 Nf3 Nc6 Bc4 Bc5 b4 Bxb4 c3 Ba5 d4 exd4 O-O b5 Bxb5 d3 Qxd3 Nge7 Ba3 d6 Rd1"
+    },
+    {
+      "name": "Italian Game: Evans Gambit, Dufresne Defense",
+      "eco": "C52",
+      "moves": "e4 e5 Nf3 Nc6 Bc4 Bc5 b4 Bxb4 c3 Ba5 d4 exd4 O-O d3 Qb3 Qf6 e5 Qg6 Rd1 Nge7 Bxd3"
+    },
+    {
+      "name": "Italian Game: Evans Gambit, Dufresne Defense (9...Qf5)",
+      "eco": "C52",
+      "moves": "e4 e5 Nf3 Nc6 Bc4 Bc5 b4 Bxb4 c3 Ba5 d4 exd4 O-O d3 Qb3 Qf6 e5 Qf5 Re1 Nge7 Ba3"
+    },
+    {
+      "name": "Italian Game: Evans Gambit, Mieses Defense",
+      "eco": "C52",
+      "moves": "e4 e5 Nf3 Nc6 Bc4 Bc5 b4 Bxb4 c3 Ba5 d4 exd4 O-O Nge7 Bb3 O-O Nxd4 Nxd4 cxd4 d5 Nd2"
+    },
+    {
+      "name": "Italian Game: Evans Gambit, Tartakower Attack",
+      "eco": "C52",
+      "moves": "e4 e5 Nf3 Nc6 Bc4 Bc5 b4 Bxb4 c3 Ba5 d4 d6 Qb3 Qd7 O-O Bb6 Nbd2 Na5 Qc2 Qe7 a4"
+    },
+    {
+      "name": "Italian Game: Evans Gambit, Leonhardt Countergambit",
+      "eco": "C52",
+      "moves": "e4 e5 Nf3 Nc6 Bc4 Bc5 b4 Bxb4 c3 Ba5 d4 b5 Bxb5 Nxd4 Nxd4 exd4 O-O c6 Be2 dxc3 Qd4"
+    },
+    {
+      "name": "Italian Game: Evans Gambit, Laroche Variation",
+      "eco": "C52",
+      "moves": "e4 e5 Nf3 Nc6 Bc4 Bc5 b4 Bxb4 c3 Ba5 d4 Nf6 dxe5 Ng4 Bg5 f6 exf6 gxf6 Bh4 Qe7 O-O"
+    },
+    {
+      "name": "Italian Game: Evans Gambit, Laroche Variation (7...Ng8)",
+      "eco": "C52",
+      "moves": "e4 e5 Nf3 Nc6 Bc4 Bc5 b4 Bxb4 c3 Ba5 d4 Nf6 dxe5 Ng8 Qb3 Qe7 O-O Nxe5 Nxe5 Qxe5 Bxf7+"
+    },
+    {
+      "name": "Italian Game: Evans Gambit, Fraser Attack",
+      "eco": "C51",
+      "moves": "e4 e5 Nf3 Nc6 Bc4 Bc5 b4 Bxb4 c3 Bc5 d4 exd4 O-O d6 cxd4 Bb6 Nc3 Bg4 Qa4 Bd7 Qb3 Na5 Bxf7+ Kf8 Qd1"
+    },
+    {
+      "name": "Italian Game: Evans Gambit, Göring Attack",
+      "eco": "C51",
+      "moves": "e4 e5 Nf3 Nc6 Bc4 Bc5 b4 Bxb4 c3 Bc5 d4 exd4 O-O d6 cxd4 Bb6 Nc3 Na5 Bg5 f6 Bf4"
+    },
+    {
+      "name": "Italian Game: Evans Gambit, McDonnell Defense",
+      "eco": "C51",
+      "moves": "e4 e5 Nf3 Nc6 Bc4 Bc5 b4 Bxb4 c3 Bc5 d4 Bb6 Nxe5 Nxe5 dxe5 Nh6 Qh5 O-O Bg5 Qe8 Bxh6"
+    },
+    {
+      "name": "Italian Game: Evans Gambit, Anderssen Variation, Cordel Line",
+      "eco": "C51",
+      "moves": "e4 e5 Nf3 Nc6 Bc4 Bc5 b4 Bxb4 c3 Be7 d4 Na5 Be2 exd4 Qxd4 d6 Qxg7 Bf6 Qg3 Ne7 O-O"
+    },
+    {
+      "name": "Italian Game: Evans Gambit, Anderssen Variation",
+      "eco": "C51",
+      "moves": "e4 e5 Nf3 Nc6 Bc4 Bc5 b4 Bxb4 c3 Be7 d4 exd4 cxd4 Na5 Bd3 d5 exd5 b6 Bb5+ Bd7 Bxd7+"
+    },
+    {
+      "name": "Italian Game: Evans Gambit, Anderssen Variation (8...Nf6)",
+      "eco": "C51",
+      "moves": "e4 e5 Nf3 Nc6 Bc4 Bc5 b4 Bxb4 c3 Be7 d4 exd4 cxd4 Na5 Bd3 Nf6 Nc3 d6 O-O c6 h3"
+    },
+    {
+      "name": "Italian Game: Evans Gambit, Stone-Ware Variation",
+      "eco": "C51",
+      "moves": "e4 e5 Nf3 Nc6 Bc4 Bc5 b4 Bxb4 c3 Bd6 d4 Nf6 Bd5 Nxd5 exd5 e4 Ng5 Na5 Nxe4 O-O Qf3"
+    },
+    {
+      "name": "Italian Game: Evans Gambit, Stone-Ware Variation (6...h6)",
+      "eco": "C51",
+      "moves": "e4 e5 Nf3 Nc6 Bc4 Bc5 b4 Bxb4 c3 Bd6 d4 h6 O-O Nge7 Bb3 Ng6 dxe5 Ncxe5 Nd4 Bc5 f4"
+    },
+    {
+      "name": "Italian Game: Evans Gambit, Stone-Ware Variation (6...Nh6)",
+      "eco": "C51",
+      "moves": "e4 e5 Nf3 Nc6 Bc4 Bc5 b4 Bxb4 c3 Bd6 d4 Nh6 O-O O-O Bd5 exd4 cxd4 Ne7 Bb3 Bb4 a3"
+    },
+    {
+      "name": "Italian Game: Evans Gambit, Mayet Defense",
+      "eco": "C51",
+      "moves": "e4 e5 Nf3 Nc6 Bc4 Bc5 b4 Bxb4 c3 Bf8 O-O d6 d4 Na5 Qa4+ c6 Be2 Qc7 c4 b6 Bb2"
+    },
+    {
+      "name": "Italian Game: Evans Gambit, Mayet Defense (6...Na5)",
+      "eco": "C51",
+      "moves": "e4 e5 Nf3 Nc6 Bc4 Bc5 b4 Bxb4 c3 Bf8 O-O Na5 Be2 d6 d4 Nf6 Qa4+ c6 dxe5 dxe5 Nxe5"
+    },
+    {
+      "name": "Italian Game: Evans Gambit, Mayet Defense (6...Nh6)",
+      "eco": "C51",
+      "moves": "e4 e5 Nf3 Nc6 Bc4 Bc5 b4 Bxb4 c3 Bf8 O-O Nh6 d4 d6 Re1 Be7 Bxh6 gxh6 Nbd2 Bf6 Rb1"
+    },
+    {
+      "name": "Italian Game: Evans Gambit Declined, Showalter Variation",
+      "eco": "C51",
+      "moves": "e4 e5 Nf3 Nc6 Bc4 Bc5 b4 Bb6 a4 a6 Nc3 Nf6 Nd5 O-O O-O d6 Nxb6 cxb6 d3 Nxb4 Rb1"
+    },
+    {
+      "name": "Italian Game: Evans Gambit Declined",
+      "eco": "C51",
+      "moves": "e4 e5 Nf3 Nc6 Bc4 Bc5 b4 Bb6 a4 a5 b5 Nd4 Nxd4 Bxd4 c3 Bb6 d4 Qe7 O-O Nf6 f4"
+    },
+    {
+      "name": "Italian Game: Evans Gambit, Fontaine Countergambit",
+      "eco": "C51",
+      "moves": "e4 e5 Nf3 Nc6 Bc4 Bc5 b4 b5 Bxf7+ Kxf7 bxc5 Nf6 O-O Re8 Qe2 Kf8 Qxb5 Nxe4 Qa4 Nf6 Nc3"
+    },
+    {
+      "name": "Italian Game: Evans Gambit, Fontaine Countergambit (6...d6)",
+      "eco": "C51",
+      "moves": "e4 e5 Nf3 Nc6 Bc4 Bc5 b4 b5 Bxf7+ Kxf7 bxc5 d6 cxd6 Qxd6 O-O Nf6 Ba3 b4 Bb2 Rd8 d3"
+    },
+    {
+      "name": "Italian Game: Evans Gambit, Hein Countergambit",
+      "eco": "C51",
+      "moves": "e4 e5 Nf3 Nc6 Bc4 Bc5 b4 d5 exd5 Nxb4 O-O Nf6 Nxe5 Bd6 d4 Nbxd5 Bb5+ c6 Nxc6 bxc6 Bxc6+"
+    },
+    {
+      "name": "Italian Game: Evans Gambit, Hein Countergambit (6...Nxd5)",
+      "eco": "C51",
+      "moves": "e4 e5 Nf3 Nc6 Bc4 Bc5 b4 d5 exd5 Nxb4 O-O Nxd5 Nxe5 Nge7 d4 Bd6 Qf3 Be6 Nd2 Bxe5 dxe5"
+    },
+    {
+      "name": "Italian Game: Evans Gambit, Hein Countergambit (6...Ne7)",
+      "eco": "C51",
+      "moves": "e4 e5 Nf3 Nc6 Bc4 Bc5 b4 d5 exd5 Nxb4 O-O Ne7 Nxe5 Nbxd5 d4 Bd6 Qf3 Be6 Nd2 Bxe5 dxe5"
+    }
+  ]
+}

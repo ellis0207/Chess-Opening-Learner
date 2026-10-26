@@ -1,0 +1,235 @@
+{
+  "id": "scotch-game",
+  "name": "Scotch Game",
+  "side": "white",
+  "group": "Open games (1.e4 e5) for White",
+  "description": "White opens the center at once with d4, trading the e5 pawn for free piece play and a space advantage.",
+  "moves": "e4 e5 Nf3 Nc6 d4",
+  "variations": [
+    {
+      "name": "Scotch Game: Paulsen, Gunsberg Defense",
+      "eco": "C45",
+      "moves": "e4 e5 Nf3 Nc6 d4 exd4 Nxd4 Bc5 Be3 Qf6 c3 Nge7 Bb5 Nd8 O-O O-O a4 b6 f4 d5 b4"
+    },
+    {
+      "name": "Scotch Game: Paulsen Attack",
+      "eco": "C45",
+      "moves": "e4 e5 Nf3 Nc6 d4 exd4 Nxd4 Bc5 Be3 Qf6 c3 Nge7 Bb5 O-O O-O d6 f4 a6 Ba4 b5 Bc2"
+    },
+    {
+      "name": "Scotch Game: Paulsen Attack (7...Bb6)",
+      "eco": "C45",
+      "moves": "e4 e5 Nf3 Nc6 d4 exd4 Nxd4 Bc5 Be3 Qf6 c3 Nge7 Bb5 Bb6 O-O O-O Re1 Nxd4 Bxd4 Bxd4 cxd4"
+    },
+    {
+      "name": "Scotch Game: Paulsen Attack (7...Qg6)",
+      "eco": "C45",
+      "moves": "e4 e5 Nf3 Nc6 d4 exd4 Nxd4 Bc5 Be3 Qf6 c3 Nge7 Bb5 Qg6 O-O Bb6 Re1 O-O Bf1 d5 Nxc6"
+    },
+    {
+      "name": "Scotch Game: Classical Variation, Millennium Variation",
+      "eco": "C45",
+      "moves": "e4 e5 Nf3 Nc6 d4 exd4 Nxd4 Bc5 Be3 Qf6 c3 Qg6 Qd3 Bb6 Nb5 Kd8 Nd2 Nf6 O-O-O Ng4 Bxb6"
+    },
+    {
+      "name": "Scotch Game: Classical Variation, Millennium Variation (7...Nf6)",
+      "eco": "C45",
+      "moves": "e4 e5 Nf3 Nc6 d4 exd4 Nxd4 Bc5 Be3 Qf6 c3 Qg6 Qd3 Nf6 f3 Ne5 Qb5 b6 Bf4 Bd6 Bg3"
+    },
+    {
+      "name": "Scotch Game: Classical Variation, Millennium Variation (7...Nge7)",
+      "eco": "C45",
+      "moves": "e4 e5 Nf3 Nc6 d4 exd4 Nxd4 Bc5 Be3 Qf6 c3 Qg6 Qd3 Nge7 Nxc6 Qxc6 Nd2 d6 Be2 a5 f4"
+    },
+    {
+      "name": "Scotch Game: Classical Variation",
+      "eco": "C45",
+      "moves": "e4 e5 Nf3 Nc6 d4 exd4 Nxd4 Bc5 Be3 Nxd4 Bxd4 Bxd4 Qxd4 Qf6 e5 Qb6 Qxb6 axb6 f4 f6 Nc3"
+    },
+    {
+      "name": "Scotch Game: Classical Variation (7...Qg5)",
+      "eco": "C45",
+      "moves": "e4 e5 Nf3 Nc6 d4 exd4 Nxd4 Bc5 Be3 Nxd4 Bxd4 Bxd4 Qxd4 Qg5 Nc3 Ne7 h4 Qh6 Rd1 a6 Qc5"
+    },
+    {
+      "name": "Scotch Game: Classical Variation (5...Bxd4)",
+      "eco": "C45",
+      "moves": "e4 e5 Nf3 Nc6 d4 exd4 Nxd4 Bc5 Be3 Bxd4 Bxd4 Nxd4 Qxd4 Qf6 e5 Qb6 Qxb6 axb6 f4 f6 Nc3"
+    },
+    {
+      "name": "Scotch Game: Classical Variation (6...Nf6)",
+      "eco": "C45",
+      "moves": "e4 e5 Nf3 Nc6 d4 exd4 Nxd4 Bc5 Be3 Bxd4 Bxd4 Nf6 Nc3 Qe7 Bxf6 Qxf6 Nd5 Qe5 Bd3 O-O f4"
+    },
+    {
+      "name": "Scotch Game: Modern Defense",
+      "eco": "C45",
+      "moves": "e4 e5 Nf3 Nc6 d4 exd4 Nxd4 Qh4 Nc3 Bb4 Be2 Qxe4 Nb5 Bxc3+ bxc3 Kd8 O-O Nf6 Bg5 d6 Bxf6+"
+    },
+    {
+      "name": "Scotch Game: Modern Defense (6...Bxc3+)",
+      "eco": "C45",
+      "moves": "e4 e5 Nf3 Nc6 d4 exd4 Nxd4 Qh4 Nc3 Bb4 Be2 Bxc3+ bxc3 Qxe4 O-O Qh4 Re1 Nxd4 cxd4 Ne7 g3"
+    },
+    {
+      "name": "Scotch Game: Modern Defense (6...d6)",
+      "eco": "C45",
+      "moves": "e4 e5 Nf3 Nc6 d4 exd4 Nxd4 Qh4 Nc3 Bb4 Be2 d6 O-O Nge7 Nf3 Qf6 Nb5 Ba5 Bd2 Bb6 a4"
+    },
+    {
+      "name": "Scotch Game: Steinitz Variation",
+      "eco": "C45",
+      "moves": "e4 e5 Nf3 Nc6 d4 exd4 Nxd4 Qh4 Nc3 a6 Nf5 Qd8 Nd5 d6 Bg5 Qxg5 Nxc7+ Kd8 Nxa8 Bxf5 exf5"
+    },
+    {
+      "name": "Scotch Game: Steinitz Variation (6...Qf6)",
+      "eco": "C45",
+      "moves": "e4 e5 Nf3 Nc6 d4 exd4 Nxd4 Qh4 Nc3 a6 Nf5 Qf6 Nd5 Qd8 Qg4 g6 Qg3 d6 Bg5 f6 Qc3"
+    },
+    {
+      "name": "Scotch Game: Steinitz Variation (5...Bc5)",
+      "eco": "C45",
+      "moves": "e4 e5 Nf3 Nc6 d4 exd4 Nxd4 Qh4 Nc3 Bc5 Be3 d6 g3 Qg4 Ndb5 Qxd1+ Rxd1 Bxe3 Nxc7+ Kd8 Nxa8"
+    },
+    {
+      "name": "Scotch Game: Steinitz Variation (6...Nxd4)",
+      "eco": "C45",
+      "moves": "e4 e5 Nf3 Nc6 d4 exd4 Nxd4 Qh4 Nc3 Bc5 Be3 Nxd4 Bxd4 Bxd4 Qxd4 Qf6 e5 Qb6 Qd2 Qxb2 Rb1"
+    },
+    {
+      "name": "Scotch Game: Steinitz Variation (6...Bxd4)",
+      "eco": "C45",
+      "moves": "e4 e5 Nf3 Nc6 d4 exd4 Nxd4 Qh4 Nc3 Bc5 Be3 Bxd4 Bxd4 Nxd4 Qxd4 Qf6 e5 Qb6 Qd2 Qxb2 Rb1"
+    },
+    {
+      "name": "Scotch Game: Mieses Variation",
+      "eco": "C45",
+      "moves": "e4 e5 Nf3 Nc6 d4 exd4 Nxd4 Nf6 Nxc6 bxc6 e5 Qe7 Qe2 Nd5 g3 g6 c4 Ba6 b3 Bg7 Bb2"
+    },
+    {
+      "name": "Scotch Game: Mieses Variation (6...Nd5)",
+      "eco": "C45",
+      "moves": "e4 e5 Nf3 Nc6 d4 exd4 Nxd4 Nf6 Nxc6 bxc6 e5 Nd5 c4 Nb6 Nc3 Qe7 Bf4 d6 Qe2 d5 cxd5"
+    },
+    {
+      "name": "Scotch Game: Mieses Variation (6...Ne4)",
+      "eco": "C45",
+      "moves": "e4 e5 Nf3 Nc6 d4 exd4 Nxd4 Nf6 Nxc6 bxc6 e5 Ne4 Nd2 Nxd2 Bxd2 d5 Bd3 Qh4 Be3 Qb4+ c3"
+    },
+    {
+      "name": "Scotch Game: Schmidt Variation",
+      "eco": "C45",
+      "moves": "e4 e5 Nf3 Nc6 d4 exd4 Nxd4 Nf6 Nxc6 dxc6 Qxd8+ Kxd8 Nc3 Bd6 f3 a5 Be3 Re8 O-O-O Ke7 a4"
+    },
+    {
+      "name": "Scotch Game: Schmidt Variation (7...a5)",
+      "eco": "C45",
+      "moves": "e4 e5 Nf3 Nc6 d4 exd4 Nxd4 Nf6 Nxc6 dxc6 Qxd8+ Kxd8 Nc3 a5 Be3 Bd6 O-O-O Re8 f3 Ke7 g4"
+    },
+    {
+      "name": "Scotch Game: Schmidt Variation (7...Be6)",
+      "eco": "C45",
+      "moves": "e4 e5 Nf3 Nc6 d4 exd4 Nxd4 Nf6 Nxc6 dxc6 Qxd8+ Kxd8 Nc3 Be6 f3 a5 Ne2 Bc4 a3 a4 h4"
+    },
+    {
+      "name": "Scotch Game: Malaniuk Variation",
+      "eco": "C45",
+      "moves": "e4 e5 Nf3 Nc6 d4 exd4 Nxd4 Bb4+ c3 Bc5 Be3 Bb6 Qg4 Nf6 Qxg7 Rg8 Qh6 d5 Bb5 Bd7 Bxc6"
+    },
+    {
+      "name": "Scotch Game: Malaniuk Variation (6...Nxd4)",
+      "eco": "C45",
+      "moves": "e4 e5 Nf3 Nc6 d4 exd4 Nxd4 Bb4+ c3 Bc5 Be3 Nxd4 cxd4 Bb6 Nc3 Ne7 Bc4 O-O O-O d6 a4"
+    },
+    {
+      "name": "Scotch Game: Malaniuk Variation (6...Nce7)",
+      "eco": "C45",
+      "moves": "e4 e5 Nf3 Nc6 d4 exd4 Nxd4 Bb4+ c3 Bc5 Be3 Nce7 h3 Nf6 Bd3 Ng6 f4 Bb6 O-O O-O c4"
+    },
+    {
+      "name": "Scotch Game: Malaniuk Variation (5...Be7)",
+      "eco": "C45",
+      "moves": "e4 e5 Nf3 Nc6 d4 exd4 Nxd4 Bb4+ c3 Be7 Nf5 Bf6 Ne3 d6 Bd3 g6 O-O Bg7 Nd5 Ne5 Bc2"
+    },
+    {
+      "name": "Scotch Game: Malaniuk Variation (6...Bf8)",
+      "eco": "C45",
+      "moves": "e4 e5 Nf3 Nc6 d4 exd4 Nxd4 Bb4+ c3 Be7 Nf5 Bf8 Bc4 d6 O-O g6 Ng3 Nf6 Nd2 Bg7 f4"
+    },
+    {
+      "name": "Scotch Game: Malaniuk Variation (6...g6)",
+      "eco": "C45",
+      "moves": "e4 e5 Nf3 Nc6 d4 exd4 Nxd4 Bb4+ c3 Be7 Nf5 g6 Nxe7 Qxe7 Bd3 Ne5 O-O Qd6 Be2 Qxd1 Rxd1"
+    },
+    {
+      "name": "Scotch Game: Malaniuk Variation (8...d6)",
+      "eco": "C45",
+      "moves": "e4 e5 Nf3 Nc6 d4 exd4 Nxd4 Bb4+ c3 Be7 Nf5 g6 Nxe7 Qxe7 Bd3 d6 c4 f5 O-O Bd7 Nc3"
+    },
+    {
+      "name": "Scotch Game: Malaniuk Variation (9...Be6)",
+      "eco": "C45",
+      "moves": "e4 e5 Nf3 Nc6 d4 exd4 Nxd4 Bb4+ c3 Be7 Nf5 g6 Nxe7 Qxe7 Bd3 d6 c4 Be6 Nc3 f5 Nd5"
+    },
+    {
+      "name": "Scotch Game: Malaniuk Variation (5...Bd6)",
+      "eco": "C45",
+      "moves": "e4 e5 Nf3 Nc6 d4 exd4 Nxd4 Bb4+ c3 Bd6 Bd3 Bc5 Be3 Bb6 Nd2 Nxd4 Bxd4 Bxd4 cxd4 d5 e5"
+    },
+    {
+      "name": "Scotch Game: Malaniuk Variation (10...Ne7)",
+      "eco": "C45",
+      "moves": "e4 e5 Nf3 Nc6 d4 exd4 Nxd4 Bb4+ c3 Bd6 Bd3 Bc5 Be3 Bb6 Nd2 Nxd4 Bxd4 Bxd4 cxd4 Ne7 O-O"
+    },
+    {
+      "name": "Scotch Game: Malaniuk Variation (6...Be7)",
+      "eco": "C45",
+      "moves": "e4 e5 Nf3 Nc6 d4 exd4 Nxd4 Bb4+ c3 Bd6 Bd3 Be7 Nf5 Bf8 O-O g6 Ne3 d6 Na3 Bg7 Nd5"
+    },
+    {
+      "name": "Scotch Game: Malaniuk Variation (6...Nge7)",
+      "eco": "C45",
+      "moves": "e4 e5 Nf3 Nc6 d4 exd4 Nxd4 Bb4+ c3 Bd6 Bd3 Nge7 Be3 Nxd4 cxd4 c6 O-O Bc7 Qc2 d6 Nc3"
+    },
+    {
+      "name": "Scotch Game: Malaniuk Variation (10...O-O)",
+      "eco": "C45",
+      "moves": "e4 e5 Nf3 Nc6 d4 exd4 Nxd4 Bb4+ c3 Bd6 Bd3 Nge7 Be3 Nxd4 cxd4 c6 O-O Bc7 Qc2 O-O Nc3"
+    },
+    {
+      "name": "Scotch Game: Lolli Variation",
+      "eco": "C44",
+      "moves": "e4 e5 Nf3 Nc6 d4 exd4 Nxd4 Nxd4 Qxd4 d6 Nc3 Nf6 Bf4 Be7 O-O-O O-O f3 Be6 Kb1 Re8 Qd2"
+    },
+    {
+      "name": "Scotch Game: Lolli Variation (6...a6)",
+      "eco": "C44",
+      "moves": "e4 e5 Nf3 Nc6 d4 exd4 Nxd4 Nxd4 Qxd4 d6 Nc3 a6 Bf4 Ne7 O-O-O Nc6 Qd2 Be7 Be3 O-O Be2"
+    },
+    {
+      "name": "Scotch Game: Lolli Variation (6...c6)",
+      "eco": "C44",
+      "moves": "e4 e5 Nf3 Nc6 d4 exd4 Nxd4 Nxd4 Qxd4 d6 Nc3 c6 Bf4 Be6 O-O-O Qa5 Bxd6 O-O-O Qe5 Qxe5 Bxe5"
+    },
+    {
+      "name": "Scotch Game: Lolli Variation (5...Qf6)",
+      "eco": "C44",
+      "moves": "e4 e5 Nf3 Nc6 d4 exd4 Nxd4 Nxd4 Qxd4 Qf6 e5 Qb6 Qxb6 axb6 Nc3 c6 Be3 f6 Bxb6 fxe5 Bc7"
+    },
+    {
+      "name": "Scotch Game: Lolli Variation (8...f6)",
+      "eco": "C44",
+      "moves": "e4 e5 Nf3 Nc6 d4 exd4 Nxd4 Nxd4 Qxd4 Qf6 e5 Qb6 Qxb6 axb6 Nc3 f6 f4 c6 Be3 fxe5 fxe5"
+    },
+    {
+      "name": "Scotch Game: Lolli Variation (6...Qc6)",
+      "eco": "C44",
+      "moves": "e4 e5 Nf3 Nc6 d4 exd4 Nxd4 Nxd4 Qxd4 Qf6 e5 Qc6 Nc3 Bc5 Qg4 Kf8 Qh4 Ne7 Bd2 d5 exd6"
+    },
+    {
+      "name": "Scotch Game: Lolli Variation (3...Nxd4)",
+      "eco": "C44",
+      "moves": "e4 e5 Nf3 Nc6 d4 Nxd4 Nxd4 exd4 Qxd4 d6 Nc3 Nf6 Bf4 Be7 O-O-O O-O f3 Be6 Kb1 Re8 Qd2"
+    }
+  ]
+}

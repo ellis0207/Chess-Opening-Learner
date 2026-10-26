@@ -1,0 +1,38 @@
+[
+  {
+    "id": "italian-game",
+    "name": "Italian Game",
+    "side": "white",
+    "group": "Open games (1.e4 e5) for White",
+    "description": "One of the oldest openings. White aims the bishop at f7, Black’s weakest square, and builds a strong center with c3 and d4.",
+    "moves": "e4 e5 Nf3 Nc6 Bc4",
+    "variations": 41
+  },
+  {
+    "id": "evans-gambit",
+    "name": "Evans Gambit",
+    "side": "white",
+    "group": "Open games (1.e4 e5) for White",
+    "description": "A sharp Italian gambit: White gives up the b-pawn to gain time against the bishop on c5 and build a big center with c3 and d4.",
+    "moves": "e4 e5 Nf3 Nc6 Bc4 Bc5 b4",
+    "variations": 16
+  },
+  {
+    "id": "queens-gambit",
+    "name": "Queen’s Gambit",
+    "side": "white",
+    "group": "Queen’s pawn and flank openings for White",
+    "description": "White offers the c-pawn to pull Black’s d-pawn away from the center. Learn how to answer the Declined, the Accepted, the Slav and every other reply.",
+    "moves": "d4 d5 c4",
+    "variations": 87
+  },
+  {
+    "id": "london-system",
+    "name": "London System",
+    "side": "white",
+    "group": "Queen’s pawn and flank openings for White",
+    "description": "A solid system: d4, Bf4, e3, Nf3, c3 and Bd3 against almost anything. Easy to learn, hard to crack.",
+    "moves": "d4 d5 Bf4",
+    "variations": 32
+  }
+]

@@ -1,0 +1,440 @@
+{
+  "id": "ruy-lopez",
+  "name": "Ruy Lopez",
+  "side": "white",
+  "group": "Open games (1.e4 e5) for White",
+  "description": "The Spanish Game. White pressures the knight that defends e5, building long-term pressure in the center. A favorite at every level.",
+  "moves": "e4 e5 Nf3 Nc6 Bb5",
+  "variations": [
+    {
+      "name": "Ruy Lopez: Closed, Chigorin Defense",
+      "eco": "C98",
+      "moves": "e4 e5 Nf3 Nc6 Bb5 a6 Ba4 Nf6 O-O Be7 Re1 b5 Bb3 d6 c3 O-O h3 Na5 Bc2 c5 d4 Qc7 Nbd2 Nc6 d5"
+    },
+    {
+      "name": "Ruy Lopez: Closed, Chigorin Defense (12...Bd7)",
+      "eco": "C97",
+      "moves": "e4 e5 Nf3 Nc6 Bb5 a6 Ba4 Nf6 O-O Be7 Re1 b5 Bb3 d6 c3 O-O h3 Na5 Bc2 c5 d4 Qc7 Nbd2 Bd7 Nf1 Rfe8 d5"
+    },
+    {
+      "name": "Ruy Lopez: Closed, Chigorin Defense, Panov System",
+      "eco": "C99",
+      "moves": "e4 e5 Nf3 Nc6 Bb5 a6 Ba4 Nf6 O-O Be7 Re1 b5 Bb3 d6 c3 O-O h3 Na5 Bc2 c5 d4 Qc7 Nbd2 cxd4 cxd4"
+    },
+    {
+      "name": "Ruy Lopez: Closed, Borisenko Variation",
+      "eco": "C96",
+      "moves": "e4 e5 Nf3 Nc6 Bb5 a6 Ba4 Nf6 O-O Be7 Re1 b5 Bb3 d6 c3 O-O h3 Na5 Bc2 c5 d4 Nc6 d5"
+    },
+    {
+      "name": "Ruy Lopez: Closed, Keres Defense",
+      "eco": "C96",
+      "moves": "e4 e5 Nf3 Nc6 Bb5 a6 Ba4 Nf6 O-O Be7 Re1 b5 Bb3 d6 c3 O-O h3 Na5 Bc2 c5 d4 Nd7 Nbd2"
+    },
+    {
+      "name": "Ruy Lopez: Closed, Rossolimo Defense",
+      "eco": "C96",
+      "moves": "e4 e5 Nf3 Nc6 Bb5 a6 Ba4 Nf6 O-O Be7 Re1 b5 Bb3 d6 c3 O-O h3 Na5 Bc2 c6 d4 Qc7 Nbd2"
+    },
+    {
+      "name": "Ruy Lopez: Closed, Chigorin Defense, Gajewski Gambit",
+      "eco": "C96",
+      "moves": "e4 e5 Nf3 Nc6 Bb5 a6 Ba4 Nf6 O-O Be7 Re1 b5 Bb3 d6 c3 O-O h3 Na5 Bc2 d5 d4"
+    },
+    {
+      "name": "Ruy Lopez: Closed, Breyer Defense",
+      "eco": "C95",
+      "moves": "e4 e5 Nf3 Nc6 Bb5 a6 Ba4 Nf6 O-O Be7 Re1 b5 Bb3 d6 c3 O-O h3 Nb8 d4 Nbd7 Nbd2 Bb7 Bc2 c5 d5"
+    },
+    {
+      "name": "Ruy Lopez: Closed, Smyslov-Breyer-Zaitsev Hybrid",
+      "eco": "C92",
+      "moves": "e4 e5 Nf3 Nc6 Bb5 a6 Ba4 Nf6 O-O Be7 Re1 b5 Bb3 d6 c3 O-O h3 Bb7 d4 Re8 Nbd2 Bf8 a3 h6 Bc2"
+    },
+    {
+      "name": "Ruy Lopez: Closed, Kholmov Variation",
+      "eco": "C92",
+      "moves": "e4 e5 Nf3 Nc6 Bb5 a6 Ba4 Nf6 O-O Be7 Re1 b5 Bb3 d6 c3 O-O h3 Be6 Bxe6 fxe6 d4"
+    },
+    {
+      "name": "Ruy Lopez: Closed, Smyslov Defense",
+      "eco": "C93",
+      "moves": "e4 e5 Nf3 Nc6 Bb5 a6 Ba4 Nf6 O-O Be7 Re1 b5 Bb3 d6 c3 O-O h3 h6 d4 exd4 cxd4"
+    },
+    {
+      "name": "Ruy Lopez: Closed, Karpov Variation",
+      "eco": "C92",
+      "moves": "e4 e5 Nf3 Nc6 Bb5 a6 Ba4 Nf6 O-O Be7 Re1 b5 Bb3 d6 c3 O-O h3 Nd7 d4 Nb6 Be3"
+    },
+    {
+      "name": "Ruy Lopez: Closed, Smyslov-Breyer-Zaitsev Hybrid (9...Re8)",
+      "eco": "C92",
+      "moves": "e4 e5 Nf3 Nc6 Bb5 a6 Ba4 Nf6 O-O Be7 Re1 b5 Bb3 d6 c3 O-O h3 Re8 d4 Bb7 Nbd2 Bf8 a3 h6 Bc2"
+    },
+    {
+      "name": "Ruy Lopez: Closed, Balla Variation",
+      "eco": "C88",
+      "moves": "e4 e5 Nf3 Nc6 Bb5 a6 Ba4 Nf6 O-O Be7 Re1 b5 Bb3 d6 c3 Na5 Bc2 c5 d4 Qc7 a4"
+    },
+    {
+      "name": "Ruy Lopez: Marshall Attack, Modern Main Line",
+      "eco": "C89",
+      "moves": "e4 e5 Nf3 Nc6 Bb5 a6 Ba4 Nf6 O-O Be7 Re1 b5 Bb3 O-O c3 d5 exd5 Nxd5 Nxe5 Nxe5 Rxe5 c6 d4 Bd6 Re1 Qh4 g3 Qh3 Be3 Bg4 Qd3"
+    },
+    {
+      "name": "Ruy Lopez: Marshall Attack, Original Marshall Attack",
+      "eco": "C89",
+      "moves": "e4 e5 Nf3 Nc6 Bb5 a6 Ba4 Nf6 O-O Be7 Re1 b5 Bb3 O-O c3 d5 exd5 Nxd5 Nxe5 Nxe5 Rxe5 Nf6 d4"
+    },
+    {
+      "name": "Ruy Lopez: Marshall Attack, Steiner Variation",
+      "eco": "C89",
+      "moves": "e4 e5 Nf3 Nc6 Bb5 a6 Ba4 Nf6 O-O Be7 Re1 b5 Bb3 O-O c3 d5 exd5 e4 dxc6 exf3 d4"
+    },
+    {
+      "name": "Ruy Lopez: Closed, Trajkovic Counterattack",
+      "eco": "C88",
+      "moves": "e4 e5 Nf3 Nc6 Bb5 a6 Ba4 Nf6 O-O Be7 Re1 b5 Bb3 Bb7 d4 Nxd4 Bxf7+ Kf8 Bd5 c6 Bb3"
+    },
+    {
+      "name": "Ruy Lopez: Closed, Averbakh Variation",
+      "eco": "C87",
+      "moves": "e4 e5 Nf3 Nc6 Bb5 a6 Ba4 Nf6 O-O Be7 Re1 d6 c3 Bg4 d3 b5 Bb3 O-O h3 Be6 Bxe6"
+    },
+    {
+      "name": "Ruy Lopez: Open, Dilworth Variation",
+      "eco": "C82",
+      "moves": "e4 e5 Nf3 Nc6 Bb5 a6 Ba4 Nf6 O-O Nxe4 d4 b5 Bb3 d5 dxe5 Be6 c3 Bc5 Nbd2 O-O Bc2 Nxf2 Rxf2"
+    },
+    {
+      "name": "Ruy Lopez: Open, Breslau Variation",
+      "eco": "C83",
+      "moves": "e4 e5 Nf3 Nc6 Bb5 a6 Ba4 Nf6 O-O Nxe4 d4 b5 Bb3 d5 dxe5 Be6 c3 Be7 Re1 O-O Nd4 Nxe5 f3"
+    },
+    {
+      "name": "Ruy Lopez: Open, Tarrasch Trap",
+      "eco": "C83",
+      "moves": "e4 e5 Nf3 Nc6 Bb5 a6 Ba4 Nf6 O-O Nxe4 d4 b5 Bb3 d5 dxe5 Be6 c3 Be7 Re1 O-O Nd4 Qd7 Nxe6 fxe6 Rxe4"
+    },
+    {
+      "name": "Ruy Lopez: Open, Berlin Variation",
+      "eco": "C82",
+      "moves": "e4 e5 Nf3 Nc6 Bb5 a6 Ba4 Nf6 O-O Nxe4 d4 b5 Bb3 d5 dxe5 Be6 c3 Nc5 Bc2 Be7 Nd4"
+    },
+    {
+      "name": "Ruy Lopez: Open, Zukertort Variation",
+      "eco": "C80",
+      "moves": "e4 e5 Nf3 Nc6 Bb5 a6 Ba4 Nf6 O-O Nxe4 d4 b5 Bb3 d5 dxe5 Ne7 a4 Be6 c3 g6 Bc2"
+    },
+    {
+      "name": "Ruy Lopez: Open, Classical Defense, Main Line",
+      "eco": "C83",
+      "moves": "e4 e5 Nf3 Nc6 Bb5 a6 Ba4 Nf6 O-O Nxe4 d4 Be7 Re1 b5 Bb3 d5 dxe5 Be6 c3 O-O h3"
+    },
+    {
+      "name": "Ruy Lopez: Open, Riga Variation",
+      "eco": "C80",
+      "moves": "e4 e5 Nf3 Nc6 Bb5 a6 Ba4 Nf6 O-O Nxe4 d4 exd4 Re1 d5 Nxd4 Bc5 Bxc6+ bxc6 f3 Qh4 g3"
+    },
+    {
+      "name": "Ruy Lopez: Morphy Defense",
+      "eco": "C78",
+      "moves": "e4 e5 Nf3 Nc6 Bb5 a6 Ba4 Nf6 O-O b5 Bb3 d6 Ng5 d5 exd5 Nd4 d3 Nxd5 Nc3 Bb7 Re1"
+    },
+    {
+      "name": "Ruy Lopez: Morphy Defense, Arkhangelsk Variation",
+      "eco": "C78",
+      "moves": "e4 e5 Nf3 Nc6 Bb5 a6 Ba4 Nf6 O-O b5 Bb3 Bb7 Re1 Bc5 c3 Bb6 d4 d6 Be3 O-O d5"
+    },
+    {
+      "name": "Ruy Lopez: Morphy Defense, Neo-Arkhangelsk Variation",
+      "eco": "C78",
+      "moves": "e4 e5 Nf3 Nc6 Bb5 a6 Ba4 Nf6 O-O b5 Bb3 Bc5 c3 d6 d4 Bb6 a4 Rb8 axb5 axb5 Na3"
+    },
+    {
+      "name": "Ruy Lopez: Morphy Defense, Wing Attack",
+      "eco": "C78",
+      "moves": "e4 e5 Nf3 Nc6 Bb5 a6 Ba4 Nf6 O-O b5 Bb3 Be7 a4 Bb7 d3 O-O Re1 d6 c3 Na5 Ba2"
+    },
+    {
+      "name": "Ruy Lopez: Steinitz Defense Deferred, Boleslavsky Variation",
+      "eco": "C79",
+      "moves": "e4 e5 Nf3 Nc6 Bb5 a6 Ba4 Nf6 O-O d6 Bxc6+ bxc6 d4 Nxe4 Re1 f5 dxe5 d5 Nc3 Bc5 Be3"
+    },
+    {
+      "name": "Ruy Lopez: Steinitz Defense Deferred, Lipnitsky Variation",
+      "eco": "C79",
+      "moves": "e4 e5 Nf3 Nc6 Bb5 a6 Ba4 Nf6 O-O d6 Bxc6+ bxc6 d4 Bg4 dxe5 Nxe4 h3 Bh5 exd6 Bxd6 Qd3"
+    },
+    {
+      "name": "Ruy Lopez: Morphy Defense, Møller Variation",
+      "eco": "C78",
+      "moves": "e4 e5 Nf3 Nc6 Bb5 a6 Ba4 Nf6 O-O Bc5 c3 Bb6 d4 O-O Re1 d6 h3 Bd7 Bc2 Re8 Be3"
+    },
+    {
+      "name": "Ruy Lopez: Central Countergambit",
+      "eco": "C78",
+      "moves": "e4 e5 Nf3 Nc6 Bb5 a6 Ba4 Nf6 O-O d5 Nxe5 dxe4 Nxc6 Qd6 Ne5+ b5 d4 bxa4 c3 Nd7 Qxa4"
+    },
+    {
+      "name": "Ruy Lopez: Brix Variation",
+      "eco": "C78",
+      "moves": "e4 e5 Nf3 Nc6 Bb5 a6 Ba4 Nf6 O-O g6 Bxc6 bxc6 Nxe5 Bg7 Re1 c5 d3 O-O Bg5 d6 Nc4"
+    },
+    {
+      "name": "Ruy Lopez: Morphy Defense, Modern Steinitz Defense",
+      "eco": "C75",
+      "moves": "e4 e5 Nf3 Nc6 Bb5 a6 Ba4 d6 c3 Bd7 d4 Nge7 h4 Ng8 d5 Nce7 c4 b5 Bc2 c6 c5"
+    },
+    {
+      "name": "Ruy Lopez: Morphy Defense, Modern Steinitz Defense (5...f5)",
+      "eco": "C74",
+      "moves": "e4 e5 Nf3 Nc6 Bb5 a6 Ba4 d6 c3 f5 exf5 Bxf5 O-O Bd3 Re1 Be7 Qb3 Rb8 Qd5 e4 Bb3"
+    },
+    {
+      "name": "Ruy Lopez: Morphy Defense, Norwegian Variation",
+      "eco": "C70",
+      "moves": "e4 e5 Nf3 Nc6 Bb5 a6 Ba4 b5 Bb3 Na5 O-O Nxb3 axb3 d6 d4 f6 Be3 Ne7 Qd3 Rb8 Nc3"
+    },
+    {
+      "name": "Ruy Lopez: Morphy Defense, Norwegian Variation (10...Qd7)",
+      "eco": "C70",
+      "moves": "e4 e5 Nf3 Nc6 Bb5 a6 Ba4 b5 Bb3 Na5 O-O Nxb3 axb3 d6 d4 f6 Be3 Ne7 Qd3 Qd7 Rd1"
+    },
+    {
+      "name": "Ruy Lopez: Morphy Defense, Graz Variation",
+      "eco": "C70",
+      "moves": "e4 e5 Nf3 Nc6 Bb5 a6 Ba4 b5 Bb3 Bc5 c3 d6 d4 exd4 cxd4 Bb6 h3 h6 O-O Nf6 Nc3"
+    },
+    {
+      "name": "Ruy Lopez: Morphy Defense, Caro Variation",
+      "eco": "C70",
+      "moves": "e4 e5 Nf3 Nc6 Bb5 a6 Ba4 b5 Bb3 d6 d4 Nxd4 Nxd4 exd4 c3 dxc3 Nxc3 Nf6 e5 dxe5 Bxf7+"
+    },
+    {
+      "name": "Ruy Lopez: Morphy Defense, Schliemann Defense Deferred",
+      "eco": "C70",
+      "moves": "e4 e5 Nf3 Nc6 Bb5 a6 Ba4 f5 d4 fxe4 Nxe5 Nf6 O-O Bd6 f4 O-O Nc3 Bb4 Ne2 Kh8 Ng3"
+    },
+    {
+      "name": "Ruy Lopez: Morphy Defense, Alapin's Defense Deferred",
+      "eco": "C70",
+      "moves": "e4 e5 Nf3 Nc6 Bb5 a6 Ba4 Bb4 c3 Ba5 O-O d6 d4 b5 Bb3 Nf6 dxe5 Nxe5 Nxe5 dxe5 Qxd8+"
+    },
+    {
+      "name": "Ruy Lopez: Morphy Defense, Classical Defense Deferred",
+      "eco": "C70",
+      "moves": "e4 e5 Nf3 Nc6 Bb5 a6 Ba4 Bc5 c3 Nge7 d4 exd4 cxd4 Bb4+ Bd2 Bxd2+ Qxd2 d5 exd5 Nxd5 Bxc6+"
+    },
+    {
+      "name": "Ruy Lopez: Morphy Defense, Modern Steinitz Defense, Fianchetto Variation",
+      "eco": "C76",
+      "moves": "e4 e5 Nf3 Nc6 Bb5 a6 Ba4 g6 c3 d6 d4 Bd7 Bg5 Be7 Bc1 Nf6 Bc2 Bf8 O-O h6 d5"
+    },
+    {
+      "name": "Ruy Lopez: Bird's Defense Deferred",
+      "eco": "C70",
+      "moves": "e4 e5 Nf3 Nc6 Bb5 a6 Ba4 Nd4 Nxd4 exd4 d3 Bc5 O-O c6 Nd2 Ne7 Qh5 d5 f4 O-O f5"
+    },
+    {
+      "name": "Ruy Lopez: Morphy Defense, Cozio Defense",
+      "eco": "C70",
+      "moves": "e4 e5 Nf3 Nc6 Bb5 a6 Ba4 Nge7 c3 g6 d4 exd4 cxd4 d5 exd5 Nxd5 O-O Bg7 Bxc6+ bxc6 Bg5"
+    },
+    {
+      "name": "Ruy Lopez: Berlin Defense, Pillsbury Variation",
+      "eco": "C67",
+      "moves": "e4 e5 Nf3 Nc6 Bb5 Nf6 O-O Nxe4 d4 Be7 Qe2 Nd6 Bxc6 bxc6 dxe5 Nb7 b3 O-O Re1 Re8 Nc3"
+    },
+    {
+      "name": "Ruy Lopez: Berlin Defense, Pillsbury Variation (10...d5)",
+      "eco": "C67",
+      "moves": "e4 e5 Nf3 Nc6 Bb5 Nf6 O-O Nxe4 d4 Be7 Qe2 Nd6 Bxc6 bxc6 dxe5 Nb7 b3 O-O Re1 d5 exd6"
+    },
+    {
+      "name": "Ruy Lopez: Berlin Defense, Cordel Variation",
+      "eco": "C67",
+      "moves": "e4 e5 Nf3 Nc6 Bb5 Nf6 O-O Nxe4 d4 Be7 Qe2 Nd6 Bxc6 bxc6 dxe5 Nf5 Qe4 g6 c4 Rb8 Nc3"
+    },
+    {
+      "name": "Ruy Lopez: Berlin Defense, Trifunovic Variation",
+      "eco": "C67",
+      "moves": "e4 e5 Nf3 Nc6 Bb5 Nf6 O-O Nxe4 d4 Be7 Qe2 d5 Nxe5 Bd7 Bxc6 Bxc6 Re1 Bd7 c4 c6 Nd2"
+    },
+    {
+      "name": "Ruy Lopez: Berlin Defense, Berlin Wall",
+      "eco": "C67",
+      "moves": "e4 e5 Nf3 Nc6 Bb5 Nf6 O-O Nxe4 d4 Nd6 Bxc6 dxc6 dxe5 Nf5 Qxd8+ Kxd8 Nc3 Bd7 a4 a5 h3"
+    },
+    {
+      "name": "Ruy Lopez: Berlin Defense, l'Hermet Variation, Westerinen Line",
+      "eco": "C67",
+      "moves": "e4 e5 Nf3 Nc6 Bb5 Nf6 O-O Nxe4 d4 Nd6 Bxc6 dxc6 dxe5 Ne4 Qe2 Bf5 Rd1 Qe7 Na3 Qe6 Nd4"
+    },
+    {
+      "name": "Ruy Lopez: Berlin Defense, Rosenthal Variation",
+      "eco": "C67",
+      "moves": "e4 e5 Nf3 Nc6 Bb5 Nf6 O-O Nxe4 d4 a6 Bxc6 dxc6 Re1 Nf6 Nbd2 h6 Nxe5 Be7 Qe2 O-O Nxc6"
+    },
+    {
+      "name": "Ruy Lopez: Berlin Defense, Closed Bernstein Variation",
+      "eco": "C66",
+      "moves": "e4 e5 Nf3 Nc6 Bb5 Nf6 O-O d6 d4 Bd7 Nc3 Be7 Bg5 exd4 Nxd4 O-O Re1 Nxd4 Qxd4 Bxb5 Nxb5"
+    },
+    {
+      "name": "Ruy Lopez: Berlin Defense, Closed Wolf Variation",
+      "eco": "C66",
+      "moves": "e4 e5 Nf3 Nc6 Bb5 Nf6 O-O d6 d4 Bd7 Nc3 exd4 Nxd4 Be7 Nxc6 Bxc6 Bxc6+ bxc6 Qd3 O-O Bd2"
+    },
+    {
+      "name": "Ruy Lopez: Closed Berlin Defense, Chigorin Variation",
+      "eco": "C66",
+      "moves": "e4 e5 Nf3 Nc6 Bb5 Nf6 O-O d6 d4 Nd7 c3 a6 Ba4 g6 Bg5 f6 Bc1 Bg7 Bb3 Na5 Bc2"
+    },
+    {
+      "name": "Ruy Lopez: Classical Variation, Modern Main Line",
+      "eco": "C64",
+      "moves": "e4 e5 Nf3 Nc6 Bb5 Nf6 O-O Bc5 c3 O-O d4 Bb6 Bg5 h6 Bh4 d6 a4 a5 Re1 exd4 Bxc6"
+    },
+    {
+      "name": "Ruy Lopez: Berlin Defense, Fishing Pole Variation",
+      "eco": "C65",
+      "moves": "e4 e5 Nf3 Nc6 Bb5 Nf6 O-O Ng4 h3 Nf6 Bxc6 dxc6 Nxe5 Bc5 Nc3 g5 d3 Bxh3 Qf3 Be6 Bxg5"
+    },
+    {
+      "name": "Ruy Lopez: Schliemann Defense, Möhring Variation",
+      "eco": "C63",
+      "moves": "e4 e5 Nf3 Nc6 Bb5 f5 Nc3 fxe4 Nxe4 d5 Nxe5 dxe4 Nxc6 Qd5 c4 Qd6 Nxa7+ Bd7 Qh5+ g6 Bxd7+"
+    },
+    {
+      "name": "Ruy Lopez: Schliemann Defense, Classical Variation",
+      "eco": "C63",
+      "moves": "e4 e5 Nf3 Nc6 Bb5 f5 Nc3 fxe4 Nxe4 d5 Nxe5 dxe4 Nxc6 Qg5 Qe2 Nf6 Nxa7+ Bd7 Bxd7+ Nxd7 f4"
+    },
+    {
+      "name": "Ruy Lopez: Schliemann Defense, Kostić Defense",
+      "eco": "C63",
+      "moves": "e4 e5 Nf3 Nc6 Bb5 f5 Nc3 fxe4 Nxe4 Be7 d4 d5 Neg5 Nh6 dxe5 O-O O-O Ng4 e6 Qd6 Bxc6"
+    },
+    {
+      "name": "Ruy Lopez: Schliemann Defense, Tartakower Variation",
+      "eco": "C63",
+      "moves": "e4 e5 Nf3 Nc6 Bb5 f5 Nc3 fxe4 Nxe4 Nf6 Qe2 d5 Nxf6+ gxf6 d4 e4 Nh4 Qe7 O-O Bd7 Qh5+"
+    },
+    {
+      "name": "Ruy Lopez: Classical Variation, Charousek Variation",
+      "eco": "C64",
+      "moves": "e4 e5 Nf3 Nc6 Bb5 Bc5 c3 Bb6 d4 Nf6 a4 exd4 e5 Ne4 a5 Nxa5 Qe2 c6 Qxe4 cxb5 Bg5"
+    },
+    {
+      "name": "Ruy Lopez: Classical Variation, Konikowski Gambit",
+      "eco": "C64",
+      "moves": "e4 e5 Nf3 Nc6 Bb5 Bc5 c3 d5 Nxe5 Qg5 O-O Qxe5 d4 Qe6 dxc5 Nf6 exd5 Qxd5 Qxd5 Nxd5 Re1+"
+    },
+    {
+      "name": "Ruy Lopez: Classical Variation, Cordel Gambit",
+      "eco": "C64",
+      "moves": "e4 e5 Nf3 Nc6 Bb5 Bc5 c3 f5 d4 fxe4 Bxc6 dxc6 Nxe5 Bd6 O-O Nf6 Bg5 Bxe5 dxe5 Qxd1 Rxd1"
+    },
+    {
+      "name": "Ruy Lopez: Classical Defense, Boden Variation",
+      "eco": "C64",
+      "moves": "e4 e5 Nf3 Nc6 Bb5 Bc5 c3 Qe7 d4 exd4 O-O Ne5 Nxd4 c6 b4 Bb6 Nf5 Qf6 Nd6+ Ke7 Nxc8+"
+    },
+    {
+      "name": "Ruy Lopez: Steinitz Defense",
+      "eco": "C62",
+      "moves": "e4 e5 Nf3 Nc6 Bb5 d6 d4 Bd7 Bxc6 Bxc6 Nc3 Nf6 Qd3 exd4 Nxd4 Be7 f3 d5 Bf4 dxe4 fxe4"
+    },
+    {
+      "name": "Ruy Lopez: Steinitz Defense, Center Gambit",
+      "eco": "C62",
+      "moves": "e4 e5 Nf3 Nc6 Bb5 d6 d4 exd4 O-O Bd7 Bxc6 bxc6 Re1 Ne7 Qxd4 Ng6 Qc3 c5 Bg5 f6 e5"
+    },
+    {
+      "name": "Ruy Lopez: Morphy Defense, Modern Steinitz Defense, Fianchetto Variation (3...g6)",
+      "eco": "C76",
+      "moves": "e4 e5 Nf3 Nc6 Bb5 g6 c3 a6 Ba4 d6 d4 Bd7 Bg5 Be7 Bc1 Nf6 Bc2 Bf8 O-O h6 d5"
+    },
+    {
+      "name": "Ruy Lopez: Fianchetto Defense, Kevitz Gambit",
+      "eco": "C60",
+      "moves": "e4 e5 Nf3 Nc6 Bb5 g6 c3 f5 O-O fxe4 Bxc6 bxc6 Nxe5 Ne7 d4 d6 Ng4 Bg7 Nd2 Qd7 h3"
+    },
+    {
+      "name": "Ruy Lopez: Spanish Countergambit",
+      "eco": "C60",
+      "moves": "e4 e5 Nf3 Nc6 Bb5 d5 Nxe5 Qg5 Nf3 Qe7 e5 a6 Bxc6+ bxc6 O-O Qd8 d4 Ne7 Nc3 a5 Re1"
+    },
+    {
+      "name": "Ruy Lopez: Spanish Countergambit (10...Ng6)",
+      "eco": "C60",
+      "moves": "e4 e5 Nf3 Nc6 Bb5 d5 Nxe5 Qg5 Nf3 Qe7 e5 a6 Bxc6+ bxc6 O-O Qd8 d4 Ne7 Nc3 Ng6 Na4"
+    },
+    {
+      "name": "Ruy Lopez: Alapin Defense, Alapin Gambit",
+      "eco": "C60",
+      "moves": "e4 e5 Nf3 Nc6 Bb5 Bb4 c3 Ba5 Bxc6 dxc6 Nxe5 Qe7 d4 f6 Nc4 Qxe4+ Ne3 Bb6 O-O Be6 Re1"
+    },
+    {
+      "name": "Ruy Lopez: Bird Variation, Paulsen Variation",
+      "eco": "C61",
+      "moves": "e4 e5 Nf3 Nc6 Bb5 Nd4 Nxd4 exd4 O-O Ne7 d3 a5 c3 c6 Ba4 g6 cxd4 Bg7 Be3 Qb6 Nd2"
+    },
+    {
+      "name": "Ruy Lopez: Cozio Defense, Paulsen Variation",
+      "eco": "C60",
+      "moves": "e4 e5 Nf3 Nc6 Bb5 Nge7 Nc3 g6 d4 exd4 Nd5 Bg7 Bg5 h6 Bf6 Bxf6 Nxf6+ Kf8 Qd2 d5 Bxc6"
+    },
+    {
+      "name": "Ruy Lopez: Bulgarian Variation",
+      "eco": "C60",
+      "moves": "e4 e5 Nf3 Nc6 Bb5 a5 c3 f5 d4 fxe4 Nxe5 Nxe5 dxe5 c6 Bc4 d5 exd6 Qxd6 Qh5+ g6 Qh4"
+    },
+    {
+      "name": "Ruy Lopez: Rotary-Albany Gambit",
+      "eco": "C60",
+      "moves": "e4 e5 Nf3 Nc6 Bb5 b6 O-O Nge7 d4 exd4 c3 dxc3 Nxc3 Ng6 h4 Bb7 Be3 Bc5 h5 Nh4 Nd5"
+    },
+    {
+      "name": "Ruy Lopez: Lucena Variation",
+      "eco": "C60",
+      "moves": "e4 e5 Nf3 Nc6 Bb5 Be7 O-O a6 Bxc6 dxc6 Nxe5 Qd4 Nf3 Qxe4 Nc3 Qg6 Ne5 Qf5 d4 h5 Re1"
+    },
+    {
+      "name": "Ruy Lopez: Nürnberg Variation",
+      "eco": "C60",
+      "moves": "e4 e5 Nf3 Nc6 Bb5 f6 d4 exd4 Nxd4 Bb4+ c3 Nxd4 Ba4 Qe7 Qxd4 Bc5 Qd5 c6 Qh5+ g6 Qe2"
+    },
+    {
+      "name": "Ruy Lopez: Brentano Gambit",
+      "eco": "C60",
+      "moves": "e4 e5 Nf3 Nc6 Bb5 g5 d4 Nxd4 Nxd4 exd4 Qxd4 Qf6 e5 Qb6 Qd3 c6 Bc4 Qa5+ Kd1 d5 exd6"
+    },
+    {
+      "name": "Ruy Lopez: Pollock Defense",
+      "eco": "C60",
+      "moves": "e4 e5 Nf3 Nc6 Bb5 Na5 Ba4 c6 c3 d6 d4 Qc7 Qe2 Nf6 O-O Be7 Bc2 b6 h3 O-O b4"
+    },
+    {
+      "name": "Ruy Lopez: Pollock Defense (7...Be7)",
+      "eco": "C60",
+      "moves": "e4 e5 Nf3 Nc6 Bb5 Na5 Ba4 c6 c3 d6 d4 Qc7 Qe2 Be7 Bc2 b6 Nbd2 Nf6 O-O O-O Re1"
+    },
+    {
+      "name": "Ruy Lopez: Retreat Variation",
+      "eco": "C60",
+      "moves": "e4 e5 Nf3 Nc6 Bb5 Nb8 d4 exd4 O-O Ne7 Bc4 Nec6 c3 d3 Qb3 Qf6 e5 Qf5 Qd1 d6 exd6"
+    },
+    {
+      "name": "Ruy Lopez: Vinogradov Variation",
+      "eco": "C60",
+      "moves": "e4 e5 Nf3 Nc6 Bb5 Qe7 O-O d6 d4 a6 Bxc6+ bxc6 c4 exd4 Nxd4 Qd7 Re1 Ne7 Nc3 g6 Bf4"
+    },
+    {
+      "name": "Ruy Lopez: Vinogradov Variation (9...c5)",
+      "eco": "C60",
+      "moves": "e4 e5 Nf3 Nc6 Bb5 Qe7 O-O d6 d4 a6 Bxc6+ bxc6 c4 exd4 Nxd4 Qd7 Re1 c5 Nf5 g6 e5"
+    }
+  ]
+}

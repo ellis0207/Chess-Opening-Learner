@@ -1,0 +1,542 @@
+[
+ {
+  "id": "italian-game",
+  "name": "Italian Game",
+  "side": "white",
+  "group": "Open games (1.e4 e5) for White",
+  "description": "One of the oldest openings. White aims the bishop at f7, Black’s weakest square, and builds a strong center with c3 and d4.",
+  "moves": "e4 e5 Nf3 Nc6 Bc4",
+  "variations": 41
+ },
+ {
+  "id": "evans-gambit",
+  "name": "Evans Gambit",
+  "side": "white",
+  "group": "Open games (1.e4 e5) for White",
+  "description": "A sharp Italian gambit: White gives up the b-pawn to gain time against the bishop on c5 and build a big center with c3 and d4.",
+  "moves": "e4 e5 Nf3 Nc6 Bc4 Bc5 b4",
+  "variations": 29
+ },
+ {
+  "id": "ruy-lopez",
+  "name": "Ruy Lopez",
+  "side": "white",
+  "group": "Open games (1.e4 e5) for White",
+  "description": "The Spanish Game. White pressures the knight that defends e5, building long-term pressure in the center. A favorite at every level.",
+  "moves": "e4 e5 Nf3 Nc6 Bb5",
+  "variations": 86
+ },
+ {
+  "id": "scotch-game",
+  "name": "Scotch Game",
+  "side": "white",
+  "group": "Open games (1.e4 e5) for White",
+  "description": "White opens the center at once with d4, trading the e5 pawn for free piece play and a space advantage.",
+  "moves": "e4 e5 Nf3 Nc6 d4",
+  "variations": 45
+ },
+ {
+  "id": "four-knights",
+  "name": "Four Knights Game",
+  "side": "white",
+  "group": "Open games (1.e4 e5) for White",
+  "description": "A classical, solid opening where both sides develop their knights first. Learn the Spanish and Scotch Four Knights ideas.",
+  "moves": "e4 e5 Nf3 Nc6 Nc3 Nf6",
+  "variations": 38
+ },
+ {
+  "id": "vienna-game",
+  "name": "Vienna Game",
+  "side": "white",
+  "group": "Open games (1.e4 e5) for White",
+  "description": "White develops the queen’s knight first, keeping the option of a quick f4 to attack Black’s center.",
+  "moves": "e4 e5 Nc3",
+  "variations": 22
+ },
+ {
+  "id": "kings-gambit",
+  "name": "King’s Gambit",
+  "side": "white",
+  "group": "Open games (1.e4 e5) for White",
+  "description": "The romantic gambit: White offers the f-pawn to deflect Black’s e-pawn and open the f-file for an attack.",
+  "moves": "e4 e5 f4",
+  "variations": 32
+ },
+ {
+  "id": "danish-gambit",
+  "name": "Danish Gambit",
+  "side": "white",
+  "group": "Open games (1.e4 e5) for White",
+  "description": "White sacrifices one or two pawns for a huge lead in development and two bishops raking toward Black’s king.",
+  "moves": "e4 e5 d4 exd4 c3",
+  "variations": 20
+ },
+ {
+  "id": "bishops-opening",
+  "name": "Bishop’s Opening",
+  "side": "white",
+  "group": "Open games (1.e4 e5) for White",
+  "description": "White develops the bishop to c4 straight away, keeping the knight and f-pawn flexible.",
+  "moves": "e4 e5 Bc4",
+  "variations": 50
+ },
+ {
+  "id": "ponziani",
+  "name": "Ponziani Opening",
+  "side": "white",
+  "group": "Open games (1.e4 e5) for White",
+  "description": "White prepares d4 with c3, aiming for a broad pawn center. A surprise weapon with plenty of traps.",
+  "moves": "e4 e5 Nf3 Nc6 c3",
+  "variations": 22
+ },
+ {
+  "id": "petrov-white",
+  "name": "Against the Petrov",
+  "side": "white",
+  "group": "Open games (1.e4 e5) for White",
+  "description": "How to meet the Petrov (Russian) Defence as White, including the classical 3.Nxe5 and the sharp 3.d4.",
+  "moves": "e4 e5 Nf3 Nf6",
+  "variations": 54
+ },
+ {
+  "id": "philidor-white",
+  "name": "Against the Philidor",
+  "side": "white",
+  "group": "Open games (1.e4 e5) for White",
+  "description": "Black defends e5 with a pawn. White grabs space with d4 and develops quickly to exploit Black’s passive setup.",
+  "moves": "e4 e5 Nf3 d6",
+  "variations": 29
+ },
+ {
+  "id": "queens-gambit",
+  "name": "Queen’s Gambit",
+  "side": "white",
+  "group": "Queen’s pawn and flank openings for White",
+  "description": "White offers the c-pawn to pull Black’s d-pawn away from the center. Learn how to answer the Declined, the Accepted, the Slav and every other reply.",
+  "moves": "d4 d5 c4",
+  "variations": 99
+ },
+ {
+  "id": "london-system",
+  "name": "London System",
+  "side": "white",
+  "group": "Queen’s pawn and flank openings for White",
+  "description": "A solid system: d4, Bf4, e3, Nf3, c3 and Bd3 against almost anything. Easy to learn, hard to crack.",
+  "moves": "d4 d5 Bf4",
+  "variations": 32
+ },
+ {
+  "id": "london-vs-nf6",
+  "name": "London System against 1...Nf6",
+  "side": "white",
+  "group": "Queen’s pawn and flank openings for White",
+  "description": "The London setup against the Indian defences, where Black often fianchettoes or hits back with ...c5.",
+  "moves": "d4 Nf6 Bf4",
+  "variations": 38
+ },
+ {
+  "id": "catalan",
+  "name": "Catalan Opening",
+  "side": "white",
+  "group": "Queen’s pawn and flank openings for White",
+  "description": "Queen’s Gambit meets fianchetto: the bishop on g2 presses on the long diagonal and on Black’s queenside.",
+  "moves": "d4 Nf6 c4 e6 g3",
+  "variations": 32
+ },
+ {
+  "id": "trompowsky",
+  "name": "Trompowsky Attack",
+  "side": "white",
+  "group": "Queen’s pawn and flank openings for White",
+  "description": "White pins or threatens to double Black’s pawns at move two, sidestepping a lot of Indian theory.",
+  "moves": "d4 Nf6 Bg5",
+  "variations": 38
+ },
+ {
+  "id": "blackmar-diemer",
+  "name": "Blackmar-Diemer Gambit",
+  "side": "white",
+  "group": "Queen’s pawn and flank openings for White",
+  "description": "An aggressive gambit: White gives a pawn for open lines and a fast attack on the f-file.",
+  "moves": "d4 d5 e4",
+  "variations": 25
+ },
+ {
+  "id": "english",
+  "name": "English Opening",
+  "side": "white",
+  "group": "Queen’s pawn and flank openings for White",
+  "description": "White controls d5 from the flank. Flexible and strategic, often turning into a reversed Sicilian.",
+  "moves": "c4",
+  "variations": 107
+ },
+ {
+  "id": "reti",
+  "name": "Réti Opening",
+  "side": "white",
+  "group": "Queen’s pawn and flank openings for White",
+  "description": "A hypermodern opening: White attacks the center from a distance with Nf3, c4 and a kingside fianchetto.",
+  "moves": "Nf3 d5 c4",
+  "variations": 35
+ },
+ {
+  "id": "kings-indian-attack",
+  "name": "King’s Indian Attack",
+  "side": "white",
+  "group": "Queen’s pawn and flank openings for White",
+  "description": "A system setup with Nf3, g3, Bg2, O-O, d3 and often e4, playable against almost everything.",
+  "moves": "Nf3 d5 g3",
+  "variations": 20
+ },
+ {
+  "id": "bird",
+  "name": "Bird Opening",
+  "side": "white",
+  "group": "Queen’s pawn and flank openings for White",
+  "description": "White grabs e5 with the f-pawn, a Dutch Defence with an extra tempo. Watch out for From’s Gambit.",
+  "moves": "f4",
+  "variations": 61
+ },
+ {
+  "id": "open-sicilian",
+  "name": "Open Sicilian",
+  "side": "white",
+  "group": "Against the Sicilian (White)",
+  "description": "The main way to fight the Sicilian: Nf3 and d4, opening the center. Meet the Najdorf, Dragon, Sveshnikov, Taimanov and the rest.",
+  "moves": "e4 c5 Nf3",
+  "variations": 79
+ },
+ {
+  "id": "alapin",
+  "name": "Alapin Sicilian",
+  "side": "white",
+  "group": "Against the Sicilian (White)",
+  "description": "White prepares d4 with c3 so a pawn, not a knight, recaptures on d4. A solid anti-Sicilian with a clear plan.",
+  "moves": "e4 c5 c3",
+  "variations": 22
+ },
+ {
+  "id": "smith-morra",
+  "name": "Smith-Morra Gambit",
+  "side": "white",
+  "group": "Against the Sicilian (White)",
+  "description": "White gives up a pawn for rapid development and open files against the Sicilian. Full of traps at club level.",
+  "moves": "e4 c5 d4 cxd4 c3",
+  "variations": 26
+ },
+ {
+  "id": "closed-sicilian",
+  "name": "Closed Sicilian",
+  "side": "white",
+  "group": "Against the Sicilian (White)",
+  "description": "White keeps the center closed and builds a kingside attack with g3, Bg2, f4 and Nf3.",
+  "moves": "e4 c5 Nc3",
+  "variations": 27
+ },
+ {
+  "id": "french",
+  "name": "French Defence",
+  "side": "black",
+  "group": "Defences to 1.e4 (Black)",
+  "description": "Black builds a solid chain with ...e6 and ...d5, then strikes at White’s center with ...c5. Learn the Advance, Exchange, Tarrasch, Winawer and more.",
+  "moves": "e4 e6",
+  "variations": 55
+ },
+ {
+  "id": "caro-kann",
+  "name": "Caro-Kann Defence",
+  "side": "black",
+  "group": "Defences to 1.e4 (Black)",
+  "description": "A rock-solid defence: ...c6 and ...d5 challenge e4 while keeping the light-squared bishop free.",
+  "moves": "e4 c6",
+  "variations": 50
+ },
+ {
+  "id": "scandinavian",
+  "name": "Scandinavian Defence",
+  "side": "black",
+  "group": "Defences to 1.e4 (Black)",
+  "description": "Black challenges e4 at once. After exd5 the queen recaptures, or Black gambits with ...Nf6.",
+  "moves": "e4 d5",
+  "variations": 33
+ },
+ {
+  "id": "pirc",
+  "name": "Pirc Defence",
+  "side": "black",
+  "group": "Defences to 1.e4 (Black)",
+  "description": "A hypermodern defence: Black lets White build a center, then attacks it with pieces and a kingside fianchetto.",
+  "moves": "e4 d6 d4 Nf6",
+  "variations": 51
+ },
+ {
+  "id": "modern",
+  "name": "Modern Defence",
+  "side": "black",
+  "group": "Defences to 1.e4 (Black)",
+  "description": "Black fianchettoes first and keeps the knight flexible, ready to hit White’s center with ...c5 or ...e5.",
+  "moves": "e4 g6",
+  "variations": 30
+ },
+ {
+  "id": "alekhine",
+  "name": "Alekhine Defence",
+  "side": "black",
+  "group": "Defences to 1.e4 (Black)",
+  "description": "Black provokes White’s pawns forward with ...Nf6, then attacks the overextended center.",
+  "moves": "e4 Nf6",
+  "variations": 25
+ },
+ {
+  "id": "najdorf",
+  "name": "Sicilian Najdorf",
+  "side": "black",
+  "group": "Sicilian Defence (Black)",
+  "description": "The most famous Sicilian: the quiet ...a6 keeps White’s pieces off b5 and prepares ...e5 or ...e6. Learn the English Attack, 6.Bg5 and more.",
+  "moves": "e4 c5 Nf3 d6 d4 cxd4 Nxd4 Nf6 Nc3 a6",
+  "variations": 31
+ },
+ {
+  "id": "dragon",
+  "name": "Sicilian Dragon",
+  "side": "black",
+  "group": "Sicilian Defence (Black)",
+  "description": "Black fianchettoes the bishop on the long diagonal, the “Dragon”. Expect opposite-side castling and races.",
+  "moves": "e4 c5 Nf3 d6 d4 cxd4 Nxd4 Nf6 Nc3 g6",
+  "variations": 21
+ },
+ {
+  "id": "sveshnikov",
+  "name": "Sicilian Sveshnikov",
+  "side": "black",
+  "group": "Sicilian Defence (Black)",
+  "description": "Black plays ...e5, accepting a hole on d5 for active piece play and the bishop pair.",
+  "moves": "e4 c5 Nf3 Nc6 d4 cxd4 Nxd4 Nf6 Nc3 e5",
+  "variations": 35
+ },
+ {
+  "id": "accelerated-dragon",
+  "name": "Accelerated Dragon",
+  "side": "black",
+  "group": "Sicilian Defence (Black)",
+  "description": "A Dragon setup without ...d6, so Black can free the position with ...d5 in one move.",
+  "moves": "e4 c5 Nf3 Nc6 d4 cxd4 Nxd4 g6",
+  "variations": 23
+ },
+ {
+  "id": "taimanov",
+  "name": "Sicilian Taimanov",
+  "side": "black",
+  "group": "Sicilian Defence (Black)",
+  "description": "A flexible Sicilian with ...e6 and ...Nc6, keeping options for ...a6, ...Qc7 and ...Nf6.",
+  "moves": "e4 c5 Nf3 e6 d4 cxd4 Nxd4 Nc6",
+  "variations": 46
+ },
+ {
+  "id": "kan",
+  "name": "Sicilian Kan",
+  "side": "black",
+  "group": "Sicilian Defence (Black)",
+  "description": "Black plays ...e6 and ...a6, keeping the knights home and the setup flexible.",
+  "moves": "e4 c5 Nf3 e6 d4 cxd4 Nxd4 a6",
+  "variations": 50
+ },
+ {
+  "id": "anti-sicilians",
+  "name": "Anti-Sicilians as Black",
+  "side": "black",
+  "group": "Sicilian Defence (Black)",
+  "description": "What to do when White avoids the Open Sicilian: the Alapin, Closed, Grand Prix, Smith-Morra and other second moves.",
+  "moves": "e4 c5",
+  "variations": 49
+ },
+ {
+  "id": "two-knights",
+  "name": "Two Knights Defence",
+  "side": "black",
+  "group": "Defences to 1.e4 e5 (Black)",
+  "description": "Black counterattacks e4 against the Italian. Learn to survive the Fried Liver and handle 4.d3.",
+  "moves": "e4 e5 Nf3 Nc6 Bc4 Nf6",
+  "variations": 23
+ },
+ {
+  "id": "giuoco-piano-black",
+  "name": "Giuoco Piano as Black",
+  "side": "black",
+  "group": "Defences to 1.e4 e5 (Black)",
+  "description": "The classical answer to the Italian: develop the bishop to c5 and meet c3 with ...Nf6.",
+  "moves": "e4 e5 Nf3 Nc6 Bc4 Bc5",
+  "variations": 32
+ },
+ {
+  "id": "berlin",
+  "name": "Berlin Defence",
+  "side": "black",
+  "group": "Defences to 1.e4 e5 (Black)",
+  "description": "The “Berlin Wall”: a super-solid answer to the Ruy Lopez that counterattacks e4.",
+  "moves": "e4 e5 Nf3 Nc6 Bb5 Nf6",
+  "variations": 20
+ },
+ {
+  "id": "morphy-defence",
+  "name": "Ruy Lopez Morphy Defence",
+  "side": "black",
+  "group": "Defences to 1.e4 e5 (Black)",
+  "description": "The main line against the Ruy Lopez: ask the bishop with ...a6 and build the closed Spanish structures.",
+  "moves": "e4 e5 Nf3 Nc6 Bb5 a6",
+  "variations": 23
+ },
+ {
+  "id": "petrov",
+  "name": "Petrov Defence",
+  "side": "black",
+  "group": "Defences to 1.e4 e5 (Black)",
+  "description": "Black mirrors White and counterattacks e4. Solid and symmetrical, but beware the Stafford-like traps.",
+  "moves": "e4 e5 Nf3 Nf6",
+  "variations": 29
+ },
+ {
+  "id": "scotch-black",
+  "name": "Scotch Game as Black",
+  "side": "black",
+  "group": "Defences to 1.e4 e5 (Black)",
+  "description": "Take on d4 and develop quickly. Learn the Classical (...Bc5) and Mieses (...Nf6) answers.",
+  "moves": "e4 e5 Nf3 Nc6 d4",
+  "variations": 27
+ },
+ {
+  "id": "qgd",
+  "name": "Queen’s Gambit Declined",
+  "side": "black",
+  "group": "Defences to 1.d4 (Black)",
+  "description": "Black holds d5 with ...e6. Classical and solid: learn the Orthodox, Exchange, Ragozin-style and Catalan-like lines.",
+  "moves": "d4 d5 c4 e6",
+  "variations": 40
+ },
+ {
+  "id": "qga",
+  "name": "Queen’s Gambit Accepted",
+  "side": "black",
+  "group": "Defences to 1.d4 (Black)",
+  "description": "Black takes the pawn and gives it back later in exchange for free development and play against White’s center.",
+  "moves": "d4 d5 c4 dxc4",
+  "variations": 29
+ },
+ {
+  "id": "slav",
+  "name": "Slav Defence",
+  "side": "black",
+  "group": "Defences to 1.d4 (Black)",
+  "description": "Black supports d5 with ...c6, keeping the light-squared bishop free to come to f5 or g4.",
+  "moves": "d4 d5 c4 c6",
+  "variations": 29
+ },
+ {
+  "id": "semi-slav",
+  "name": "Semi-Slav Defence",
+  "side": "black",
+  "group": "Defences to 1.d4 (Black)",
+  "description": "Black combines ...c6 and ...e6, a rock-solid triangle with sharp ideas like the Meran and Botvinnik.",
+  "moves": "d4 d5 c4 c6 Nf3 Nf6 Nc3 e6",
+  "variations": 58
+ },
+ {
+  "id": "kings-indian",
+  "name": "King’s Indian Defence",
+  "side": "black",
+  "group": "Defences to 1.d4 (Black)",
+  "description": "Black lets White build a big center, then strikes back with ...e5 or ...c5 and often attacks on the kingside.",
+  "moves": "d4 Nf6 c4 g6 Nc3 Bg7",
+  "variations": 30
+ },
+ {
+  "id": "grunfeld",
+  "name": "Grünfeld Defence",
+  "side": "black",
+  "group": "Defences to 1.d4 (Black)",
+  "description": "Black hits the center with ...d5, trades knights and pressures the d4 pawn with the bishop on g7.",
+  "moves": "d4 Nf6 c4 g6 Nc3 d5",
+  "variations": 27
+ },
+ {
+  "id": "nimzo-indian",
+  "name": "Nimzo-Indian Defence",
+  "side": "black",
+  "group": "Defences to 1.d4 (Black)",
+  "description": "Black pins the c3 knight to fight for e4, often giving up the bishop pair to double White’s pawns.",
+  "moves": "d4 Nf6 c4 e6 Nc3 Bb4",
+  "variations": 20
+ },
+ {
+  "id": "queens-indian",
+  "name": "Queen’s Indian Defence",
+  "side": "black",
+  "group": "Defences to 1.d4 (Black)",
+  "description": "Black fianchettoes the queen’s bishop to control e4 and the long diagonal. Solid and strategic.",
+  "moves": "d4 Nf6 c4 e6 Nf3 b6",
+  "variations": 33
+ },
+ {
+  "id": "bogo-indian",
+  "name": "Bogo-Indian Defence",
+  "side": "black",
+  "group": "Defences to 1.d4 (Black)",
+  "description": "A Nimzo-Indian cousin: Black checks with the bishop to disrupt White’s development.",
+  "moves": "d4 Nf6 c4 e6 Nf3 Bb4+",
+  "variations": 25
+ },
+ {
+  "id": "dutch",
+  "name": "Dutch Defence",
+  "side": "black",
+  "group": "Defences to 1.d4 (Black)",
+  "description": "Black grabs e4 with the f-pawn and plays for a kingside attack. Learn the Leningrad, Stonewall and Classical ideas.",
+  "moves": "d4 f5",
+  "variations": 66
+ },
+ {
+  "id": "benoni",
+  "name": "Modern Benoni",
+  "side": "black",
+  "group": "Defences to 1.d4 (Black)",
+  "description": "An unbalanced defence: Black gets a queenside majority and active pieces in return for space.",
+  "moves": "d4 Nf6 c4 c5 d5 e6",
+  "variations": 21
+ },
+ {
+  "id": "benko",
+  "name": "Benko Gambit",
+  "side": "black",
+  "group": "Defences to 1.d4 (Black)",
+  "description": "Black gives a pawn for long-lasting pressure on the a- and b-files.",
+  "moves": "d4 Nf6 c4 c5 d5 b5",
+  "variations": 25
+ },
+ {
+  "id": "budapest",
+  "name": "Budapest Gambit",
+  "side": "black",
+  "group": "Defences to 1.d4 (Black)",
+  "description": "A surprise gambit: Black hits d4 at once and usually wins the pawn back with active pieces.",
+  "moves": "d4 Nf6 c4 e5",
+  "variations": 30
+ },
+ {
+  "id": "tarrasch",
+  "name": "Tarrasch Defence",
+  "side": "black",
+  "group": "Defences to 1.d4 (Black)",
+  "description": "Black accepts an isolated d-pawn in return for free, active piece play.",
+  "moves": "d4 d5 c4 e6 Nc3 c5",
+  "variations": 21
+ },
+ {
+  "id": "london-black",
+  "name": "Against the London",
+  "side": "black",
+  "group": "Defences to 1.d4 (Black)",
+  "description": "How to meet the London System with ...c5, ...Nc6 and ...Qb6, hitting b2 and d4.",
+  "moves": "d4 d5 Bf4",
+  "variations": 23
+ }
+]

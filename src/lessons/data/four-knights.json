@@ -1,0 +1,200 @@
+{
+  "id": "four-knights",
+  "name": "Four Knights Game",
+  "side": "white",
+  "group": "Open games (1.e4 e5) for White",
+  "description": "A classical, solid opening where both sides develop their knights first. Learn the Spanish and Scotch Four Knights ideas.",
+  "moves": "e4 e5 Nf3 Nc6 Nc3 Nf6",
+  "variations": [
+    {
+      "name": "Four Knights Game: Spanish Variation, Symmetrical Variation",
+      "eco": "C49",
+      "moves": "e4 e5 Nf3 Nc6 Nc3 Nf6 Bb5 Bb4 O-O O-O d3 d6 Bg5 Bxc3 bxc3 Qe7 Re1 Nd8 d4 Bg4 h3"
+    },
+    {
+      "name": "Four Knights Game: Spanish Variation, Symmetrical Variation (8...Ne7)",
+      "eco": "C49",
+      "moves": "e4 e5 Nf3 Nc6 Nc3 Nf6 Bb5 Bb4 O-O O-O d3 d6 Bg5 Bxc3 bxc3 Ne7 Bxf6 gxf6 Nh4 Kh8 Bc4"
+    },
+    {
+      "name": "Four Knights Game: Spanish Variation, Symmetrical Variation (8...a6)",
+      "eco": "C49",
+      "moves": "e4 e5 Nf3 Nc6 Nc3 Nf6 Bb5 Bb4 O-O O-O d3 d6 Bg5 Bxc3 bxc3 a6 Bxc6 bxc6 Bh4 h6 h3"
+    },
+    {
+      "name": "Four Knights Game: Spanish Variation, Symmetrical Variation (8...h6)",
+      "eco": "C49",
+      "moves": "e4 e5 Nf3 Nc6 Nc3 Nf6 Bb5 Bb4 O-O O-O d3 d6 Bg5 Bxc3 bxc3 h6 Bh4 Bg4 h3 Bxf3 Qxf3"
+    },
+    {
+      "name": "Four Knights Game: Spanish Variation, Symmetrical Variation, Blake Variation",
+      "eco": "C49",
+      "moves": "e4 e5 Nf3 Nc6 Nc3 Nf6 Bb5 Bb4 O-O O-O d3 d6 Bg5 Ne7 Nh4 c6 Bc4 d5 Bb3 Qd6 f4"
+    },
+    {
+      "name": "Four Knights Game: Spanish Variation, Symmetrical Variation (7...Ne7)",
+      "eco": "C49",
+      "moves": "e4 e5 Nf3 Nc6 Nc3 Nf6 Bb5 Bb4 O-O O-O d3 d6 Bg5 Ne7 Nh4 Bxc3 bxc3 Ng6 Bc4 Nxh4 Bxh4"
+    },
+    {
+      "name": "Four Knights Game: Spanish Variation, Symmetrical Variation (8...Bg4)",
+      "eco": "C49",
+      "moves": "e4 e5 Nf3 Nc6 Nc3 Nf6 Bb5 Bb4 O-O O-O d3 d6 Bg5 Ne7 Nh4 Bg4 Ne2 Ne8 Bc4 Qd7 c3"
+    },
+    {
+      "name": "Four Knights Game: Spanish Variation, Symmetrical Variation, Tarrasch Variation",
+      "eco": "C49",
+      "moves": "e4 e5 Nf3 Nc6 Nc3 Nf6 Bb5 Bb4 O-O O-O d3 d6 Bg5 Be6 Nd5 Bxd5 exd5 Nd4 Nxd4 exd4 a3"
+    },
+    {
+      "name": "Four Knights Game: Spanish Variation, Symmetrical Variation, Tarrasch Variation (9...a6)",
+      "eco": "C49",
+      "moves": "e4 e5 Nf3 Nc6 Nc3 Nf6 Bb5 Bb4 O-O O-O d3 d6 Bg5 Be6 Nd5 Bxd5 exd5 a6 Bxc6 bxc6 c3"
+    },
+    {
+      "name": "Four Knights Game: Spanish Variation, Symmetrical Variation, Tarrasch Variation (9...Nb8)",
+      "eco": "C49",
+      "moves": "e4 e5 Nf3 Nc6 Nc3 Nf6 Bb5 Bb4 O-O O-O d3 d6 Bg5 Be6 Nd5 Bxd5 exd5 Nb8 c3 Ba5 d4"
+    },
+    {
+      "name": "Four Knights Game: Spanish Variation, Svenonius Variation",
+      "eco": "C49",
+      "moves": "e4 e5 Nf3 Nc6 Nc3 Nf6 Bb5 Bb4 O-O O-O d3 Bxc3 bxc3 d5 exd5 Qxd5 c4 Qd6 Bxc6 bxc6 Bb2"
+    },
+    {
+      "name": "Four Knights Game: Spanish Variation, Svenonius Variation (8...Nxd5)",
+      "eco": "C49",
+      "moves": "e4 e5 Nf3 Nc6 Nc3 Nf6 Bb5 Bb4 O-O O-O d3 Bxc3 bxc3 d5 exd5 Nxd5 Bxc6 bxc6 c4 Nf6 Bb2"
+    },
+    {
+      "name": "Four Knights Game: Spanish Variation, Janowski Variation",
+      "eco": "C49",
+      "moves": "e4 e5 Nf3 Nc6 Nc3 Nf6 Bb5 Bb4 O-O O-O d3 Bxc3 bxc3 d6 Re1 a6 Bxc6 bxc6 Nd2 Bg4 f3"
+    },
+    {
+      "name": "Four Knights Game: Spanish Variation, Janowski Variation (8...Ne7)",
+      "eco": "C49",
+      "moves": "e4 e5 Nf3 Nc6 Nc3 Nf6 Bb5 Bb4 O-O O-O d3 Bxc3 bxc3 d6 Re1 Ne7 d4 Bd7 a4 Ng6 Bg5"
+    },
+    {
+      "name": "Four Knights Game: Spanish Variation, Janowski Variation (8...Bd7)",
+      "eco": "C49",
+      "moves": "e4 e5 Nf3 Nc6 Nc3 Nf6 Bb5 Bb4 O-O O-O d3 Bxc3 bxc3 d6 Re1 Bd7 d4 Ne7 a4 Ng6 Bg5"
+    },
+    {
+      "name": "Four Knights Game: Spanish Variation, Alatortsev Variation",
+      "eco": "C49",
+      "moves": "e4 e5 Nf3 Nc6 Nc3 Nf6 Bb5 Bb4 O-O O-O d3 Qe7 Ne2 d5 exd5 Nxd5 Ng3 Nd4 Nxd4 exd4 a3"
+    },
+    {
+      "name": "Four Knights Game: Spanish Variation, Double Spanish",
+      "eco": "C49",
+      "moves": "e4 e5 Nf3 Nc6 Nc3 Nf6 Bb5 Bb4 O-O O-O d3 Qe7 Ne2 a6 Bxc6 dxc6 Ng3 Ne8 h3 f6 Be3"
+    },
+    {
+      "name": "Four Knights Game: Spanish Variation, Double Spanish (7...Ba5)",
+      "eco": "C49",
+      "moves": "e4 e5 Nf3 Nc6 Nc3 Nf6 Bb5 Bb4 O-O O-O d3 Qe7 Ne2 Ba5 Ng3 d6 c3 Nd8 d4 c6 Bd3"
+    },
+    {
+      "name": "Four Knights Game: Spanish Variation, Double Spanish (5...Bd6)",
+      "eco": "C49",
+      "moves": "e4 e5 Nf3 Nc6 Nc3 Nf6 Bb5 Bb4 O-O Bd6 d4 Nxd4 Nxd4 exd4 Re1 dxc3 e5 Bxe5 Rxe5+ Kf8 Qf3"
+    },
+    {
+      "name": "Four Knights Game: Spanish Variation, Double Spanish (6...exd4)",
+      "eco": "C49",
+      "moves": "e4 e5 Nf3 Nc6 Nc3 Nf6 Bb5 Bb4 O-O Bd6 d4 exd4 Nd5 a6 Nxf6+ gxf6 Bc4 Bc5 Bd5 Qe7 Bf4"
+    },
+    {
+      "name": "Four Knights Game: Spanish Variation, Double Spanish (5...Bxc3)",
+      "eco": "C49",
+      "moves": "e4 e5 Nf3 Nc6 Nc3 Nf6 Bb5 Bb4 O-O Bxc3 bxc3 O-O Re1 d6 d4 Bg4 h3 Bh5 a4 Re8 g4"
+    },
+    {
+      "name": "Four Knights Game: Spanish Variation, Double Spanish (6...d6)",
+      "eco": "C49",
+      "moves": "e4 e5 Nf3 Nc6 Nc3 Nf6 Bb5 Bb4 O-O Bxc3 bxc3 d6 d4 O-O Re1 Bg4 h3 Bh5 a4 Re8 g4"
+    },
+    {
+      "name": "Four Knights Game: Spanish Variation, Double Spanish (6...Qe7)",
+      "eco": "C49",
+      "moves": "e4 e5 Nf3 Nc6 Nc3 Nf6 Bb5 Bb4 O-O Bxc3 bxc3 Qe7 Re1 a6 Bf1 O-O a4 a5 d4 d6 h3"
+    },
+    {
+      "name": "Four Knights Game: Spanish Variation, Rubinstein Variation Accepted",
+      "eco": "C48",
+      "moves": "e4 e5 Nf3 Nc6 Nc3 Nf6 Bb5 Nd4 Nxd4 exd4 e5 dxc3 exf6 Qxf6 dxc3 Bc5 Qe2+ Qe6 Bf4 c6 Bd3"
+    },
+    {
+      "name": "Four Knights Game: Spanish Variation, Rubinstein Variation Accepted (8...Qe5+)",
+      "eco": "C48",
+      "moves": "e4 e5 Nf3 Nc6 Nc3 Nf6 Bb5 Nd4 Nxd4 exd4 e5 dxc3 exf6 Qxf6 dxc3 Qe5+ Be2 b6 O-O Bb7 Ba6"
+    },
+    {
+      "name": "Four Knights Game: Spanish Variation, Rubinstein Variation Accepted (8...Be7)",
+      "eco": "C48",
+      "moves": "e4 e5 Nf3 Nc6 Nc3 Nf6 Bb5 Nd4 Nxd4 exd4 e5 dxc3 exf6 Qxf6 dxc3 Be7 Bd3 b6 Be4 c6 Be3"
+    },
+    {
+      "name": "Four Knights Game: Spanish Variation, Rubinstein Variation Accepted (10...Qe6)",
+      "eco": "C48",
+      "moves": "e4 e5 Nf3 Nc6 Nc3 Nf6 Bb5 Nd4 Nxd4 exd4 e5 dxc3 exf6 Qxf6 dxc3 Be7 Bd3 b6 Be4 Qe6 Qd5"
+    },
+    {
+      "name": "Four Knights Game: Spanish Variation, Rubinstein Variation Accepted (6...c6)",
+      "eco": "C48",
+      "moves": "e4 e5 Nf3 Nc6 Nc3 Nf6 Bb5 Nd4 Nxd4 exd4 e5 c6 exf6 Qxf6 Ne4 Qe7 O-O d5 Ng3 cxb5 d3"
+    },
+    {
+      "name": "Four Knights Game: Spanish Variation, Spielmann Variation",
+      "eco": "C48",
+      "moves": "e4 e5 Nf3 Nc6 Nc3 Nf6 Bb5 a6 Bxc6 dxc6 Nxe5 Nxe4 Nxe4 Qd4 O-O Qxe5 Re1 Be6 d4 Qd5 Bg5"
+    },
+    {
+      "name": "Four Knights Game: Spanish Variation, Ranken Variation",
+      "eco": "C48",
+      "moves": "e4 e5 Nf3 Nc6 Nc3 Nf6 Bb5 a6 Bxc6 dxc6 Nxe5 Nxe4 Nxe4 Qd4 O-O Qxe5 Re1 Be7 d4 Qf5 Bg5"
+    },
+    {
+      "name": "Four Knights Game: Spanish Variation, Spielmann Variation (7...Qd5)",
+      "eco": "C48",
+      "moves": "e4 e5 Nf3 Nc6 Nc3 Nf6 Bb5 a6 Bxc6 dxc6 Nxe5 Nxe4 Nxe4 Qd5 O-O Qxe5 Re1 Be6 d4 Qd5 Bg5"
+    },
+    {
+      "name": "Four Knights Game: Spanish Variation, Bardeleben Variation",
+      "eco": "C48",
+      "moves": "e4 e5 Nf3 Nc6 Nc3 Nf6 Bb5 Bc5 O-O O-O Nxe5 Nxe5 d4 Bd6 f4 Nc6 e5 Bb4 exf6 Qxf6 a3"
+    },
+    {
+      "name": "Four Knights Game: Spanish Variation, Rubinstein Variation, Marshall Variation",
+      "eco": "C48",
+      "moves": "e4 e5 Nf3 Nc6 Nc3 Nf6 Bb5 Bc5 O-O O-O Nxe5 Nd4 Bc4 d6 Nf3 Bg4 Be2 Nxe2+ Qxe2 Bh5 d3"
+    },
+    {
+      "name": "Four Knights Game: Spanish Variation, Classical Variation",
+      "eco": "C48",
+      "moves": "e4 e5 Nf3 Nc6 Nc3 Nf6 Bb5 Bc5 O-O O-O Nxe5 Re8 Nf3 Nxe4 Nxe4 Rxe4 d3 Re8 d4 Bf8 d5"
+    },
+    {
+      "name": "Four Knights Game: Spanish Variation, Classical Variation (5...d6)",
+      "eco": "C48",
+      "moves": "e4 e5 Nf3 Nc6 Nc3 Nf6 Bb5 Bc5 O-O d6 d4 exd4 Nxd4 Bd7 Nb3 Bb6 Bg5 a6 Bxc6 Bxc6 Qf3"
+    },
+    {
+      "name": "Four Knights Game: Spanish Variation, Classical Variation (6...Bxd4)",
+      "eco": "C48",
+      "moves": "e4 e5 Nf3 Nc6 Nc3 Nf6 Bb5 Bc5 O-O d6 d4 Bxd4 Nxd4 exd4 Qxd4 O-O Bxc6 bxc6 Bg5 c5 Qd3"
+    },
+    {
+      "name": "Four Knights Game: Spanish Variation, Rubinstein Variation, Marshall Variation (5...Nd4)",
+      "eco": "C48",
+      "moves": "e4 e5 Nf3 Nc6 Nc3 Nf6 Bb5 Bc5 O-O Nd4 Nxe5 O-O Bc4 d6 Nf3 Bg4 Be2 Nxe2+ Qxe2 Bh5 d3"
+    },
+    {
+      "name": "Four Knights Game: Spanish Variation, Classical Variation (5...Nd4)",
+      "eco": "C48",
+      "moves": "e4 e5 Nf3 Nc6 Nc3 Nf6 Bb5 Bc5 O-O Nd4 Nxe5 c6 Nd3 Bb6 e5 Ng8 Bc4 Nh6 Kh1 Bc7 Ne4"
+    }
+  ]
+}

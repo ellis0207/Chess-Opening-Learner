@@ -15,6 +15,7 @@ import { useLive } from '../progress/useLive'
 const loadAll = async () => ({
   cards: await db.cards.toArray(),
   activity: await db.activity.toArray(),
+  variations: await db.lessons.count(),
   now: Date.now(),
 })
 
@@ -72,6 +73,7 @@ export function ProgressView({
   }
 
   const tiles = [
+    { label: 'Variations learned', value: data.variations },
     { label: 'Due now', value: summary.due },
     { label: 'Positions learned', value: summary.learned },
     {

@@ -12,6 +12,9 @@ export type Card = Schedule & {
   epd: string
   line: string[]
   lastReviewed: number
+  // The moves that count here, for positions learned in lessons, which can
+  // go past the end of the opening book.
+  moves?: string[]
 }
 
 // A move in one of your repertoires. Where it is your move (`side` to move)
@@ -27,6 +30,13 @@ export type RepertoireMove = {
   note?: string
 }
 
+// A lesson variation you have played through without mistakes or hints.
+export type LessonDone = {
+  id: string // lesson id and the variation's moves, see variationKey
+  lesson: string
+  completedAt: number
+}
+
 // Reviews per day, for streaks and accuracy.
 export type Activity = {
   date: string // YYYY-MM-DD in local time
@@ -38,6 +48,7 @@ class ProgressDB extends Dexie {
   cards!: EntityTable<Card, 'id'>
   activity!: EntityTable<Activity, 'date'>
   repertoire!: EntityTable<RepertoireMove, 'id'>
+  lessons!: EntityTable<LessonDone, 'id'>
 
   constructor() {
     super('chess-opening-learner')
@@ -47,6 +58,9 @@ class ProgressDB extends Dexie {
     })
     this.version(2).stores({
       repertoire: 'id, side, [side+epd]',
+    })
+    this.version(3).stores({
+      lessons: 'id, lesson',
     })
   }
 }
@@ -70,6 +84,7 @@ export async function recordReview(
   line: string[],
   passed: boolean,
   now = Date.now(),
+  move?: string, // the lesson move here, if this comes from a lesson
 ): Promise<void> {
   const position = epd(replay(line))
   const id = cardId(side, position)
@@ -83,6 +98,13 @@ export async function recordReview(
       epd: position,
       line: prev?.line ?? line,
       lastReviewed: now,
+      ...(move || prev?.moves
+        ? {
+            moves: [
+              ...new Set([...(prev?.moves ?? []), ...(move ? [move] : [])]),
+            ],
+          }
+        : {}),
     })
     const day = await db.activity.get(date)
     await db.activity.put({
@@ -95,21 +117,23 @@ export async function recordReview(
 
 export type Backup = {
   app: 'chess-opening-learner'
-  version: 2
+  version: 3
   exportedAt: string
   cards: Card[]
   activity: Activity[]
   repertoire: RepertoireMove[] // added in version 2
+  lessons: LessonDone[] // added in version 3
 }
 
 export async function exportProgress(): Promise<Backup> {
   return {
     app: 'chess-opening-learner',
-    version: 2,
+    version: 3,
     exportedAt: new Date().toISOString(),
     cards: await db.cards.toArray(),
     activity: await db.activity.toArray(),
     repertoire: await db.repertoire.toArray(),
+    lessons: await db.lessons.toArray(),
   }
 }
 
@@ -123,19 +147,42 @@ export async function importProgress(data: unknown): Promise<void> {
   ) {
     throw new Error('This file is not a Chess Opening Learner backup.')
   }
-  await db.transaction('rw', db.cards, db.activity, db.repertoire, async () => {
-    await db.cards.clear()
-    await db.activity.clear()
-    await db.repertoire.clear()
-    await db.cards.bulkPut(backup.cards!)
-    await db.activity.bulkPut(backup.activity!)
-    await db.repertoire.bulkPut(backup.repertoire ?? [])
-  })
+  await db.transaction(
+    'rw',
+    [db.cards, db.activity, db.repertoire, db.lessons],
+    async () => {
+      await db.cards.clear()
+      await db.activity.clear()
+      await db.repertoire.clear()
+      await db.lessons.clear()
+      await db.cards.bulkPut(backup.cards!)
+      await db.activity.bulkPut(backup.activity!)
+      await db.repertoire.bulkPut(backup.repertoire ?? [])
+      await db.lessons.bulkPut(backup.lessons ?? [])
+    },
+  )
 }
 
 export async function resetProgress(): Promise<void> {
-  await db.transaction('rw', db.cards, db.activity, async () => {
+  await db.transaction('rw', db.cards, db.activity, db.lessons, async () => {
     await db.cards.clear()
     await db.activity.clear()
+    await db.lessons.clear()
   })
+}
+
+// Marks a lesson variation as learned, and schedules each of your moves in it
+// for review.
+export async function completeVariation(
+  id: string,
+  lesson: string,
+  side: Color,
+  moves: string[],
+  now = Date.now(),
+): Promise<void> {
+  await db.lessons.put({ id, lesson, completedAt: now })
+  const yours = side === 'white' ? 0 : 1
+  for (let ply = yours; ply < moves.length; ply += 2) {
+    await recordReview(side, moves.slice(0, ply), true, now, moves[ply])
+  }
 }

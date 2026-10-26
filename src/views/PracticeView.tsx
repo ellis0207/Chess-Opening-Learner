@@ -1,4 +1,3 @@
-import type { DrawShape } from 'chessground/draw'
 import type { Config } from 'chessground/config'
 import type { Color, Key } from 'chessground/types'
 import { useCallback, useEffect, useMemo, useState } from 'react'
@@ -8,7 +7,7 @@ import { MoveList } from '../components/MoveList'
 import {
   lastMoveText,
   legalDests,
-  moveSquares,
+  hintSquares,
   playMove,
   replay,
   turnColor,
@@ -131,14 +130,12 @@ export function PracticeView({
       const san = playMove(replay(drillLine(drill)), from, to)
       if (san) submit(san)
     }
-    const arrows: DrawShape[] = hinting
-      ? book.flatMap((edge) => {
-          const squares = moveSquares(game, edge.san)
-          return squares
-            ? [{ orig: squares.from, dest: squares.to, brush: 'green' }]
-            : []
-        })
-      : []
+    const hints = hinting
+      ? hintSquares(
+          game,
+          book.map((e) => e.san),
+        )
+      : new Map()
     return {
       fen: game.fen(),
       orientation: drill.side,
@@ -151,7 +148,7 @@ export function PracticeView({
         dests: legalDests(game),
         events: { after: onMove },
       },
-      drawable: { autoShapes: arrows },
+      highlight: { custom: hints },
     }
   }, [submit, drill, game, book, hinting, yourTurn, over])
 
@@ -246,8 +243,8 @@ export function PracticeView({
             <p className="wrong">
               <strong>{drill.feedback.san}</strong>{' '}
               {fromRepertoire
-                ? "isn't your repertoire move. Try again: the arrow shows it."
-                : "isn't book here. Try again: the arrows show the book moves."}
+                ? "isn't your repertoire move. Try again: the highlighted piece plays it."
+                : "isn't book here. Try again: the highlighted pieces play the book moves."}
             </p>
           ) : drill.feedback?.kind === 'correct' ? (
             <>

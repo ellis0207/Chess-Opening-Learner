@@ -178,3 +178,18 @@ export async function limitedMove(
   ])
   return bestmove
 }
+
+// The best line in a position, searched to `depth` or for at most
+// `movetime` ms, whichever comes first.
+export async function evaluate(
+  fen: string,
+  { depth, movetime }: { depth: number; movetime: number },
+): Promise<EngineLine | undefined> {
+  const { lines } = await search([
+    'setoption name UCI_LimitStrength value false',
+    'setoption name MultiPV value 1',
+    `position fen ${fen}`,
+    `go depth ${depth} movetime ${movetime}`,
+  ])
+  return lines[0]
+}

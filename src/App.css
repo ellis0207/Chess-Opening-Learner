@@ -876,3 +876,176 @@ cg-board square.preview {
   align-self: flex-start;
   margin-top: 4px;
 }
+
+.board-row {
+  display: flex;
+  gap: 6px;
+}
+
+.with-eval .board {
+  width: min(560px, calc(100vw - 70px));
+}
+
+.eval-bar {
+  position: relative;
+  flex: 0 0 24px;
+  display: flex;
+  flex-direction: column-reverse;
+  overflow: hidden;
+  border-radius: 3px;
+  background: #403d39;
+}
+
+.eval-bar.flipped {
+  flex-direction: column;
+}
+
+.eval-white {
+  background: #f0f0f0;
+  transition: height 0.3s ease;
+}
+
+.eval-text {
+  position: absolute;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 0.65rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+/* The score sits at the leading side's end of the bar. */
+.eval-text.on-white {
+  bottom: 4px;
+  color: #403d39;
+}
+
+.eval-text.on-black {
+  top: 4px;
+  color: #f0f0f0;
+}
+
+.flipped .eval-text.on-white {
+  top: 4px;
+  bottom: auto;
+}
+
+.flipped .eval-text.on-black {
+  bottom: 4px;
+  top: auto;
+}
+
+.review h3 {
+  margin: 4px 0 8px;
+  font-size: 1rem;
+}
+
+.review progress {
+  display: block;
+  width: 100%;
+  margin-top: 6px;
+  accent-color: var(--accent);
+}
+
+.review-summary {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+}
+
+.review-summary th,
+.review-summary td {
+  padding: 2px 4px;
+}
+
+.review-summary th[scope='row'] {
+  text-align: left;
+  font-weight: 400;
+}
+
+.review-summary td,
+.review-summary thead th {
+  text-align: center;
+  width: 25%;
+}
+
+.review-summary .accuracy td {
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+
+.review-move {
+  padding: 8px 10px;
+  margin-bottom: 8px;
+  border-radius: 6px;
+  background: var(--button-bg);
+}
+
+.review-move p {
+  margin: 0 0 4px;
+}
+
+.review-move p:last-child {
+  margin: 0;
+}
+
+.class-badge {
+  display: inline-grid;
+  place-items: center;
+  min-width: 1.35em;
+  height: 1.35em;
+  margin-right: 4px;
+  padding: 0 2px;
+  border-radius: 50%;
+  font-family: system-ui, sans-serif;
+  font-size: 0.7rem;
+  font-weight: 800;
+  line-height: 1;
+  color: #fff;
+  vertical-align: middle;
+}
+
+.class-badge.book {
+  background: #a88865;
+}
+.class-badge.best {
+  background: #81b64c;
+}
+.class-badge.excellent {
+  background: #5ea83a;
+}
+.class-badge.good {
+  background: #77915f;
+}
+.class-badge.inaccuracy {
+  background: #e6b417;
+}
+.class-badge.mistake {
+  background: #f08a3c;
+}
+.class-badge.blunder {
+  background: #e0362b;
+}
+
+/* The square a reviewed move went to, tinted by its rating. */
+cg-board square.review-book {
+  background: rgba(168, 136, 101, 0.55);
+}
+cg-board square.review-best,
+cg-board square.review-excellent {
+  background: rgba(129, 182, 76, 0.55);
+}
+cg-board square.review-good {
+  background: rgba(119, 145, 95, 0.55);
+}
+cg-board square.review-inaccuracy {
+  background: rgba(230, 180, 23, 0.55);
+}
+cg-board square.review-mistake {
+  background: rgba(240, 138, 60, 0.55);
+}
+cg-board square.review-blunder {
+  background: rgba(224, 54, 43, 0.6);
+}

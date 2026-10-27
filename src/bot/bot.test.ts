@@ -44,7 +44,7 @@ describe('weakStyle', () => {
     const weak = weakStyle(300)
     const strong = weakStyle(1300)
     expect(weak.blunder).toBeGreaterThan(strong.blunder)
-    expect(weak.temperature).toBeGreaterThan(strong.temperature)
+    expect(weak.blunderMax).toBeGreaterThan(strong.blunderMax)
     expect(weak.depth).toBeLessThan(strong.depth)
   })
 })
@@ -69,14 +69,17 @@ describe('pickWeakMove', () => {
 
   it('mostly plays the best move at 1300', () => {
     const counts = tally(1300)
-    expect(counts.get('d1h5')!).toBeGreaterThan(1800)
+    expect(counts.get('d1h5')!).toBeGreaterThan(1300)
   })
 
-  it('often plays worse moves at 300', () => {
-    const counts = tally(300)
-    expect(counts.get('d1h5')!).toBeLessThan(1600)
-    expect(counts.get('g1f3')!).toBeGreaterThan(100)
-    expect(counts.get('a2a3')!).toBeGreaterThan(50)
+  it('makes more mistakes at 300', () => {
+    expect(tally(300).get('g1f3')!).toBeGreaterThan(tally(1300).get('g1f3')!)
+  })
+
+  it('never throws away more than its worst blunder', () => {
+    // f2f3 loses 1200 centipawns, more than even a 300 bot's blunders.
+    expect(tally(300).get('f2f3')).toBeUndefined()
+    expect(tally(300).get('a2a3')).toBeUndefined()
   })
 
   it('falls back to a legal move without engine lines', () => {

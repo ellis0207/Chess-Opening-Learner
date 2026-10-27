@@ -1,6 +1,6 @@
 import type { Chess } from 'chess.js'
 import type { Color } from 'chessground/types'
-import type { EngineLine } from '../engine/types'
+import type { EngineLine } from '../engine/types.ts'
 
 // Bot strengths, in steps of 100.
 export const MIN_ELO = 300
@@ -22,12 +22,18 @@ export function clampElo(elo: number): number {
   return Math.max(MIN_ELO, Math.min(MAX_ELO, stepped))
 }
 
-// How a bot below NATIVE_ELO plays, from 300 (weakest) to 1300.
+// How a bot below NATIVE_ELO plays, from 300 (weakest) to 1300. Like a
+// person at that level it mostly plays a reasonable move, now and then a
+// mistake, and occasionally a blunder; how bad a blunder can get, and how
+// deep it looks for tactics, grow with the level.
 export type WeakStyle = {
   depth: number // search depth of the candidate moves
   multipv: number // how many candidate moves it considers
-  blunder: number // chance of a random legal move instead
-  temperature: number // centipawns; higher picks worse moves more often
+  tolerance: number // centipawns a "reasonable" move may lose
+  mistake: number // chance of a mistake...
+  mistakeMax: number // ...losing up to this many centipawns
+  blunder: number // chance of a blunder...
+  blunderMax: number // ...losing up to this many centipawns
 }
 
 export function weakStyle(elo: number): WeakStyle {
@@ -36,20 +42,21 @@ export function weakStyle(elo: number): WeakStyle {
     Math.min(1, (elo - MIN_ELO) / (NATIVE_ELO - ELO_STEP - MIN_ELO)),
   )
   return {
-    depth: 2 + Math.round(4 * t),
-    multipv: 12,
-    blunder: 0.25 - 0.22 * t,
-    temperature: 350 - 270 * t,
+    depth: 3 + Math.round(4 * t),
+    multipv: 20,
+    tolerance: Math.round(100 - 40 * t),
+    mistake: 0.35 - 0.12 * t,
+    mistakeMax: 300,
+    blunder: 0.07 + 0.13 * (1 - t) ** 2,
+    blunderMax: Math.round(1000 - 500 * t),
   }
 }
 
-// Scores beyond this count the same, so a found mate is very likely but a
-// weak bot can still miss it.
+// Scores beyond this count the same, so missing a mate is one big blunder.
 const SCORE_CAP = 2000
 
-// Picks a weak bot's move: now and then any legal move, otherwise one of
-// the engine's candidates, worse ones less likely the stronger the bot.
-// `random` returns a number in [0, 1).
+// Picks a weak bot's move from the engine's candidates (or any legal move if
+// there are none). `random` returns a number in [0, 1).
 export function pickWeakMove(
   lines: EngineLine[],
   legal: string[],
@@ -57,19 +64,37 @@ export function pickWeakMove(
   random: () => number = Math.random,
 ): string {
   const moves = lines.filter((l) => l.pv.length)
-  if (!moves.length || random() < style.blunder)
-    return legal[Math.floor(random() * legal.length)]
+  if (!moves.length) return legal[Math.floor(random() * legal.length)]
   const capped = moves.map((l) =>
     Math.max(-SCORE_CAP, Math.min(SCORE_CAP, l.score)),
   )
   const best = Math.max(...capped)
-  const weights = capped.map((s) => Math.exp((s - best) / style.temperature))
-  let r = random() * weights.reduce((a, b) => a + b, 0)
-  for (let i = 0; i < moves.length; i++) {
-    r -= weights[i]
-    if (r < 0) return moves[i].pv[0]
+  const loss = capped.map((s) => best - s)
+
+  // Mistakes and blunders only when such a move is on offer; otherwise the
+  // bot plays a reasonable move after all.
+  const tiers = [
+    [0, style.tolerance],
+    [style.tolerance, style.mistakeMax],
+    [style.mistakeMax, style.blunderMax],
+  ]
+  const r = random()
+  let tier = r < style.blunder ? 2 : r < style.blunder + style.mistake ? 1 : 0
+  for (; tier > 0; tier--) {
+    const [lo, hi] = tiers[tier]
+    const pool = moves.filter((_, i) => loss[i] > lo && loss[i] <= hi)
+    if (pool.length) return pool[Math.floor(random() * pool.length)].pv[0]
   }
-  return moves[moves.length - 1].pv[0]
+  // A reasonable move, better ones more likely.
+  const weights = loss.map((l) =>
+    l <= style.tolerance ? Math.exp(-l / (style.tolerance / 2 + 1)) : 0,
+  )
+  let w = random() * weights.reduce((a, b) => a + b, 0)
+  for (let i = 0; i < moves.length; i++) {
+    w -= weights[i]
+    if (w < 0) return moves[i].pv[0]
+  }
+  return moves[loss.indexOf(0)].pv[0]
 }
 
 export type Result = {

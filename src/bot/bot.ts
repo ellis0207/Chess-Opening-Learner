@@ -92,6 +92,37 @@ export function gameResult(chess: Chess, you: Color): Result | null {
   return null
 }
 
+const VALUE: Record<string, number> = { p: 1, n: 3, b: 3, r: 5, q: 9, k: 0 }
+
+// A quick move without the engine, for when it can't answer in time: mates,
+// wins material, and avoids leaving the moved piece hanging. Returns SAN.
+export function quickMove(chess: Chess, random: () => number = Math.random) {
+  let best = { san: '', score: -Infinity }
+  for (const m of chess.moves({ verbose: true })) {
+    chess.move(m)
+    let score = random() * 0.3
+    if (chess.isCheckmate()) score += 1000
+    else if (chess.isDraw()) score -= 2
+    else {
+      score += VALUE[m.captured ?? 'k'] + VALUE[m.promotion ?? 'k']
+      if (chess.inCheck()) score += 0.2
+      const them = chess.turn()
+      const attackers = chess.attackers(m.to, them)
+      if (attackers.length) {
+        const piece = VALUE[m.promotion ?? m.piece]
+        const cheapest = Math.min(
+          ...attackers.map((sq) => VALUE[chess.get(sq)!.type] || 100),
+        )
+        const defended = chess.attackers(m.to, them === 'w' ? 'b' : 'w').length
+        score -= defended ? Math.max(0, piece - cheapest) : piece
+      }
+    }
+    chess.undo()
+    if (score > best.score) best = { san: m.san, score }
+  }
+  return best.san
+}
+
 // The UCI moves of every legal move in the position.
 export function legalUci(chess: Chess): string[] {
   return chess

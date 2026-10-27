@@ -21,11 +21,11 @@ import {
   type Result,
 } from '../bot/bot'
 import { botMove } from '../bot/move'
-import { warmUp } from '../engine/stockfish'
+import { engineLoaded, whenReady } from '../engine/stockfish'
 import { START, epd, openingFor, type OpeningTree } from '../openings/tree'
 
 // The bot takes at least this long per move, so its moves are easy to follow.
-const MIN_THINK_MS = 600
+const MIN_THINK_MS = 500
 
 const ELO_KEY = 'bot-elo'
 
@@ -85,7 +85,16 @@ export function PlayView({
   const [failure, setFailure] = useState<{ fen: string; message: string }>()
   const [retry, setRetry] = useState(0)
 
-  useEffect(warmUp, [])
+  // The engine is about 7 MB, so the first game waits for it to download.
+  const [engine, setEngine] = useState<'loading' | 'ready' | 'failed'>(() =>
+    engineLoaded() ? 'ready' : 'loading',
+  )
+  useEffect(() => {
+    whenReady().then(
+      () => setEngine('ready'),
+      () => setEngine('failed'),
+    )
+  }, [])
 
   const game = useMemo(() => replay(moves), [moves])
   const ending: Ending | null = useMemo(
@@ -254,9 +263,29 @@ export function PlayView({
                 </select>
               </label>
             </div>
-            <button type="button" className="primary" onClick={begin}>
-              Start game
+            {engine === 'failed' && (
+              <p className="wrong">
+                Stockfish couldn’t load, so the bot will play simple moves
+                instead of playing at this strength.
+              </p>
+            )}
+            <button
+              type="button"
+              className="primary"
+              onClick={begin}
+              disabled={engine === 'loading'}
+            >
+              {engine === 'loading' ? 'Loading the bot…' : 'Start game'}
             </button>
+            {engine === 'loading' && (
+              <p className="note">
+                Stockfish is about 7 MB and downloads once.{' '}
+                <button type="button" className="link" onClick={begin}>
+                  Start now
+                </button>{' '}
+                and the bot plays simple moves until it’s ready.
+              </p>
+            )}
           </div>
         ) : (
           <>

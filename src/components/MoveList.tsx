@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react'
 import { movePairs } from '../chess/game'
 
 type MoveListProps = {
@@ -9,6 +10,21 @@ type MoveListProps = {
 
 // The moves played so far. Clicking a move jumps to the position after it.
 export function MoveList({ moves, ply, onSelect }: MoveListProps) {
+  const list = useRef<HTMLOListElement>(null)
+
+  // Keeps the current move in view as a long game scrolls the list.
+  useEffect(() => {
+    const ol = list.current
+    const current = ol?.querySelector<HTMLElement>('.current')
+    if (!ol || !current) return
+    const top = current.offsetTop - ol.offsetTop
+    if (
+      top < ol.scrollTop ||
+      top + current.offsetHeight > ol.scrollTop + ol.clientHeight
+    )
+      ol.scrollTop = top - ol.clientHeight / 2
+  }, [ply, moves])
+
   const move = (san: string | undefined, index: number) =>
     san && (
       <button
@@ -23,7 +39,7 @@ export function MoveList({ moves, ply, onSelect }: MoveListProps) {
     )
 
   return (
-    <ol className="moves">
+    <ol className="moves" ref={list}>
       {movePairs(moves).map(([n, white, black]) => (
         <li key={n}>
           <span className="num">{n}.</span>

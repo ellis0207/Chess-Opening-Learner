@@ -6,7 +6,7 @@ import { db } from '../progress/db'
 import { useLive } from '../progress/useLive'
 
 export type Destination =
-  'explore' | 'practice' | 'repertoire' | 'review' | 'progress'
+  'explore' | 'practice' | 'play' | 'repertoire' | 'review' | 'progress'
 
 type Side = 'all' | 'white' | 'black'
 
@@ -50,6 +50,7 @@ export function HomeView({ due, onLesson, onOpen }: HomeViewProps) {
     { kind: 'review', label: due ? `Review (${due})` : 'Review' },
     { kind: 'explore', label: 'Explore' },
     { kind: 'practice', label: 'Practice' },
+    { kind: 'play', label: 'Play vs bot' },
     { kind: 'repertoire', label: 'Repertoire' },
     { kind: 'progress', label: 'Progress' },
   ]

@@ -50,6 +50,7 @@ type PracticeViewProps = {
   initialSide: Color
   initialSource: Source
   onExit: () => void
+  onPlay: (moves: string[], side: Color) => void // vs the bot
 }
 
 // Drill from a starting line: the app plays the opponent's moves and you find
@@ -60,6 +61,7 @@ export function PracticeView({
   initialSide,
   initialSource,
   onExit,
+  onPlay,
 }: PracticeViewProps) {
   const [side, setSide] = useState<Color>(initialSide)
   const [depth, setDepth] = useState(5)
@@ -289,6 +291,9 @@ export function PracticeView({
             onClick={() => setShowHints((h) => !h)}
           >
             {showHints ? 'Hide hints' : 'Show hints'}
+          </button>
+          <button type="button" onClick={() => onPlay(line, drill.side)}>
+            Play on vs bot
           </button>
           <button type="button" onClick={onExit}>
             Back to explorer

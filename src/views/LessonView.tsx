@@ -67,6 +67,7 @@ type LessonViewProps = {
   onExit: () => void // back to the menu
   onMenu: () => void
   onOpenLesson: (id: string) => void
+  onPlay: (moves: string[], side: 'white' | 'black') => void // vs the bot
 }
 
 export function LessonView(props: LessonViewProps) {
@@ -98,6 +99,7 @@ function LessonPlayer({
   onExit,
   onMenu,
   onOpenLesson,
+  onPlay,
 }: LessonViewProps & { lesson: Lesson }) {
   const loadDone = useMemo(
     () => () => db.lessons.where('lesson').equals(lesson.id).primaryKeys(),
@@ -394,6 +396,12 @@ function LessonPlayer({
                   <button type="button" onClick={() => start(index)}>
                     Replay
                   </button>
+                  <button
+                    type="button"
+                    onClick={() => onPlay(moves, lesson.side)}
+                  >
+                    Play on vs bot
+                  </button>
                   <button type="button" onClick={onMenu}>
                     Exit to menu
                   </button>
@@ -427,6 +435,12 @@ function LessonPlayer({
                         Next variation
                       </button>
                     )}
+                  <button
+                    type="button"
+                    onClick={() => onPlay(moves, lesson.side)}
+                  >
+                    Play on vs bot
+                  </button>
                   <button type="button" onClick={onMenu}>
                     Exit to menu
                   </button>

@@ -2,6 +2,7 @@ import { Chess } from 'chess.js'
 import { describe, expect, it } from 'vitest'
 import {
   advance,
+  captures,
   formatLine,
   lastMoveText,
   legalDests,
@@ -155,5 +156,27 @@ describe('lastMoveText', () => {
     expect(lastMoveText([])).toBe('Starting position')
     expect(lastMoveText(['e4'])).toBe('White played e4')
     expect(lastMoveText(['e4', 'c5'])).toBe('Black played c5')
+  })
+})
+
+describe('captures', () => {
+  it('lists captured pieces and the material lead', () => {
+    const c = replay([
+      'e4',
+      'd5',
+      'exd5',
+      'Qxd5',
+      'Nc3',
+      'Qa5',
+      'Bb5+',
+      'c6',
+      'Bxc6+',
+      'Nxc6',
+    ])
+    expect(captures(c)).toEqual({
+      white: ['p', 'p'],
+      black: ['b', 'p'],
+      lead: -2,
+    })
   })
 })

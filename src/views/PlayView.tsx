@@ -2,8 +2,9 @@ import type { Config } from 'chessground/config'
 import type { Color, Key } from 'chessground/types'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { Board } from '../components/Board'
+import { EvalBar } from '../components/EvalBar'
 import { MoveInput } from '../components/MoveInput'
-import { MoveList } from '../components/MoveList'
+import { ClassBadge, MoveList } from '../components/MoveList'
 import {
   captures,
   lastMoveText,
@@ -26,6 +27,16 @@ import {
 import { botMove } from '../bot/move'
 import { analyse, engineLoaded, whenReady } from '../engine/stockfish'
 import { START, epd, openingFor, type OpeningTree } from '../openings/tree'
+import {
+  CLASSES,
+  CLASS_NAME,
+  accuracy,
+  evalText,
+  type Classification,
+  type Eval,
+} from '../review/classify'
+import { reviewMoves, type MoveReview } from '../review/review'
+import { useGameReview } from '../review/useGameReview'
 
 // The bot takes at least this long per move, so its moves are easy to follow.
 const MIN_THINK_MS = 500
@@ -92,6 +103,8 @@ export function PlayView({
   const [view, setView] = useState<number | null>(null)
   // The piece the hint highlights, in the position it was asked for.
   const [hint, setHint] = useState<{ fen: string; square: Key }>()
+  // Whether the finished game is shown with the engine's review.
+  const [reviewing, setReviewing] = useState(false)
 
   // The engine is about 7 MB, so the first game waits for it to download.
   const [engine, setEngine] = useState<'loading' | 'ready' | 'failed'>(() =>
@@ -129,6 +142,15 @@ export function PlayView({
   }, [moves])
   const opening = openingFor(tree, positions.slice(0, shown + 1))
   const taken = useMemo(() => captures(board), [board])
+
+  // The engine reviews a game once it's over (never during it), so the
+  // review is ready or under way by the time it's opened.
+  const review = useGameReview(moves, over)
+  const rated = useMemo(
+    () => reviewMoves(moves, review.positions, tree),
+    [moves, review.positions, tree],
+  )
+  const reviewShown = reviewing && over
 
   // Every change to the game goes back to its current position.
   const update = useCallback((next: (m: string[]) => string[]) => {
@@ -212,6 +234,7 @@ export function PlayView({
     update(() => start)
     setResigned(false)
     setShowResult(true)
+    setReviewing(false)
     setFailure(undefined)
     setPlaying(true)
   }
@@ -220,6 +243,7 @@ export function PlayView({
     setPlaying(false)
     update(() => start)
     setResigned(false)
+    setReviewing(false)
     setFailure(undefined)
   }
 
@@ -229,6 +253,12 @@ export function PlayView({
     while (n > start.length && n % 2 !== (side === 'white' ? 0 : 1)) n--
     if (n >= start.length) update(() => moves.slice(0, n))
   }
+  const openReview = () => {
+    setReviewing(true)
+    setShowResult(false)
+    setView(0)
+  }
+
   const canTakeBack =
     playing && !over && !thinking && moves.length > start.length
 
@@ -251,10 +281,27 @@ export function PlayView({
         events: { after: onMove },
       },
       highlight: {
-        custom: new Map(hinted ? [[hinted, 'hint']] : []),
+        custom: new Map(
+          hinted
+            ? [[hinted, 'hint']]
+            : reviewShown && last && rated[shown - 1]
+              ? [[last.to, `review-${rated[shown - 1]!.classification}`]]
+              : [],
+        ),
       },
     }
-  }, [board, moves, side, yourTurn, live, submit, hinted])
+  }, [
+    board,
+    moves,
+    side,
+    yourTurn,
+    live,
+    submit,
+    hinted,
+    reviewShown,
+    rated,
+    shown,
+  ])
 
   const openingName = opening ? (
     <>
@@ -296,7 +343,12 @@ export function PlayView({
     <div className="layout play-layout">
       <div className="board-column">
         {playerBar(botSide, 'Bot', elo)}
-        <Board config={config} />
+        <div className={reviewShown ? 'board-row with-eval' : 'board-row'}>
+          {reviewShown && (
+            <EvalBar value={review.positions[shown]?.eval} orientation={side} />
+          )}
+          <Board config={config} />
+        </div>
         {playerBar(side, 'You')}
       </div>
       <aside className="panel game-panel">
@@ -381,6 +433,16 @@ export function PlayView({
               </p>
             )}
           </div>
+        ) : reviewShown ? (
+          <ReviewPanel
+            moves={moves}
+            rated={rated}
+            shown={shown}
+            side={side}
+            evalShown={review.positions[shown]?.eval}
+            done={review.done}
+            error={review.error}
+          />
         ) : (
           <div className="feedback" role="status" aria-live="polite">
             {over ? (
@@ -428,7 +490,12 @@ export function PlayView({
         <p className="sr-only" aria-live="polite">
           {lastMoveText(moves)}
         </p>
-        <MoveList moves={moves} ply={shown} onSelect={goTo} />
+        <MoveList
+          moves={moves}
+          ply={shown}
+          onSelect={goTo}
+          marks={reviewShown ? rated.map((r) => r?.classification) : undefined}
+        />
 
         <div className="controls nav-controls">
           <button
@@ -468,7 +535,20 @@ export function PlayView({
         {playing &&
           (over ? (
             <div className="controls game-actions">
-              <button type="button" className="primary" onClick={begin}>
+              {reviewShown ? (
+                <button type="button" onClick={() => setReviewing(false)}>
+                  Hide review
+                </button>
+              ) : (
+                <button type="button" className="primary" onClick={openReview}>
+                  Game review
+                </button>
+              )}
+              <button
+                type="button"
+                className={reviewShown ? 'primary' : undefined}
+                onClick={begin}
+              >
                 Rematch
               </button>
               <button type="button" onClick={setup}>
@@ -535,8 +615,11 @@ export function PlayView({
                 type="button"
                 className="primary"
                 autoFocus
-                onClick={begin}
+                onClick={openReview}
               >
+                Game review
+              </button>
+              <button type="button" onClick={begin}>
                 Rematch
               </button>
               <button type="button" onClick={setup}>
@@ -575,4 +658,128 @@ function resultScore({ outcome }: Ending, side: Color): string {
   if (outcome === 'draw') return '½-½'
   const whiteWon = (outcome === 'win') === (side === 'white')
   return whiteWon ? '1-0' : '0-1'
+}
+
+// How a move's rating reads after its name: "Nxe5 is a blunder".
+const VERDICT: Record<Classification, string> = {
+  book: 'is a book move',
+  best: 'is the best move',
+  excellent: 'is excellent',
+  good: 'is good',
+  inaccuracy: 'is an inaccuracy',
+  mistake: 'is a mistake',
+  blunder: 'is a blunder',
+}
+
+type ReviewPanelProps = {
+  moves: string[]
+  rated: (MoveReview | undefined)[]
+  shown: number // the ply on the board
+  side: Color
+  evalShown?: Eval
+  done: number // positions reviewed so far
+  error?: string
+}
+
+// The engine's verdict on the game: each player's accuracy and ratings,
+// and what it makes of the move on the board. It names the better move in
+// words; the board never shows arrows.
+function ReviewPanel({
+  moves,
+  rated,
+  shown,
+  side,
+  evalShown,
+  done,
+  error,
+}: ReviewPanelProps) {
+  const total = moves.length + 1
+  const finished = done >= total
+  const yours = (ply: number) => (ply % 2 === 0) === (side === 'white')
+  const players = [true, false].map((you) => {
+    const mine = rated.filter((r, ply) => r && yours(ply) === you)
+    const count = (c: Classification) =>
+      mine.filter((r) => r!.classification === c).length
+    return {
+      name: you ? 'You' : 'Bot',
+      accuracy: accuracy(mine.map((r) => r!.lost)),
+      counts: Object.fromEntries(CLASSES.map((c) => [c, count(c)])),
+    }
+  })
+
+  const ply = shown - 1
+  const move = rated[ply]
+  const san = moves[ply]
+  const number = `${Math.floor(ply / 2) + 1}${ply % 2 === 0 ? '.' : '...'}`
+
+  return (
+    <div className="review" role="status" aria-live="polite">
+      <h3>Game review</h3>
+      {error ? (
+        <p className="wrong">Stockfish couldn’t review the game: {error}.</p>
+      ) : (
+        !finished && (
+          <p className="note">
+            Stockfish is analysing the game… {done} of {total} positions
+            <progress value={done} max={total} />
+          </p>
+        )
+      )}
+      {finished && (
+        <table className="review-summary">
+          <thead>
+            <tr>
+              <th />
+              {players.map((p) => (
+                <th key={p.name}>{p.name}</th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            <tr className="accuracy">
+              <th scope="row">Accuracy</th>
+              {players.map((p) => (
+                <td key={p.name}>
+                  {p.accuracy === null ? '–' : p.accuracy.toFixed(1)}
+                </td>
+              ))}
+            </tr>
+            {CLASSES.map((c) => (
+              <tr key={c}>
+                <th scope="row">
+                  <ClassBadge mark={c} /> {CLASS_NAME[c]}
+                </th>
+                {players.map((p) => (
+                  <td key={p.name}>{p.counts[c]}</td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
+      <div className="review-move">
+        {shown === 0 ? (
+          <p>Starting position. Step through the moves with ▶ or →.</p>
+        ) : move ? (
+          <>
+            <p>
+              <ClassBadge mark={move.classification} />{' '}
+              <strong>
+                {number} {san}
+              </strong>{' '}
+              ({yours(ply) ? 'you' : 'bot'}) {VERDICT[move.classification]}.
+            </p>
+            {move.best && move.classification !== 'book' && (
+              <p className="note">Best was {move.best}.</p>
+            )}
+          </>
+        ) : (
+          <p className="note">
+            {number} {san}: {error ? 'not reviewed.' : 'analysing…'}
+          </p>
+        )}
+        {evalShown && <p className="note">Evaluation: {evalText(evalShown)}</p>}
+      </div>
+    </div>
+  )
 }

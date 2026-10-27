@@ -32,13 +32,17 @@ export default defineConfig({
       },
       workbox: {
         globPatterns: ['**/*.{js,css,html,svg,png,json}'],
-        // Stockfish's WebAssembly (about 7 MB) is cached the first time a
-        // lesson loads it rather than with the app.
+        // Stockfish's WebAssembly (about 7 MB) is cached the first time it
+        // loads rather than with the app. Only real responses are kept: an
+        // error page cached in its place would break the engine for good.
         runtimeCaching: [
           {
             urlPattern: /\.wasm$/,
             handler: 'CacheFirst',
-            options: { cacheName: 'engine' },
+            options: {
+              cacheName: 'engine-v2',
+              cacheableResponse: { statuses: [200] },
+            },
           },
         ],
       },

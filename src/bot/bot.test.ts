@@ -6,6 +6,7 @@ import {
   gameResult,
   legalUci,
   pickWeakMove,
+  quickMove,
   weakStyle,
 } from './bot'
 
@@ -116,5 +117,25 @@ describe('legalUci', () => {
     const c = new Chess('8/P6k/8/8/8/8/8/K7 w - - 0 1')
     expect(legalUci(c)).toContain('a7a8q')
     expect(legalUci(c)).toContain('a7a8n')
+  })
+})
+
+describe('quickMove', () => {
+  it('plays a mate in one', () => {
+    const c = play('e4 e5 Bc4 Nc6 Qh5 Nf6')
+    expect(quickMove(c)).toBe('Qxf7#')
+  })
+
+  it('takes a free piece', () => {
+    const c = new Chess('4k3/pp6/8/4b3/8/5N2/PP6/4K3 w - - 0 1')
+    expect(quickMove(c)).toBe('Nxe5')
+  })
+
+  it("doesn't hang its queen", () => {
+    const c = play('e4 e5 Qh5 Nc6')
+    for (let i = 0; i < 20; i++) {
+      const san = quickMove(c)
+      expect(['Qxh7', 'Qh6', 'Qg5', 'Qxe5+']).not.toContain(san)
+    }
   })
 })

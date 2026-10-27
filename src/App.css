@@ -1049,3 +1049,44 @@ cg-board square.review-mistake {
 cg-board square.review-blunder {
   background: rgba(224, 54, 43, 0.6);
 }
+
+.account-button {
+  max-width: 260px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.account {
+  max-width: 420px;
+}
+
+.account h2 {
+  font-size: 1.2rem;
+  margin: 0 0 8px;
+}
+
+.account label {
+  display: block;
+  margin-bottom: 12px;
+}
+
+.account input {
+  display: block;
+  width: 100%;
+  margin-top: 4px;
+  font: inherit;
+  padding: 8px;
+  border: 1px solid var(--button-border);
+  border-radius: 6px;
+  background: var(--button-bg);
+  color: inherit;
+}
+
+.account form .primary {
+  margin: 4px 0 12px;
+}
+
+.account p {
+  margin: 0 0 8px;
+}

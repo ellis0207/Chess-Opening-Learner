@@ -14,7 +14,8 @@ The app opens on a menu with six parts:
 
 - **Repertoire:** build your own White and Black repertoires by adding lines from the explorer (one move of yours per position, any number of opponent replies), with a note on each move. Import PGN files with variations (comments become notes) and export them back. Practice can drill your repertoire instead of the whole book, and reviews use your repertoire move where you have one.
 - **Review:** every position you answer in practice is scheduled with spaced repetition (SM-2). Positions you get right first time come back after growing intervals (1 day, 3 days, then longer); misses come back the next day. The Review tab shows how many are due.
-- **Progress:** positions learned and mastered, due reviews, day streak, accuracy, and your most-missed positions. Progress is stored in the browser (IndexedDB); download a backup to keep it safe or move it to another device.
+- **Progress:** positions learned and mastered, due reviews, day streak, accuracy, and your most-missed positions. Progress is stored in the browser (IndexedDB); download a backup to keep it safe or move it to another device, or reset it to start over.
+- **Accounts:** sign up with an email address and password, confirmed with a code sent to that address, and your progress and repertoires are saved to your account and synced across devices. Progress made before signing in is added to the account. Forgotten passwords are reset with an emailed code.
 
 Moves can be played by dragging or clicking pieces, or by typing them (`Nf3`, `0-0`, `g1f3`), and the last move is announced to screen readers.
 
@@ -25,6 +26,7 @@ Moves can be played by dragging or clicking pieces, or by typing them (`Nf3`, `0
 - [chessground](https://github.com/lichess-org/chessground) for the board
 - [Stockfish](https://stockfishchess.org) for move explanations (in the browser) and for building the lessons
 - [Dexie](https://dexie.org) (IndexedDB) for progress and repertoires
+- [Supabase](https://supabase.com) for accounts and cloud sync
 - [vite-plugin-pwa](https://vite-pwa-org.netlify.app) for the installable, offline app
 - [Vitest](https://vitest.dev) for tests, [oxlint](https://oxc.rs) and [Prettier](https://prettier.io) for linting and formatting
 
@@ -40,6 +42,22 @@ npm run lint         # lint
 npm run format       # format with Prettier
 npm run build        # type-check and build for production
 ```
+
+## Accounts
+
+Accounts use a [Supabase](https://supabase.com) project and are switched on by two build-time settings, kept in `.env.production` (both are public values):
+
+```sh
+VITE_SUPABASE_URL=https://<project>.supabase.co
+VITE_SUPABASE_PUBLISHABLE_KEY=sb_publishable_...   # or the legacy anon key
+```
+
+Without them the app works as before, with progress kept in the browser only. To set up the project:
+
+1. Run `supabase/schema.sql` in the SQL editor. It creates the `progress` table, one JSON document per account, readable only by its owner.
+2. Under Authentication → URL Configuration, set the Site URL to the app's address and add it to the redirect URLs.
+3. Under Authentication → Emails, make the **Confirm signup** and **Reset password** templates show the code, `{{ .Token }}`, so they send a code rather than only a link.
+4. Supabase's built-in email only reaches the project's team members and a few emails an hour; add custom SMTP (Authentication → Emails → SMTP settings) before opening sign-up to everyone.
 
 ## Opening data
 

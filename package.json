@@ -19,6 +19,7 @@
     "bot-strength": "node scripts/bot-strength.ts"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.118.0",
     "chess.js": "^1.4.0",
     "chessground": "^9.2.1",
     "dexie": "^4.4.6",

@@ -45,6 +45,7 @@ type ExploreViewProps = {
   orientation: Color
   setOrientation: Dispatch<SetStateAction<Color>>
   onPractice: (moves: string[], side: Color) => void
+  onPlay: (moves: string[], side: Color) => void // vs the bot
 }
 
 // Browse the opening tree: play moves or pick book moves, and step through
@@ -56,6 +57,7 @@ export function ExploreView({
   orientation,
   setOrientation,
   onPractice,
+  onPlay,
 }: ExploreViewProps) {
   const [hovered, setHovered] = useState<string | null>(null)
 
@@ -227,6 +229,14 @@ export function ExploreView({
           disabled={!edges.length && !mine.length}
         >
           Practice from here
+        </button>{' '}
+        <button
+          type="button"
+          className="primary"
+          onClick={() => onPlay(line, orientation)}
+          disabled={game.isGameOver()}
+        >
+          Play vs bot from here
         </button>
         <RepertoirePanel
           key={current?.id ?? 'none'}

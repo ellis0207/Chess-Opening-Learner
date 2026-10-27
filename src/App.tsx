@@ -8,6 +8,7 @@ import { useLive } from './progress/useLive'
 import { ExploreView } from './views/ExploreView'
 import { HomeView } from './views/HomeView'
 import { LessonView } from './views/LessonView'
+import { PlayView } from './views/PlayView'
 import { PracticeView, type Source } from './views/PracticeView'
 import { RepertoireView } from './views/RepertoireView'
 import { ProgressView } from './views/ProgressView'
@@ -22,6 +23,8 @@ type Mode =
   | { kind: 'repertoire' }
   | { kind: 'review' }
   | { kind: 'progress' }
+  // A game vs the bot, and where to go back to afterwards.
+  | { kind: 'play'; start: string[]; side: Color; back: Mode }
 
 const countDue = () => db.cards.where('due').belowOrEqual(Date.now()).count()
 
@@ -42,6 +45,9 @@ function App() {
     setMode({ kind: 'practice', start, side, source })
 
   const home = () => setMode({ kind: 'home' })
+
+  const playFrom = (start: string[], side: Color) =>
+    setMode({ kind: 'play', start, side, back: mode })
 
   return (
     <main className="app">
@@ -64,7 +70,9 @@ function App() {
           onOpen={(kind) =>
             kind === 'practice'
               ? practice([], 'white')
-              : setMode({ kind } as Mode)
+              : kind === 'play'
+                ? playFrom([], 'white')
+                : setMode({ kind } as Mode)
           }
         />
       ) : !tree ? (
@@ -77,6 +85,7 @@ function App() {
           onExit={home}
           onMenu={home}
           onOpenLesson={(id) => setMode({ kind: 'lesson', id })}
+          onPlay={playFrom}
         />
       ) : mode.kind === 'explore' ? (
         <ExploreView
@@ -86,6 +95,16 @@ function App() {
           orientation={orientation}
           setOrientation={setOrientation}
           onPractice={practice}
+          onPlay={playFrom}
+        />
+      ) : mode.kind === 'play' ? (
+        <PlayView
+          key={`${mode.side} ${mode.start.join(' ')}`}
+          tree={tree}
+          start={mode.start}
+          initialSide={mode.side}
+          backLabel={backLabel(mode.back)}
+          onBack={() => setMode(mode.back)}
         />
       ) : mode.kind === 'practice' ? (
         <PracticeView
@@ -96,6 +115,7 @@ function App() {
           initialSide={mode.side}
           initialSource={mode.source}
           onExit={() => setMode({ kind: 'explore' })}
+          onPlay={playFrom}
         />
       ) : mode.kind === 'repertoire' ? (
         <RepertoireView
@@ -116,6 +136,19 @@ function App() {
       )}
     </main>
   )
+}
+
+function backLabel(mode: Mode): string {
+  return {
+    home: 'Menu',
+    lesson: 'Back to lesson',
+    explore: 'Back to explorer',
+    practice: 'Back to practice',
+    play: 'Back',
+    repertoire: 'Back to repertoire',
+    review: 'Back to review',
+    progress: 'Back to progress',
+  }[mode.kind]
 }
 
 export default App

@@ -740,3 +740,30 @@ cg-board square.preview {
 .modal-variation {
   margin: 2px 0 12px;
 }
+
+.modal-badge.win {
+  background: #5d9948;
+}
+
+.modal-badge.draw {
+  background: #8a8a92;
+}
+
+.modal-badge.loss {
+  background: #c9534a;
+}
+
+.bot-setup {
+  margin-bottom: 12px;
+}
+
+.elo-pick {
+  display: grid;
+  gap: 6px;
+  margin: 12px 0 8px;
+}
+
+.elo-pick input {
+  width: 100%;
+  accent-color: var(--accent);
+}

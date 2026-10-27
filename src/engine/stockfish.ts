@@ -8,11 +8,12 @@ import { MATE, type EngineLine } from './types'
 
 export type { EngineLine }
 
+// The output of one search: its lines, best first, and the move it chose.
+type Search = { lines: EngineLine[]; bestmove: string }
+
 type Job = {
-  fen: string
-  depth: number
-  searchmoves: string[]
-  resolve: (lines: EngineLine[]) => void
+  commands: string[] // options, position and go, sent in order
+  resolve: (search: Search) => void
   reject: (error: Error) => void
 }
 
@@ -48,9 +49,12 @@ function start(): Promise<void> {
       } else if (data.startsWith('bestmove')) {
         const job = running!
         running = null
-        job.resolve(
-          [...lines.entries()].sort((a, b) => a[0] - b[0]).map((e) => e[1]),
-        )
+        job.resolve({
+          lines: [...lines.entries()]
+            .sort((a, b) => a[0] - b[0])
+            .map((e) => e[1]),
+          bestmove: data.split(' ')[1],
+        })
         lines = new Map()
         next()
       }
@@ -66,13 +70,15 @@ function next() {
   if (!job) return
   running = job
   worker.postMessage('ucinewgame')
-  worker.postMessage(
-    `setoption name MultiPV value ${Math.max(1, job.searchmoves.length)}`,
-  )
-  worker.postMessage(`position fen ${job.fen}`)
-  worker.postMessage(
-    `go depth ${job.depth}${job.searchmoves.length ? ` searchmoves ${job.searchmoves.join(' ')}` : ''}`,
-  )
+  for (const command of job.commands) worker.postMessage(command)
+}
+
+async function search(commands: string[]): Promise<Search> {
+  await start()
+  return new Promise((resolve, reject) => {
+    queue.push({ commands, resolve, reject })
+    next()
+  })
 }
 
 // Starts loading the engine, so it's ready by the time it's needed.
@@ -86,9 +92,41 @@ export async function analyse(
   fen: string,
   { depth = 14, searchmoves = [] as string[] } = {},
 ): Promise<EngineLine[]> {
-  await start()
-  return new Promise((resolve, reject) => {
-    queue.push({ fen, depth, searchmoves, resolve, reject })
-    next()
-  })
+  const { lines } = await search([
+    'setoption name UCI_LimitStrength value false',
+    `setoption name MultiPV value ${Math.max(1, searchmoves.length)}`,
+    `position fen ${fen}`,
+    `go depth ${depth}${searchmoves.length ? ` searchmoves ${searchmoves.join(' ')}` : ''}`,
+  ])
+  return lines
+}
+
+// The best `multipv` lines at a fixed depth, for the weak bots to choose from.
+export async function candidates(
+  fen: string,
+  { depth, multipv }: { depth: number; multipv: number },
+): Promise<EngineLine[]> {
+  const { lines } = await search([
+    'setoption name UCI_LimitStrength value false',
+    `setoption name MultiPV value ${multipv}`,
+    `position fen ${fen}`,
+    `go depth ${depth}`,
+  ])
+  return lines
+}
+
+// A move from Stockfish's own strength limit, playing at about `elo`
+// (Stockfish 18 accepts 1320 to 3190). Returns a UCI move.
+export async function limitedMove(
+  fen: string,
+  { elo, movetime }: { elo: number; movetime: number },
+): Promise<string> {
+  const { bestmove } = await search([
+    'setoption name UCI_LimitStrength value true',
+    `setoption name UCI_Elo value ${elo}`,
+    'setoption name MultiPV value 1',
+    `position fen ${fen}`,
+    `go movetime ${movetime}`,
+  ])
+  return bestmove
 }

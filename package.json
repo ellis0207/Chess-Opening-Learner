@@ -15,7 +15,8 @@
     "format:check": "prettier --check .",
     "typecheck": "tsc -b",
     "import-openings": "node scripts/import-openings.ts",
-    "build-lessons": "node scripts/build-lessons.ts"
+    "build-lessons": "node scripts/build-lessons.ts",
+    "bot-strength": "node scripts/bot-strength.ts"
   },
   "dependencies": {
     "chess.js": "^1.4.0",

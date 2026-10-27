@@ -127,3 +127,31 @@ export function lastMoveText(moves: string[]): string {
   const side = moves.length % 2 ? 'White' : 'Black'
   return `${side} played ${moves[moves.length - 1]}`
 }
+
+const PIECE_VALUE: Record<string, number> = { p: 1, n: 3, b: 3, r: 5, q: 9 }
+const START_COUNT: Record<string, number> = { p: 8, n: 2, b: 2, r: 2, q: 1 }
+
+// The pieces each side has captured (from the pieces missing from the
+// board, most valuable first), and White's material lead in pawns.
+export function captures(chess: Chess): {
+  white: string[] // black pieces White has taken
+  black: string[] // white pieces Black has taken
+  lead: number
+} {
+  const count = {
+    w: {} as Record<string, number>,
+    b: {} as Record<string, number>,
+  }
+  let lead = 0
+  for (const row of chess.board())
+    for (const sq of row) {
+      if (!sq || sq.type === 'k') continue
+      count[sq.color][sq.type] = (count[sq.color][sq.type] ?? 0) + 1
+      lead += (sq.color === 'w' ? 1 : -1) * PIECE_VALUE[sq.type]
+    }
+  const missing = (color: 'w' | 'b') =>
+    ['q', 'r', 'b', 'n', 'p'].flatMap((t) =>
+      Array(Math.max(0, START_COUNT[t] - (count[color][t] ?? 0))).fill(t),
+    )
+  return { white: missing('b'), black: missing('w'), lead }
+}

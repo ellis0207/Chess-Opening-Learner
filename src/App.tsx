@@ -1,5 +1,7 @@
 import type { Color } from 'chessground/types'
 import { useEffect, useState } from 'react'
+import { accountsEnabled } from './account/account'
+import { useAccount } from './account/useAccount'
 import type { Line } from './chess/game'
 import { loadTree } from './openings/load'
 import type { OpeningTree } from './openings/tree'
@@ -12,6 +14,7 @@ import { PlayView } from './views/PlayView'
 import { PracticeView, type Source } from './views/PracticeView'
 import { RepertoireView } from './views/RepertoireView'
 import { ProgressView } from './views/ProgressView'
+import { AccountView } from './views/AccountView'
 import { ReviewView } from './views/ReviewView'
 import './App.css'
 
@@ -23,6 +26,7 @@ type Mode =
   | { kind: 'repertoire' }
   | { kind: 'review' }
   | { kind: 'progress' }
+  | { kind: 'account' }
   // A game vs the bot, and where to go back to afterwards.
   | { kind: 'play'; start: string[]; side: Color; back: Mode }
 
@@ -36,6 +40,7 @@ function App() {
   const [line, setLine] = useState<Line>({ moves: [], ply: 0 })
   const [orientation, setOrientation] = useState<Color>('white')
   const due = useLive(countDue) ?? 0
+  const account = useAccount()
 
   useEffect(() => {
     loadTree().then(setTree)
@@ -57,11 +62,22 @@ function App() {
             Chess Opening Learner
           </button>
         </h1>
-        {mode.kind !== 'home' && (
-          <button type="button" onClick={home}>
-            ← Menu
-          </button>
-        )}
+        <div className="controls">
+          {mode.kind !== 'home' && (
+            <button type="button" onClick={home}>
+              ← Menu
+            </button>
+          )}
+          {accountsEnabled && mode.kind !== 'account' && (
+            <button
+              type="button"
+              className="account-button"
+              onClick={() => setMode({ kind: 'account' })}
+            >
+              {account.status === 'signed-in' ? account.email : 'Sign in'}
+            </button>
+          )}
+        </div>
       </header>
       {mode.kind === 'home' ? (
         <HomeView
@@ -75,6 +91,8 @@ function App() {
                 : setMode({ kind } as Mode)
           }
         />
+      ) : mode.kind === 'account' ? (
+        <AccountView onDone={home} />
       ) : !tree ? (
         <p className="note">Loading openings…</p>
       ) : mode.kind === 'lesson' ? (
@@ -148,6 +166,7 @@ function backLabel(mode: Mode): string {
     repertoire: 'Back to repertoire',
     review: 'Back to review',
     progress: 'Back to progress',
+    account: 'Back',
   }[mode.kind]
 }
 

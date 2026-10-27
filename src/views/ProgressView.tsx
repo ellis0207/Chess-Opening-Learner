@@ -1,5 +1,7 @@
 import type { Color } from 'chessground/types'
 import { useRef, useState } from 'react'
+import { noteReset } from '../account/account'
+import { useAccount } from '../account/useAccount'
 import { formatLine, replay } from '../chess/game'
 import { START, epd, openingFor, type OpeningTree } from '../openings/tree'
 import {
@@ -34,6 +36,7 @@ export function ProgressView({
   const [message, setMessage] = useState<string | null>(null)
   const [confirmReset, setConfirmReset] = useState(false)
   const fileInput = useRef<HTMLInputElement>(null)
+  const account = useAccount()
 
   if (!data) return <p className="note">Loading progress…</p>
   const summary = summarize(data.cards, data.activity, data.now)
@@ -135,8 +138,9 @@ export function ProgressView({
 
       <h2>Your data</h2>
       <p className="note">
-        Progress and repertoires are saved in this browser. Download a backup to
-        keep them safe or move them to another device.
+        {account.status === 'signed-in'
+          ? `Progress and repertoires are saved in this browser and in your account (${account.email}).`
+          : 'Progress and repertoires are saved in this browser. Sign in to keep them in an account, or download a backup to keep them safe or move them to another device.'}
       </p>
       <div className="controls">
         <button type="button" onClick={download}>
@@ -162,6 +166,7 @@ export function ProgressView({
           onClick={async () => {
             if (!confirmReset) return setConfirmReset(true)
             await resetProgress()
+            noteReset()
             setConfirmReset(false)
             setMessage('Progress reset.')
           }}
